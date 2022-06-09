@@ -1,2 +1,4 @@
 .env
 docker/phpmyadmin/sessions
+/html/config/app.php
+/html/config/app_local.php

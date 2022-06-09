@@ -29,7 +29,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
+    <?= $this->Html->css(['normalize.min', 'cake']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -38,13 +38,26 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <a href="<?= $this->Url->build('/') ?>"><?= $this->Html->image('brand-logo_white.png',['alt' => 'brand-logo','width' => '160']); ?></a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Blog</a>
+            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">Code</a>
         </div>
+        <nav class="toggle-menu">
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Code</a></li>
+        <li><a href="#">Source</a></li>
+      </ul>
     </nav>
+    <button type="button" id="nav-btn" class="nav-btn">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+    </button>
+    </nav>
+
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>

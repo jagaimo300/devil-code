@@ -54,14 +54,14 @@ endif;
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        CakePHP: the rapid development PHP framework:
+        <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home']) ?>
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -69,14 +69,15 @@ endif;
 </head>
 <body>
     <header>
-        <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
-            <h1>
-                Welcome to CakePHP <?= h(Configure::version()) ?> Strawberry (🍓)
-            </h1>
-        </div>
+        <nav class="top-nav">
+            <div class="top-nav-title">
+                <a href="<?= $this->Url->build('/') ?>"><?= $this->Html->image('brand-logo_white.png',['alt' => 'brand-logo','width' => '160']); ?></a>
+            </div>
+            <div class="top-nav-links">
+                <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Blog</a>
+                <a target="_blank" rel="noopener" href="https://api.cakephp.org/">Code</a>
+            </div>
+        </nav>
     </header>
     <main class="main">
         <div class="container">
