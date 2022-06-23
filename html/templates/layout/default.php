@@ -35,7 +35,7 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
 </head>
 <body>
 <header>
-    <div class="px-3 py-2 bg-dark text-white">
+    <div class="px-4 py-3 bg-dark text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -52,11 +52,6 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
             <li>
               <a href="#" class="nav-link text-white">
                 blog
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                code
               </a>
             </li>
             <li>
@@ -80,8 +75,16 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
             <?= $this->fetch('content') ?>
         </div>
     </main>
-    <footer>
-    </footer>
+    <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2021 devil code</p>
+  </footer>
     <?= $this->Html->script(['index']) ?>
     <?= $this->Html->script(['bootstrap.bundle.min']) ?>
 </body>
