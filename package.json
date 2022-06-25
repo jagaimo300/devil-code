@@ -5,6 +5,7 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
+    "swiper": "^8.2.4",
     "tailwindcss": "^3.1.2"
   },
   "devDependencies": {
