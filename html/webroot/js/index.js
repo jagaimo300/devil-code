@@ -1,11 +1,17 @@
-const swiper = new Swiper(".swiper", {
-  // ページネーションが必要なら追加
-  pagination: {
-    el: ".swiper-pagination"
+const swiper = new Swiper(".mySwiper", {
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 4000,
   },
-  // ナビボタンが必要なら追加
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+  },
+  // 前後の矢印
   navigation: {
     nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  }
+    prevEl: ".swiper-button-prev",
+  },
 });

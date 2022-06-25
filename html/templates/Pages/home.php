@@ -1,21 +1,32 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="...">
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg')">
+            <div class="text-wrapper ls-1">
+                <p class="blog-ttl my-4 h2">CakePHPでブログサイトの構築1</p>
+                <p class="blog-subTtl small">サブタイトルサブタイトルサブタイトルサブタイトル</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg')">
+            <div class="text-wrapper ls-1">
+            <p class="blog-ttl my-4 h2">CakePHPでブログサイトの構築2</p>
+                <p class="blog-subTtl small">サブタイトルサブタイトルサブタイトルサブタイトル</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg')">
+            <div class="text-wrapper ls-1">
+            <p class="blog-ttl my-4 h2">CakePHPでブログサイトの構築3</p>
+                <p class="blog-subTtl small">サブタイトルサブタイトルサブタイトルサブタイトル</p>
+            </div>
+        </div>
+        <div class="swiper-slide" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg')">
+            <div class="text-wrapper ls-1">
+            <p class="blog-ttl my-4 h2">CakePHPでブログサイトの構築4</p>
+                <p class="blog-subTtl small">サブタイトルサブタイトルサブタイトルサブタイトルサブタイトル</p>
+            </div>
+        </div>
     </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
 </div>

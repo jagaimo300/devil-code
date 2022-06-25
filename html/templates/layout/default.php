@@ -29,8 +29,8 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
   </title>
   <?= $this->Html->meta('icon') ?>
 
-  <?= $this->Html->css(['bootstrap.min','style']) ?>
-
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <?= $this->Html->css(['bootstrap.min', 'style']) ?>
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
   <?= $this->fetch('script') ?>
@@ -48,23 +48,18 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-secondary">
-                Home
+              <a href="#" class="nav-link text-white">
+                Blog
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
-                blog
+                GitHub
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
-                github
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
-                contact
+                Contact
               </a>
             </li>
           </ul>
@@ -73,11 +68,10 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
     </div>
   </header>
   <main class="main">
-      <?= $this->fetch('content') ?>
+    <?= $this->fetch('content') ?>
   </main>
   <footer class="py-3 my-4 bg-dark text-white">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
@@ -85,7 +79,8 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
     </ul>
     <p class="text-center text-muted">© 2022 devil code</p>
   </footer>
-  <?= $this->Html->script(['bootstrap.bundle.min']) ?>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <?= $this->Html->script(['index','bootstrap.bundle.min']) ?>
 </body>
 
 </html>
