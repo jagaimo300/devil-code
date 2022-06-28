@@ -4,14 +4,18 @@ html,body {
     font-family: 'Noto Sans JP', sans-serif !important;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 .swiper {
     width: 100%;
-    height: 100%;
+    height: 52vh;
     --swiper-theme-color: #f8f9fa;
     --swiper-navigation-size: 24px;
 
     .swiper-wrapper {
-        height: 75vh;
     
       .swiper-slide {
         text-align: center;
@@ -51,3 +55,45 @@ html,body {
 .ls-1 {
     letter-spacing: .1em;
 }
+
+.code-box {
+  background-color: #1f1f1f;
+  border-radius: 5px;
+  .code-ttl {
+    height: 24px;
+    font-size: 16px;
+    margin: 0;
+    padding: 1px 4px;
+    color: #f8f9fa;
+  }
+  small {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    padding: 1px 4px;
+    &::after {
+      content: '\0d7';
+      font-size: smaller;
+      margin-left: auto;
+    }
+  }
+  .code-body {
+    border: 0px;
+    border-top: 1px solid #000;
+    .code-text {
+      margin: 0;
+      border: 0;
+    }
+    &::after {
+      content: '';
+      display: block;
+      background-color: #663399;
+      width: 100%;
+      height: 16px;
+    }
+  }
+}
+
