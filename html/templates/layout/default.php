@@ -29,11 +29,10 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
   </title>
   <?= $this->Html->meta('icon') ?>
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-  <?= $this->Html->css(['bootstrap.min', 'style', 'sunburst']) ?>
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
-  <?= $this->fetch('script') ?>
+  <?= $this->Html->css(['bootstrap.min', 'sunburst', 'style']) ?>
+  <?= $this->fetch('scriptTop') ?>
 </head>
 
 <body>
@@ -45,7 +44,6 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
             <img src="img/brand-logo_white.png" height="32">
             <!-- <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg> -->
           </a>
-
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="#" class="nav-link text-white">
@@ -78,8 +76,8 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
     </ul>
     <p class="text-center text-muted">© 2022 devil code</p>
   </footer>
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <?= $this->fetch('scriptBottom') ?>
+  <?= $this->Html->script('https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js') ?>
   <?= $this->Html->script(['index','bootstrap.bundle.min']) ?>
 </body>
 

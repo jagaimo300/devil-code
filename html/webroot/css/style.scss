@@ -34,6 +34,9 @@ a {
             color: #fff;
             width: 100%;
             text-align: center;
+            .blog-ttl {
+              font-size: calc(12px + 12 * (100vw - 800px) /400);
+            }
         }
     }
     
