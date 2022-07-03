@@ -33,9 +33,6 @@ a {
   width: 100%;
   text-align: center;
 }
-.swiper .swiper-wrapper .swiper-slide .text-wrapper .blog-ttl {
-  font-size: clamp(24px, 5vw, 48px);
-}
 .swiper .swiper-wrapper .swiper-slide::before {
   content: "";
   background-color: rgba(0, 0, 0, 0.4);
