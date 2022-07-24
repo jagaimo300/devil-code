@@ -16,12 +16,14 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Controller\AppController;
+use App\Form\ContactForm;
+
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
-
 /**
  * Static content controller
  *
@@ -69,5 +71,10 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+
+    }
+
+    public function contact()
+    {
     }
 }

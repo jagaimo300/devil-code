@@ -47,17 +47,17 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="/blog" class="nav-link text-white">
                 Blog
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
                 GitHub
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
+              <a href="/contact" class="nav-link text-white">
                 Contact
               </a>
             </li>
@@ -71,9 +71,9 @@ $cakeDescription = 'devil code: Web development in Sendai, Japan';
   </main>
   <footer class="py-3 mt-4 bg-dark text-white">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Blog</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">GitHub</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+      <li class="nav-item"><a href="/blog" class="nav-link px-2 text-muted">Blog</a></li>
+      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
+      <li class="nav-item"><a href="/contact" class="nav-link px-2 text-muted">Contact</a></li>
     </ul>
     <p class="text-center text-muted">© 2022 devil code</p>
   </footer>
