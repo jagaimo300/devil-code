@@ -21,14 +21,11 @@
             <div class="row my-5">
                 <h2>NEWS</h2>
             </div>
-            <div class="row mb-2 d-flex justify-content-between">
-                <div class="col-md-8 card-item">
-                    <ul class="list-group list-group-flush pe-5">
+            <div class="row mb-2">
+                <div class="col-md-8 card-item pt-3">
+                    <ul class="list-group list-group-flush">
                         <?php foreach ($news as $index => $new): ?>
-                            <li class="list-group-item mb-3"><?= h($new->created) ?><span><?= h($new->blogs_category->category_label) ?></span><?= h($new->title) ?></li>
-                        <?php endforeach; ?>
-                        <?php foreach ($news as $index => $new): ?>
-                            <li class="list-group-item mb-3"><?= h($new->created) ?><span><?= h($new->blogs_category->category_label) ?></span><?= h($new->title) ?></li>
+                            <li class="list-group-item mb-3"><span class="me-3 catTag"><?= h($new->blogs_category->category_label) ?></span><?= h($new->created) ?><?= h($new->title) ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>

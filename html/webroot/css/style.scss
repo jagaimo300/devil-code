@@ -138,6 +138,22 @@ section {
   box-shadow: 0 5px 30px rgb(0 0 0 / 20%);
 }
 
+.catTag {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  padding: 8px 12px;
+  text-align: center;
+  color: #f8f9fa;
+  background-color: #63518b;
+  border-radius: 25px;
+  font-size: .8em;
+  &::before {
+    content: '#';
+    position: absolute;
+    left: 16px;
+  }
+}
 
 @media screen and (max-width: 960px) {
   .contact {
