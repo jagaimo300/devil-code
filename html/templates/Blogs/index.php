@@ -4,131 +4,84 @@
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 ?>
-<section class="blog">
-    <div class="container lg-px-0 md-px-3">
-        <div class="row my-5">
-            <h2>Blogs</h2>
-        </div>
-        <div class="row mb-2">
-            <div class="col-md-6 ">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-md-6 ">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-md-6 ">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
+<?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('../img/sample_1.jpg')">
+            <div class="text-wrapper ls-1">
+                <h2 class="blog-ttl my-4">Blog</h2>
+                <p class="blog-subTtl small">foooooooooooooooo</p>
             </div>
         </div>
     </div>
+</div>
+<section class="blog">
+    <div class="album py-5 bg-white">
+        <div class="container">
+            <div class="row my-5">
+                <h2>NEWS</h2>
+            </div>
+            <div class="row mb-2 d-flex justify-content-between">
+                <div class="col-md-8 card-item">
+                    <ul class="list-group list-group-flush pe-5">
+                        <?php foreach ($news as $index => $new): ?>
+                            <li class="list-group-item mb-3"><?= h($new->created) ?><span><?= h($new->blogs_category->category_label) ?></span><?= h($new->title) ?></li>
+                        <?php endforeach; ?>
+                        <?php foreach ($news as $index => $new): ?>
+                            <li class="list-group-item mb-3"><?= h($new->created) ?><span><?= h($new->blogs_category->category_label) ?></span><?= h($new->title) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <!-- <div class="col-md-4 card-item">
+                    <ul class="row">
+                        <li class="mb-3"><a href="https://blog.naver.com/devil_code">힌국어 브로그</a></li>
+                        <li class="mb-3"><a href="https://medium.com/@devil-code">English blog</a></li>
+                        <li class="mb-3"><a href="https://twitter.com/devil_code_com">@devil_code_com</a></li>
+                        <li class="mb-3"><a href="https://www.instagram.com/devil_code_com/">@devil_code_com</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-5">
+            <h2>Featured</h2>
+        </div>
+	    <div class="row mb-2 d-flex justify-content-between">
+            <?php foreach ($blogs as $index => $blog): ?>
+                <?php if ($index <= 3): ?>
+                    <div class="col-md-12 col-lg-4 pe-5">
+                        <div class="row mb-4 card-item overflow-hidden">
+                            <div class="col-auto blog_img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; background-repeat: norepeat; height: 240px;"></div>
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary"><?= h($blog->blogs_category->category_label) ?></strong>
+                                <h3 class="mb-0"><?= h($blog->title) ?></h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto"><?= h($blog->body) ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <div class="col-md-4 blog-featured overflow-hidden">
+                        <div class="row mb-4">
+                            <div class="col-auto blog_img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-size: cover; background-repeat: norepeat; height: 360px;"></div>
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary"><?= h($blog->blogs_category->category_label) ?></strong>
+                                <h3 class="mb-0"><?= h($blog->title) ?></h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto"><?= h($blog->body) ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+	    </div>
+    </div>
 </section>
-
 <div class="blogs index content">
+	<!--
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Blogs') ?></h3>
+	-->
     <div class="table-responsive">
         <table>
             <thead>
@@ -146,7 +99,7 @@
                 <tr>
                     <td><?= $this->Number->format($blog->id) ?></td>
                     <td><?= h($blog->title) ?></td>
-                    <td><?= $this->Number->format($blog->category_id) ?></td>
+                    <td><?= h($blog->blogs_category->category_label) ?></td>
                     <td><?= h($blog->created) ?></td>
                     <td><?= h($blog->modified) ?></td>
                     <td class="actions">

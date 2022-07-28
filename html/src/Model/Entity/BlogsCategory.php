@@ -9,10 +9,11 @@ use Cake\ORM\Entity;
  * BlogsCategory Entity
  *
  * @property int $id
- * @property int $cat_id
- * @property string $cat_label
+ * @property int $category_id
+ * @property string $category_label
+ * @property string $string
  *
- * @property \App\Model\Entity\Cat $cat
+ * @property \App\Model\Entity\Category $category
  */
 class BlogsCategory extends Entity
 {
@@ -26,8 +27,9 @@ class BlogsCategory extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'cat_id' => true,
-        'cat_label' => true,
-        'cat' => true,
+        'category_id' => true,
+        'category_label' => true,
+        'string' => true,
+        'category' => true,
     ];
 }

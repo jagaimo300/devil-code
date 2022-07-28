@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * BlogsCategories Model
  *
- * @property \App\Model\Table\CatsTable&\Cake\ORM\Association\BelongsTo $Cats
+ * @property \App\Model\Table\CatsTable&\Cake\ORM\Association\BelongsTo $Blogs
  *
  * @method \App\Model\Entity\BlogsCategory newEmptyEntity()
  * @method \App\Model\Entity\BlogsCategory newEntity(array $data, array $options = [])
@@ -43,7 +43,7 @@ class BlogsCategoriesTable extends Table
         $this->setDisplayField('category_id');
         $this->setPrimaryKey('category_id');
 
-        $this->belongsTo('Cats', [
+        $this->belongsTo('Blogs', [
             'foreignKey' => 'category_id',
             'joinType' => 'INNER',
         ]);
@@ -80,7 +80,7 @@ class BlogsCategoriesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('category_id', 'Cats'), ['errorField' => 'category_id']);
+        $rules->add($rules->existsIn('category_id', 'Blogs'), ['errorField' => 'category_id']);
 
         return $rules;
     }

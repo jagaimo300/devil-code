@@ -18,6 +18,13 @@ class BlogsController extends AppController
      */
     public function index()
     {
+		$this->set('news', $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+		    'limit' => 3,
+		    'order' => 'Blogs.created DESC',
+		    'recursive' => -1,
+		)));
+
         $this->paginate = [
             'contain' => ['BlogsCategories'],
         ];

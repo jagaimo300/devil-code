@@ -132,6 +132,13 @@ section {
   }
 }
 
+.card-item {
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgb(0 0 0 / 20%);
+}
+
+
 @media screen and (max-width: 960px) {
   .contact {
     .contact-bg {
