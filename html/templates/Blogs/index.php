@@ -25,7 +25,17 @@
                 <div class="col-md-8 card-item pt-3">
                     <ul class="list-group list-group-flush">
                         <?php foreach ($news as $index => $new): ?>
-                            <li class="list-group-item mb-3"><span class="me-3 catTag"><?= h($new->blogs_category->category_label) ?></span><?= h($new->created) ?><?= h($new->title) ?></li>
+                            <li class="list-group-item mb-3">
+                                <a href="">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-6 d-flex">
+                                            <span class="catTag me-3"><?= h($new->blogs_category->category_label) ?></span>
+                                            <p class="py-2 me-3"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></p>
+                                            <p class="py-2"><?= h($new->title) ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -51,7 +61,7 @@
                         <div class="row mb-4 card-item overflow-hidden">
                             <div class="col-auto blog_img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; background-repeat: norepeat; height: 240px;"></div>
                             <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary"><?= h($blog->blogs_category->category_label) ?></strong>
+                                <strong class="d-inline-block mb-2 catTag"><?= h($blog->blogs_category->category_label) ?></strong>
                                 <h3 class="mb-0"><?= h($blog->title) ?></h3>
                                 <div class="mb-1 text-muted">Nov 12</div>
                                 <p class="card-text mb-auto"><?= h($blog->body) ?></p>

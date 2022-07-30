@@ -111,7 +111,7 @@
 </section>
 <section class="contact py-5">
     <div class="contact-bg container my-5">
-        <div class="contact-inner row justify-content-center align-items-center text-center">
+        <div class="contact-inner row justify-content-center align-items-center text-center m-0">
             <div class="ls-1 col-6 h-50 d-flex flex-column text-white">
                 <h3 class="py-5 border-top border-bottom border-white fw-bold">Connect With devil code</h3>
                 <div class="contact-btn-wrapper mt-5">
