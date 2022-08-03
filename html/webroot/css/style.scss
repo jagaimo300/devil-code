@@ -101,7 +101,7 @@ section {
 }
 
 .contact {
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
   .contact-bg {
     background-image: url('../img/connect.png');
@@ -141,14 +141,50 @@ section {
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 5px 30px rgb(0 0 0 / 20%);
+  .txt {
+    z-index: 100;
+  }
+  &:hover .blog-ttl {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  &:hover .blog-img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.arrow{
+  position: relative;
+  display: inline-block;
+  border: #63518b solid 1px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+
+  &::after{
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-top: solid 2px #63518b;
+    border-right: solid 2px #63518b;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  
 }
 
 .catTag {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 120px;
-  height: 40px;
-  padding: 8px 12px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
   color: #f8f9fa;
   background-color: #63518b;

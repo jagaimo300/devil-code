@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
@@ -24,7 +25,7 @@
             <div class="row mb-2">
                 <div class="col-md-8 card-item pt-3">
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($news as $index => $new): ?>
+                        <?php foreach ($news as $index => $new) : ?>
                             <li class="list-group-item mb-3">
                                 <a href="">
                                     <div class="row d-flex align-items-center">
@@ -54,39 +55,24 @@
         <div class="row my-5">
             <h2>Featured</h2>
         </div>
-	    <div class="row mb-2 d-flex justify-content-between">
-            <?php foreach ($blogs as $index => $blog): ?>
-                <?php if ($index <= 3): ?>
-                    <div class="col-md-12 col-lg-4 pe-5">
-                        <div class="row mb-4 card-item overflow-hidden">
-                            <div class="col-auto blog_img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; background-repeat: norepeat; height: 240px;"></div>
-                            <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 catTag"><?= h($blog->blogs_category->category_label) ?></strong>
-                                <h3 class="mb-0"><?= h($blog->title) ?></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto"><?= h($blog->body) ?></p>
-                            </div>
+        <div class="row mb-2 d-flex justify-content-between align">
+            <?php foreach ($blogs as $index => $blog) : ?>
+                <a href="" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
+                    <div class="row card-item overflow-hidden">
+                        <div class="col-auto blog-img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; background-repeat: norepeat; height: 180px;"></div>
+                        <div class="col mt-3 pb-4 px-4 d-flex flex-column position-relative">
+                            <span class="mb-2 catTag"><?= h($blog->blogs_category->category_label) ?></span>
+                            <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-wrap"><?= h($blog->title) ?></h3>
+                            <div class="mt-3 text-muted d-flex justify-content-between"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
                         </div>
                     </div>
-                <?php else: ?>
-                    <div class="col-md-4 blog-featured overflow-hidden">
-                        <div class="row mb-4">
-                            <div class="col-auto blog_img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-size: cover; background-repeat: norepeat; height: 360px;"></div>
-                            <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary"><?= h($blog->blogs_category->category_label) ?></strong>
-                                <h3 class="mb-0"><?= h($blog->title) ?></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto"><?= h($blog->body) ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                </a>
             <?php endforeach; ?>
-	    </div>
+        </div>
     </div>
 </section>
 <div class="blogs index content">
-	<!--
+    <!--
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
 	-->
     <div class="table-responsive">
@@ -102,19 +88,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($blogs as $blog): ?>
-                <tr>
-                    <td><?= $this->Number->format($blog->id) ?></td>
-                    <td><?= h($blog->title) ?></td>
-                    <td><?= h($blog->blogs_category->category_label) ?></td>
-                    <td><?= h($blog->created) ?></td>
-                    <td><?= h($blog->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $blog->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id)]) ?>
-                    </td>
-                </tr>
+                <?php foreach ($blogs as $blog) : ?>
+                    <tr>
+                        <td><?= $this->Number->format($blog->id) ?></td>
+                        <td><?= h($blog->title) ?></td>
+                        <td><?= h($blog->blogs_category->category_label) ?></td>
+                        <td><?= h($blog->created) ?></td>
+                        <td><?= h($blog->modified) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $blog->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
