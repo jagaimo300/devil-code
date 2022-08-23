@@ -57,13 +57,11 @@
         <div class="row mb-2 px-3 d-flex justify-content-between align">
             <?php foreach ($blogs as $index => $blog) : ?>
                 <a href="" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
-                    <div class="row card-item overflow-hidden position-relative">
-                        <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
-                        </div>
-                        <span class="mb-2 catTag position-absolute" style="top: 16px; right: 16px;"><?= h($blog->blogs_category->category_label) ?></span>
-
-                        <div class="col pb-4 px-4 d-flex flex-column position-relative">
-                            <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
+                    <div class="row card-item overflow-hidden">
+                        <div class="col-auto blog-img w-100" style="background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; background-repeat: norepeat; height: 180px;"></div>
+                        <div class="col mt-3 pb-4 px-4 d-flex flex-column position-relative">
+                            <span class="mb-2 catTag"><?= h($blog->blogs_category->category_label) ?></span>
+                            <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-wrap"><?= h($blog->title) ?></h3>
                             <div class="mt-3 text-muted d-flex justify-content-between"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
                         </div>
                     </div>

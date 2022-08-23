@@ -140,24 +140,27 @@ section {
 .card-item {
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 5px 30px rgb(0 0 0 / 20%);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
   .txt {
     z-index: 100;
   }
+  &:hover {
+    box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
+  }
+
   &:hover .blog-ttl {
     text-decoration: underline;
     color: #000;
   }
 
   &:hover .blog-img {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+    height: 220px;
   }
 }
-.arrow{
+.arrow {
   position: relative;
   display: inline-block;
-  border: #63518b solid 1px;
+  border: #6c757d solid 1px;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -166,8 +169,8 @@ section {
     content: '';
     width: 6px;
     height: 6px;
-    border-top: solid 2px #63518b;
-    border-right: solid 2px #63518b;
+    border-top: solid 2px #6c757d;
+    border-right: solid 2px #6c757d;
     transform: rotate(45deg);
     position: absolute;
     top: 0;
@@ -176,7 +179,6 @@ section {
     bottom: 0;
     margin: auto;
   }
-  
 }
 
 .catTag {
@@ -187,7 +189,7 @@ section {
   line-height: 30px;
   text-align: center;
   color: #f8f9fa;
-  background-color: #63518b;
+  background-color: #7178af;
   border-radius: 25px;
   font-size: .8em;
   &::before {

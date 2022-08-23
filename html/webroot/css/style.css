@@ -133,23 +133,26 @@ section {
 .card-item {
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 .card-item .txt {
   z-index: 100;
+}
+.card-item:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 .card-item:hover .blog-ttl {
   text-decoration: underline;
   color: #000;
 }
 .card-item:hover .blog-img {
-  transform: scale(1.2);
+  height: 220px;
 }
 
 .arrow {
   position: relative;
   display: inline-block;
-  border: #63518b solid 1px;
+  border: #6c757d solid 1px;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -158,8 +161,8 @@ section {
   content: "";
   width: 6px;
   height: 6px;
-  border-top: solid 2px #63518b;
-  border-right: solid 2px #63518b;
+  border-top: solid 2px #6c757d;
+  border-right: solid 2px #6c757d;
   transform: rotate(45deg);
   position: absolute;
   top: 0;
@@ -177,7 +180,7 @@ section {
   line-height: 30px;
   text-align: center;
   color: #f8f9fa;
-  background-color: #63518b;
+  background-color: #7178af;
   border-radius: 25px;
   font-size: 0.8em;
 }
