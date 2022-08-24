@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
@@ -24,13 +25,13 @@
             <div class="row mb-2 px-3">
                 <div class="col-md-8 card-item pt-3">
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($news as $index => $new): ?>
+                        <?php foreach ($news as $index => $new) : ?>
                             <li class="list-group-item mb-3">
                                 <a href="">
                                     <div class="d-md-flex">
-										<div class="d-flex">
-	                                        <span class="catTag me-3"><?= h($new->blogs_category->category_label) ?></span>
-	                                        <p class="py-2 me-3"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></p>
+                                        <div class="d-flex">
+                                            <span class="catTag me-3"><?= h($new->blogs_category->category_label) ?></span>
+                                            <p class="py-2 me-3"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></p>
                                         </div>
                                         <p class="py-2 text-truncate"><?= h($new->title) ?></p>
                                     </div>
@@ -60,7 +61,7 @@
                     <div class="row card-item overflow-hidden position-relative">
                         <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
                         </div>
-                        <span class="mb-2 catTag position-absolute" style="top: 16px; right: 16px;"><?= h($blog->blogs_category->category_label) ?></span>
+                        <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px;"><?= h($blog->blogs_category->category_label) ?></span>
 
                         <div class="col pb-4 px-4 d-flex flex-column position-relative">
                             <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
@@ -71,9 +72,24 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <div class="container">
+        <div class="row my-5">
+            <h2>Posts</h2>
+        </div>
+        <div class="row mb-2">
+            <?php foreach ($blogs as $index => $blog) : ?>
+                <a href="" class="mb-5 pe-lg-5 h-100">
+                    <div class="pb-4">
+                        <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
+                        <div class="mt-3 text-muted"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </section>
 <div class="blogs index content">
-	<!--
+    <!--
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
 	-->
     <div class="table-responsive">
@@ -89,19 +105,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($blogs as $blog): ?>
-                <tr>
-                    <td><?= $this->Number->format($blog->id) ?></td>
-                    <td><?= h($blog->title) ?></td>
-                    <td><?= h($blog->blogs_category->category_label) ?></td>
-                    <td><?= h($blog->created) ?></td>
-                    <td><?= h($blog->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $blog->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id)]) ?>
-                    </td>
-                </tr>
+                <?php foreach ($blogs as $blog) : ?>
+                    <tr>
+                        <td><?= $this->Number->format($blog->id) ?></td>
+                        <td><?= h($blog->title) ?></td>
+                        <td><?= h($blog->blogs_category->category_label) ?></td>
+                        <td><?= h($blog->created) ?></td>
+                        <td><?= h($blog->modified) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $blog->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
