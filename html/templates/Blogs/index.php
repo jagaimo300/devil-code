@@ -27,10 +27,10 @@
                     <ul class="list-group list-group-flush">
                         <?php foreach ($news as $index => $new) : ?>
                             <li class="list-group-item mb-3">
-                                <a href="">
+                                <a href="/blogs/view/<?= h($new->id) ?>">
                                     <div class="d-md-flex">
                                         <div class="d-flex">
-                                            <span class="catTag me-3"><?= h($new->blogs_category->category_label) ?></span>
+                                            <span class="catTag me-3" style="background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
                                             <p class="py-2 me-3"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></p>
                                         </div>
                                         <p class="py-2 text-truncate"><?= h($new->title) ?></p>
@@ -56,16 +56,16 @@
             <h2>Featured</h2>
         </div>
         <div class="row mb-2 px-3 d-flex justify-content-between align">
-            <?php foreach ($blogs as $index => $blog) : ?>
+            <?php foreach ($features as $index => $feature) : ?>
                 <a href="" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                     <div class="row card-item overflow-hidden position-relative">
                         <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
                         </div>
-                        <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px;"><?= h($blog->blogs_category->category_label) ?></span>
+                        <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($feature->blogs_category->category_color) ?>;"><?= h($feature->blogs_category->category_label) ?></span>
 
                         <div class="col pb-4 px-4 d-flex flex-column position-relative">
-                            <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
-                            <div class="mt-3 text-muted d-flex justify-content-between"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
+                            <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($feature->title) ?></h3>
+                            <div class="mt-3 text-muted d-flex justify-content-between"><span><?= h($feature->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
                         </div>
                     </div>
                 </a>
@@ -79,19 +79,18 @@
         <div class="row mb-2">
             <?php foreach ($blogs as $index => $blog) : ?>
                 <a href="" class="mb-5 pe-lg-5 h-100">
-                    <div class="pb-4">
-                        <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
-                        <div class="mt-3 text-muted"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="fs-4 blog-ttl text-truncate"><?= h($blog->title) ?></h3><span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                     </div>
+                    <div class="mb-1 text-muted"><span><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                    <p class="text-muted"><?= h($blog->body) ?></p>
                 </a>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
-<div class="blogs index content">
-    <!--
+<!-- <div class="blogs index content">
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-	-->
     <div class="table-responsive">
         <table>
             <thead>
@@ -132,4 +131,4 @@
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
-</div>
+</div> -->

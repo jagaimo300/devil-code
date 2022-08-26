@@ -25,6 +25,12 @@ class BlogsController extends AppController
 		    'recursive' => -1,
 		)));
 
+		$this->set('features', $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories','BlogsFeatured'],
+		    'order' => 'BlogsFeatured.id ASC',
+		    'recursive' => -1,
+		)));
+
         $this->paginate = [
             'contain' => ['BlogsCategories'],
         ];

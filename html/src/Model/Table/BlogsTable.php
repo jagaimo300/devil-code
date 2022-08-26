@@ -51,6 +51,10 @@ class BlogsTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('BlogsFeatured', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**

@@ -6,18 +6,14 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Blog Entity
+ * BlogsFeatured Entity
  *
  * @property int $id
- * @property string $title
- * @property string $body
- * @property int $category_id
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
+ * @property int $blog_id
  *
- * @property \App\Model\Entity\BlogsCategory $blogs_category
+ * @property \App\Model\Entity\Blog $blog
  */
-class Blog extends Entity
+class BlogsFeatured extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -29,11 +25,7 @@ class Blog extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'title' => true,
-        'body' => true,
-        'category_id' => true,
-        'created' => true,
-        'modified' => true,
-        'blogs_category' => true,
+        'blog_id' => true,
+        'blog' => true,
     ];
 }
