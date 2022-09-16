@@ -1,10 +1,46 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Blog $blog
+ * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 ?>
-<div class="row">
+<?= $this->Html->css(['all.min'], ['block' => 'css']) ?>
+
+<div class="blog my-3">
+    <div class="container">
+        <div class="row">
+            <?php foreach ($blogs as $index => $blog) : ?>
+                <aside class="col-2">
+                    <a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a>
+                </aside>
+                <article class="col-7">
+                    <section class="blog_meta mt-5 mb-2">
+                        <i class="fa-sharp fa-solid fa-calendar-days text-muted d-inline-block mt-1"></i>
+                        <span class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?>
+                        <span class="catTag d-inline-block  ms-3" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
+                    </section>
+                    <section class="blog_title mt-0 mb-7">
+                        <h1 class="blog_title-heading"><?= h($blog->title) ?></h1>
+                    </section>
+                    <section class="blog_body my-7 text-break ls-1">
+                        <p><?= $blog->body ?></p>
+                    </section>
+                </article>
+                <aside class="col-3">
+                    <h5>
+                        目次
+                    </h5>
+                    <p></p>                
+                </aside>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
@@ -47,4 +83,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
