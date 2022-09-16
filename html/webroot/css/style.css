@@ -1,6 +1,7 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 html, body {
-  font-family: 'Noto Sans JP', sans-serif !important;
+  font-family: "Noto Sans JP", sans-serif !important;
 }
 
 a {
@@ -18,7 +19,6 @@ section {
   --swiper-theme-color: #f8f9fa;
   --swiper-navigation-size: 24px;
 }
-
 .swiper .swiper-wrapper .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -28,24 +28,20 @@ section {
   background-position: center center;
   position: relative;
 }
-
 .swiper .swiper-wrapper .swiper-slide .text-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   color: #fff;
   width: 100%;
   text-align: center;
 }
-
 .swiper .swiper-wrapper .swiper-slide .text-wrapper .blog-ttl {
   font-size: clamp(24px, 5vw, 48px);
 }
-
 .swiper .swiper-wrapper .swiper-slide::before {
-  content: '';
+  content: "";
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -56,14 +52,13 @@ section {
 }
 
 .ls-1 {
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
 }
 
 .code-box {
   background-color: #1f1f1f;
   border-radius: 5px;
 }
-
 .code-box .code-ttl {
   height: 24px;
   font-size: 16px;
@@ -71,39 +66,30 @@ section {
   padding: 1px 4px;
   color: #f8f9fa;
 }
-
 .code-box small {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   width: 30%;
   height: 24px;
   background-color: #000;
   color: #fff;
   padding: 1px 4px;
 }
-
 .code-box small::after {
-  content: '\0d7';
+  content: "×";
   font-size: smaller;
   margin-left: auto;
 }
-
 .code-box .code-body {
   border: 0px;
   border-top: 1px solid #000;
 }
-
 .code-box .code-body .code-text {
   margin: 0;
   border: 0;
 }
-
 .code-box .code-body::after {
-  content: '';
+  content: "";
   display: block;
   background-color: #663399;
   width: 100%;
@@ -114,7 +100,6 @@ section {
   max-width: 1320px;
   margin: 0 auto;
 }
-
 .contact .contact-bg {
   background-image: url("../img/connect.png");
   background-size: cover;
@@ -123,25 +108,21 @@ section {
   width: 100%;
   height: 420px;
 }
-
 .contact .contact-bg .contact-inner {
   width: 100%;
   height: 420px;
   background-color: rgba(0, 0, 0, 0.2);
 }
-
 .contact .contact-bg .contact-inner .contact-btn {
   position: relative;
 }
-
 .contact .contact-bg .contact-inner .contact-btn::after {
-  content: '';
+  content: "";
   width: 12px;
   height: 12px;
   border: 0px;
   border-top: solid 2px #ffffff;
   border-right: solid 2px #ffffff;
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   position: absolute;
   top: 50%;
@@ -152,24 +133,18 @@ section {
 .card-item {
   border-radius: 25px;
   overflow: hidden;
-  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.2);
 }
-
 .card-item .txt {
   z-index: 100;
 }
-
 .card-item:hover {
-  -webkit-box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.2);
 }
-
 .card-item:hover .blog-ttl {
   text-decoration: underline;
   color: #000;
 }
-
 .card-item:hover .blog-img {
   height: 220px;
 }
@@ -182,15 +157,13 @@ section {
   width: 24px;
   height: 24px;
 }
-
 .arrow::after {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   border-top: solid 2px #6c757d;
   border-right: solid 2px #6c757d;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
   position: absolute;
   top: 0;
   left: 0;
@@ -208,13 +181,23 @@ section {
   text-align: center;
   color: #f8f9fa;
   border-radius: 25px;
-  font-size: .8em;
+  font-size: 0.8em;
 }
-
 .catTag::before {
-  content: '#';
+  content: "#";
   position: absolute;
   left: 16px;
+}
+
+.blog_body h1, .blog_body h2 {
+  margin-bottom: 32px;
+}
+.blog_body h3 {
+  margin-bottom: 28px;
+}
+.blog_body h4, .blog_body h5, .blog_body p, .blog_body i {
+  margin-bottom: 14px;
+  line-height: 32px;
 }
 
 @media screen and (max-width: 960px) {
@@ -230,5 +213,4 @@ section {
     border-right: solid 2px #ffffff;
     margin-top: -2px;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
