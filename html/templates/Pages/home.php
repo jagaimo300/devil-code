@@ -1,3 +1,28 @@
+<?php
+
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
+ */
+
+$this->Breadcrumbs->add(
+    'Home',
+    ['controller' => 'pages', 'action' => 'display'],
+    [
+        'templateVars' => [
+            'num' => '1',
+            'active' => 'active'
+        ]
+    ]
+);
+$this->Breadcrumbs->setTemplates([
+    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
+               </li>',
+    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+]);
+?>
 
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
 
@@ -147,5 +172,7 @@
         </div>
     </div>
 </section>
-
+<div class="container my-5 breadcrumbs-wrapper">
+    <?= $this->Breadcrumbs->render() ?>
+</div>
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>

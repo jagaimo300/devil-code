@@ -214,7 +214,12 @@ section {
   a.active {
     border-bottom: 1px solid #000;
   }
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: var(--bs-breadcrumb-divider, "\03e");
+  }
 }
+
+
 @media screen and (max-width: 960px) {
   .contact {
     .contact-bg {

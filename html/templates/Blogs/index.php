@@ -7,7 +7,7 @@
 
 $this->Breadcrumbs->add(
     'Home',
-    ['controller' => 'blogs', 'action' => 'index'],
+    ['controller' => 'pages', 'action' => 'display'],
     [
         'templateVars' => [
             'num' => '1'
@@ -131,9 +131,11 @@ $this->Breadcrumbs->setTemplates([
                 </div>
             </div>
         </div>
-        <?= $this->Breadcrumbs->render() ?>
     </div>
 </section>
+<div class="container my-5 breadcrumbs-wrapper">
+    <?= $this->Breadcrumbs->render() ?>
+</div>
 
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>
 
