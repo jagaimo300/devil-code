@@ -4,6 +4,34 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
+
+$this->Breadcrumbs->add(
+    'Home',
+    ['controller' => 'blogs', 'action' => 'index'],
+    [
+        'templateVars' => [
+            'num' => '1'
+        ]
+    ]
+);
+$this->Breadcrumbs->add(
+    'ブログ',
+    ['controller' => 'blogs', 'action' => 'index'],
+    [
+        'templateVars' => [
+            'num' => '2',
+            'active' => 'active'
+        ]
+    ]
+);
+$this->Breadcrumbs->setTemplates([
+    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
+               </li>',
+    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+]);
+
 ?>
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
 <div class="swiper mySwiper">
@@ -16,6 +44,12 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
 <section class="blog">
     <div class="album py-5 bg-white">
         <div class="container">
@@ -97,8 +131,10 @@
                 </div>
             </div>
         </div>
+        <?= $this->Breadcrumbs->render() ?>
     </div>
 </section>
+
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>
 
 <!-- <div class="blogs index content">

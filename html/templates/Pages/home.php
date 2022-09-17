@@ -1,3 +1,4 @@
+
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
 
 <div class="swiper mySwiper">
@@ -25,7 +26,7 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
 </div>
-<section class="code-memo">
+<!-- <section class="code-memo">
     <div class="album py-5 bg-white">
         <div class="container lg-px-0 md-px-3">
             <div class="row my-5">
@@ -62,7 +63,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section class="blog">
     <div class="container lg-px-0 md-px-3">
@@ -147,4 +148,4 @@
     </div>
 </section>
 
-<?= $this->Html->script('https://unpkg.com/swiper@8/swiper-bundle.min.js', ['block' => 'scriptBottom']) ?>
+<?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>

@@ -18,10 +18,9 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        $cat = $this->request->getQuery('cat');
-        $this->set('news', $this->Blogs->find('all', array(
+		$this->set('news', $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
-            'limit' => 3,
+		    'limit' => 3,
 		    'order' => 'Blogs.created DESC',
 		    'recursive' => -1,
 		)));
@@ -32,14 +31,10 @@ class BlogsController extends AppController
 		    'recursive' => -1,
 		)));
 
-        $this->loadComponent('Paginator');
-        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-			'where' => ['blogs.category_id'=>$cat],
-			'contain' => ['BlogsCategories'],
-		    'order' => 'Blogs.created ASC',
-		    'recursive' => -1,
-        )));
-        echo $cat;
+        $this->paginate = [
+            'contain' => ['BlogsCategories'],
+        ];
+        $blogs = $this->paginate($this->Blogs);
 
         $this->set(compact('blogs'));
     }
@@ -51,16 +46,13 @@ class BlogsController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($slug = null)
+    public function view($id = null)
     {
-		$this->set('blogs', $this->Blogs->find('all', array(
-			'where' => ['Blogs.slug'=>$slug],
+        $blog = $this->Blogs->get($id, [
             'contain' => ['BlogsCategories'],
-            'limit' => 1,
-            'order' => 'Blogs.id ASC',
-            'recursive' => -1,
-		)));
+        ]);
 
+        $this->set(compact('blog'));
     }
 
     /**

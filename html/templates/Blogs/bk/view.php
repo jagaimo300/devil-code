@@ -4,7 +4,29 @@
  * @var \App\Model\Entity\Blog $blog
  */
 ?>
-<div class="row">
+<?php
+
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
+ */
+?>
+<section class="blog">
+    <div class="container">
+        <div class="row">
+            <article class="col-12">
+                <span class="catTag me-3" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
+                <h1>foooooooooooooooo</h1>
+            </article>
+            <aside class="col-4">                
+            </aside>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
@@ -47,4 +69,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
