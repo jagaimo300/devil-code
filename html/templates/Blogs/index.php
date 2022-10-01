@@ -32,6 +32,8 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
+$this->assign('title', ' - Blog');
+
 ?>
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
 <div class="swiper mySwiper">
@@ -136,8 +138,6 @@ $this->Breadcrumbs->setTemplates([
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
-
-<?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>
 
 <!-- <div class="blogs index content">
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>

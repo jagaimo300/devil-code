@@ -4,46 +4,21 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
  */
-
-$this->Breadcrumbs->add(
-    'Home',
-    ['controller' => 'pages', 'action' => 'display'],
-    [
-        'templateVars' => [
-            'num' => '1',
-            'active' => 'active'
-        ]
-    ]
-);
-$this->Breadcrumbs->setTemplates([
-    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
-    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
-               </li>',
-    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
-]);
+    $this->assign('title', ' - Homepage');
 ?>
 
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('../img/sample_1.jpg')">
+        <div class="swiper-slide" style="background-image: url('../img/background-1.jpg')">
             <div class="text-wrapper ls-1">
-                <h2 class="blog-ttl my-4">CakePHP</h2>
-                <p class="blog-subTtl small">foooooooooooooooo</p>
+                <h2 class="blog-ttl my-4"><span class="text-larger fw-bold">dev</span>il-code</h2>
             </div>
         </div>
-        <div class="swiper-slide" style="background-image: url('../img/sample_2.jpg')">
-            <div class="text-wrapper ls-1">
-                <h2 class="blog-ttl my-4">CakePHP</h2>
-                <p class="blog-subTtl small">foooooooooooooooo</p>
-            </div>
-        </div>
-        <div class="swiper-slide" style="background-image: url('../img/sample_3.jpg')">
-            <div class="text-wrapper ls-1">
-                <h2 class="blog-ttl my-4">CakePHP</h2>
-                <p class="blog-subTtl small">foooooooooooooooo</p>
+        <div class="swiper-slide" style="background-image: url('../img/background-2.jpg')">
+            <div class="text-wrapper ls-1 mt-5">
+                <a href="/blogs" class="border-btn px-4 px-md-5 py-3 border border-3 border-white text-white text-nowrap">ブログを見る</a>
             </div>
         </div>
     </div>
@@ -51,97 +26,83 @@ $this->Breadcrumbs->setTemplates([
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
 </div>
-<!-- <section class="code-memo">
-    <div class="album py-5 bg-white">
-        <div class="container lg-px-0 md-px-3">
-            <div class="row my-5">
-                <h2>Latest code</h2>
+<section class="about my-5 pt-5">
+    <div class="container my-5">
+        <div class="row pb-5">
+            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ</h2>
+            <p>Web programmer's blog</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 pe-5 mt-5 mt-md-0">
+                <div class="mb-3">
+                    <h3 class="fs-7">知識共有</h3>
+                    <span>Knowledge</span>
+                </div>
+                <p class="fw-lighter">
+                    <a href="https://www.inkdrop.app/?r=KMUMZg48C" class="fw-bold">Inkdrop</a>に書き溜めた技術メモ、プログラミングについて。
+                    <br>たくさんのエンジニアの方々の技術ブログにお世話になった経験から私も誰かのためになれたらいいなと思い、プログラミングで得た知見を共有します。
+                </p>
             </div>
-            <div class="row">
-                <a href="foo" class="col-md-4">
-                    <div class="code-box card mb-4 shadow-sm">
-                        <h6 class="code-ttl text-center w-100">fooooo</h6>
-                        <small class="lang-type">PHP</small>
-                        <div class="code-body">
-                            <pre class="code-text prettyprint lang-php">console.log('Hello World')</pre>
-                        </div>
-                    </div>
-                </a>
-                <a href="foo" class="col-md-4">
-                    <div class="code-box card mb-4 shadow-sm">
-                        <h6 class="code-ttl text-center w-100">fooooo</h6>
-                        <small class="lang-type">PHP</small>
-                        <div class="code-body">
-                            <pre class="code-text prettyprint lang-php">console.log('Hello World')</pre>
-                        </div>
-                    </div>
-                </a>
-                <a href="foo" class="col-md-4">
-                    <div class="code-box card mb-4 shadow-sm">
-                        <h6 class="code-ttl text-center w-100">fooooo</h6>
-                        <small class="lang-type">PHP</small>
-                        <div class="code-body">
-                            <pre class="code-text prettyprint lang-php">console.log('Hello World')</pre>
-                        </div>
-                    </div>
-                </a>
+            <div class="col-md-4 pe-5 mt-5 mt-md-0">
+                <div class="mb-3">
+                    <h3 class="fs-7">仕事</h3>
+                    <span>Work</span>
+                </div>
+                <p class="fw-lighter">仕事で経験したことや感じたこと、キャリアプランや技術習得などについて。
+                <br>WEBプログラマーになるうえで必要だったスキルや、ＩＴ人材としてのキャリア形成ついて私見を共有します。
+                </p>
             </div>
+            <div class="col-md-4 pe-10 mt-5 mt-md-0">
+                <div class="mb-3">
+                    <h3 class="fs-7">暮らし</h3>
+                    <span>Life style</span>
+                </div>
+                <p class="fw-lighter">
+                    異業種からの転職を経て変化したライフスタイル、宮城県を拠点としたその暮らしについて。
+                    <br>もともと居酒屋店員だった私がエンジニアに転職してからの変わった生活や、現在の活動拠点である宮城県での生活を共有します。
+                </p>
+            </div>
+
         </div>
     </div>
-</section> -->
-
+</section>
 <section class="blog">
-    <div class="container lg-px-0 md-px-3">
-        <div class="row my-5">
-            <h2>Latest posts</h2>
-        </div>
-        <div class="row mb-2">
-            <div class="col-md-6 ">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
+    <div class="album py-5 bg-white">
+        <div class="container">
+            <div class="row my-5 align">
+                <h2>最近の投稿</h2>
+                <p>Lately posts</p>
             </div>
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
+            <div class="row mb-2 px-3 d-flex justify-content-between align">
+                <?php foreach ($news as $index => $new) : ?>
+                    <a href="/blogs/view/<?= h($new->slug) ?>" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
+                        <div class="row card-item overflow-hidden position-relative">
+                            <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
+                            </div>
+                            <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
+
+                            <div class="col pb-4 px-4 d-flex flex-column position-relative">
+                                <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($new->title) ?></h3>
+                                <div class="mt-3 text-muted d-flex justify-content-between align-items-center"><span style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+            <div class="mt-5 text-end">
+                <a href="/blogs" class="view-all">もっと見る</a>
             </div>
         </div>
     </div>
 </section>
+
 <section class="contact py-5">
     <div class="contact-bg container my-5">
         <div class="contact-inner row justify-content-center align-items-center text-center m-0">
             <div class="ls-1 col-6 h-50 d-flex flex-column text-white">
-                <h3 class="py-5 border-top border-bottom border-white fw-bold">Connect With devil code</h3>
+                <h3 class="py-5 border-top border-bottom border-white fw-bold">Connect With Me!</h3>
                 <div class="contact-btn-wrapper mt-5">
-                    <a href="/contact" class="contact-btn px-4 px-md-5 py-3 border border-3 border-white text-white text-nowrap">
+                    <a href="/contact" class="border-btn px-4 px-md-5 py-3 border border-3 border-white text-white text-nowrap">
                         Send Message
                     </a>
                 </div>
@@ -157,6 +118,10 @@ $this->Breadcrumbs->setTemplates([
                 <p>Author</p>
                 <h2>Takahiro Ueda</h2>
                 <p>Web Programmer</p>
+                <p class="lh-lg">宮城を拠点として活動しているWEBプログラマーです。
+                    <br>新しい技術や知見を得ることに生きがいを感じます。
+                    <br>趣味はラグビー観戦、筋トレ 好きな食べ物は寿司 猫派です。
+                </p>
                 <p class="lh-lg">Hello, I'm a Junior Web Developer based in Japan.
                     <br>I really enjoy using my skills to help improve things.
                     <br>I like watching Rugby, Workout, Sushi, Cats
@@ -172,7 +137,5 @@ $this->Breadcrumbs->setTemplates([
         </div>
     </div>
 </section>
-<div class="container my-5 breadcrumbs-wrapper">
-    <?= $this->Breadcrumbs->render() ?>
-</div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>

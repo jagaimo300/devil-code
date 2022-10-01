@@ -18,9 +18,10 @@ class BlogsController extends AppController
      */
     public function index()
     {
-		$this->set('news', $this->Blogs->find('all', array(
+        $cat = $this->request->getQuery('cat');
+        $this->set('news', $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
-		    'limit' => 3,
+            'limit' => 3,
 		    'order' => 'Blogs.created DESC',
 		    'recursive' => -1,
 		)));
@@ -31,10 +32,21 @@ class BlogsController extends AppController
 		    'recursive' => -1,
 		)));
 
-        $this->paginate = [
-            'contain' => ['BlogsCategories'],
-        ];
-        $blogs = $this->paginate($this->Blogs);
+        $this->loadComponent('Paginator');
+        if($cat){
+            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+                'conditions' => ['blogs.category_id'=>"${cat}"],
+                'contain' => ['BlogsCategories'],
+                'order' => 'Blogs.created ASC',
+                'recursive' => -1,
+            )));
+        }else{
+            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+                'contain' => ['BlogsCategories'],
+                'order' => 'Blogs.created ASC',
+                'recursive' => -1,
+            )));
+        }
 
         $this->set(compact('blogs'));
     }
@@ -46,13 +58,17 @@ class BlogsController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($slug = null)
     {
-        $blog = $this->Blogs->get($id, [
-            'contain' => ['BlogsCategories'],
-        ]);
 
-        $this->set(compact('blog'));
+        $blogs = $this->Blogs->find('all', array(
+			'conditions' => ['Blogs.slug'=>"$slug"],
+            'contain' => ['BlogsCategories'],
+            'limit' => 1,
+            'order' => 'Blogs.id ASC',
+            'recursive' => -1,
+		));
+        $this->set(compact('blogs'));
     }
 
     /**

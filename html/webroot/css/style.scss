@@ -42,7 +42,7 @@ section {
         }
     }
     
-      .swiper-slide::before {
+      .slide-mask::before {
         content: '';
         background-color: rgba(0, 0, 0, 0.4);
         position: absolute;
@@ -58,47 +58,59 @@ section {
 .ls-1 {
     letter-spacing: .1em;
 }
-
-.code-box {
-  background-color: #1f1f1f;
-  border-radius: 5px;
-  .code-ttl {
-    height: 24px;
-    font-size: 16px;
-    margin: 0;
-    padding: 1px 4px;
-    color: #f8f9fa;
-  }
-  small {
-    display: flex;
-    justify-content: space-between;
-    width: 30%;
-    height: 24px;
-    background-color: #000;
-    color: #fff;
-    padding: 1px 4px;
-    &::after {
-      content: '\0d7';
-      font-size: smaller;
-      margin-left: auto;
-    }
-  }
-  .code-body {
-    border: 0px;
-    border-top: 1px solid #000;
-    .code-text {
-      margin: 0;
-      border: 0;
-    }
-    &::after {
-      content: '';
-      display: block;
-      background-color: #663399;
-      width: 100%;
-      height: 16px;
-    }
-  }
+ 
+.text-larger {
+  font-size: larger;
 }
+// .code-box {
+//   background-color: #1f1f1f;
+//   border-radius: 5px;
+//   box-shadow: 0px 16px 30px 0px rgba(0, 0, 0, 0.35);
+
+//   &:hover {
+//     box-shadow: 0px 16px 40px 0px rgba(0, 0, 0, 0.35);
+//   }
+
+//   .code-ttl {
+//     height: 24px;
+//     font-size: 16px;
+//     margin: 0;
+//     padding: 1px 4px;
+//     color: #f8f9fa;
+//   }
+//   small {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 30%;
+//     height: 24px;
+//     background-color: #000;
+//     color: #fff;
+//     padding: 1px 4px;
+//     &::after {
+//       content: '\0d7';
+//       font-size: smaller;
+//       margin-left: auto;
+//     }
+//   }
+//   .code-body {
+//     border: 0px;
+//     border-top: 1px solid #000;
+//     position: relative;
+//     .code-text {
+//       margin: 0;
+//       border: 0;
+//     }
+//     &::after {
+//       position: absolute;
+//       content: '';
+//       display: block;
+//       background-color: #663399;
+//       width: 100%;
+//       height: 16px;
+//       bottom: 0;
+//     }
+//   }
+// }
 
 .contact {
   max-width: 1320px;
@@ -115,25 +127,25 @@ section {
       width: 100%;
       height: 420px;
       background-color: rgba(0,0,0,0.2);
-      .contact-btn {
-        position: relative;
-        &::after {
-            content: '';
-            width: 12px;
-            height: 12px;
-            border: 0px;
-            border-top: solid 2px #ffffff;
-            border-right: solid 2px #ffffff;
-            -ms-transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-            position: absolute;
-            top: 50%;
-            right: 24px;
-            margin-top: -4px;
-        }
-      }
     }
+  }
+}
+.border-btn {
+  position: relative;
+  &::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border: 0px;
+      border-top: solid 2px #ffffff;
+      border-right: solid 2px #ffffff;
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      margin-top: -4px;
   }
 }
 
@@ -211,32 +223,40 @@ section {
   }
 }
 .breadcrumb{
+  align-items: center;
   a.active {
     border-bottom: 1px solid #000;
   }
   .breadcrumb-item+.breadcrumb-item::before {
-    content: var(--bs-breadcrumb-divider, "\03e");
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    color: #d5d5d8;
+    line-height: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0.375em 0.64952em;
+    border-left-color: currentColor;
+    border-right: 0;
+    margin-top: 8px;
   }
 }
 
 
+
 @media screen and (max-width: 960px) {
-  .contact {
-    .contact-bg {
-      .contact-inner {
-        .contact-btn {
-          font-size: small  ;
-          &::after {
-              right: 9px;
-              width: 6px;
-              height: 6px;
-              border: 0px;
-              border-top: solid 2px #ffffff;
-              border-right: solid 2px #ffffff;
-              margin-top: -2px;
-            }
+    .border-btn {
+      font-size: small  ;
+      &::after {
+          right: 9px;
+          width: 6px;
+          height: 6px;
+          border: 0px;
+          border-top: solid 2px #ffffff;
+          border-right: solid 2px #ffffff;
+          margin-top: -2px;
         }
-      }
     }
-  }
 }

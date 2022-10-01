@@ -33,13 +33,20 @@ class BlogsController extends AppController
 		)));
 
         $this->loadComponent('Paginator');
-        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-			'where' => ['blogs.category_id'=>$cat],
-			'contain' => ['BlogsCategories'],
-		    'order' => 'Blogs.created ASC',
-		    'recursive' => -1,
-        )));
-        echo $cat;
+        if($cat){
+            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+                'conditions' => ['blogs.category_id'=>"${cat}"],
+                'contain' => ['BlogsCategories'],
+                'order' => 'Blogs.created ASC',
+                'recursive' => -1,
+            )));
+        }else{
+            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+                'contain' => ['BlogsCategories'],
+                'order' => 'Blogs.created ASC',
+                'recursive' => -1,
+            )));
+        }
 
         $this->set(compact('blogs'));
     }
@@ -53,14 +60,15 @@ class BlogsController extends AppController
      */
     public function view($slug = null)
     {
-		$this->set('blogs', $this->Blogs->find('all', array(
-			'where' => ['Blogs.slug'=>$slug],
+
+        $blogs = $this->Blogs->find('all', array(
+			'conditions' => ['Blogs.slug'=>"$slug"],
             'contain' => ['BlogsCategories'],
             'limit' => 1,
             'order' => 'Blogs.id ASC',
             'recursive' => -1,
-		)));
-
+		));
+        $this->set(compact('blogs'));
     }
 
     /**

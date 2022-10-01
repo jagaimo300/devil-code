@@ -26,9 +26,9 @@
     <div class="swiper-pagination"></div>
 </div>
 <section class="code-memo">
-    <div class="album py-5 bg-white">
+    <div class="album bg-white">
         <div class="container lg-px-0 md-px-3">
-            <div class="row my-5">
+            <div class="row">
                 <h2>Latest code</h2>
             </div>
             <div class="row">

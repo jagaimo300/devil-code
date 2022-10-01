@@ -15,7 +15,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'Takahiro Ueda - Homepage';
+$cakeDescription = 'devil code: Web development in Sendai, Japan';
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,6 +23,13 @@ $cakeDescription = 'Takahiro Ueda - Homepage';
 <head>
   <?= $this->Html->charset() ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PN98ZV8');</script>
+  <!-- End Google Tag Manager -->
   <title>
     <?= $cakeDescription ?>:
     <?= $this->fetch('title') ?>
@@ -32,6 +39,7 @@ $cakeDescription = 'Takahiro Ueda - Homepage';
   <?= $this->Html->css(['bootstrap.min', 'style', 'sunburst']) ?>
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
+  <?= $this->fetch('scriptTop') ?>
 </head>
 
 <body>
@@ -40,8 +48,7 @@ $cakeDescription = 'Takahiro Ueda - Homepage';
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'height' => '32']) ?>
-            <!-- <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg> -->
+            <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
           </a>
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
@@ -76,8 +83,12 @@ $cakeDescription = 'Takahiro Ueda - Homepage';
     </ul>
     <p class="text-center text-muted">© 2022 devil code</p>
   </footer>
-  <?= $this->Html->script('https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js') ?>
-  <?= $this->Html->script(['index','bootstrap.bundle.min']) ?>
+  <?= $this->fetch('scriptBottom') ?>
+  <?= $this->Html->script(['index']) ?>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN98ZV8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>

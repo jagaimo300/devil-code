@@ -17,13 +17,13 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Controller\AppController;
-use App\Form\ContactForm;
 
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
 /**
  * Static content controller
  *
@@ -63,6 +63,13 @@ class PagesController extends AppController
         }
         $this->set(compact('page', 'subpage'));
 
+        $blogs = TableRegistry::getTableLocator()->get('Blogs');
+        $this->set('news', $blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+            'limit' => 3,
+		    'order' => 'Blogs.created DESC',
+		    'recursive' => -1,
+		)));
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {

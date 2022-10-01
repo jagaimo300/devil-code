@@ -3,16 +3,55 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
+$this->Breadcrumbs->add(
+    'Home',
+    ['controller' => 'pages', 'action' => 'display'],
+    [
+        'templateVars' => [
+            'num' => '1'
+        ]
+    ]
+);
+$this->Breadcrumbs->add(
+    'ブログ',
+    ['controller' => 'blogs', 'action' => 'index'],
+    [
+        'templateVars' => [
+            'num' => '2'
+        ]
+    ]
+);
+foreach ($blogs as $index => $blog){
+    $slug =  $blog->slug;
+}
+
+$this->Breadcrumbs->add(
+    "${slug}",
+    ['controller' => 'blogs', 'action' => 'index'],
+    [
+        'templateVars' => [
+            'num' => '3',
+            'active' => 'active'
+        ]
+    ]
+);
+$this->Breadcrumbs->setTemplates([
+    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
+               </li>',
+    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+]);
+
+$this->assign('title', ' - Blog - '. $slug);
+
 ?>
 
 <div class="blog my-3">
     <div class="container">
         <div class="row">
             <?php foreach ($blogs as $index => $blog) : ?>
-                <aside class="col-2">
-                    <a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a>
-                </aside>
-                <article class="col-7">
+                <article class="col-9 min-vh-100">
                     <section class="blog_meta mt-5 mb-2">
                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
@@ -42,28 +81,50 @@
                         <rect x="111.386" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
                     </g>
                     </svg>
-
-                    
                         <span class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?>
                         <span class="catTag d-inline-block  ms-3" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                     </section>
                     <section class="blog_title mt-0 mb-7">
                         <h1 class="blog_title-heading"><?= h($blog->title) ?></h1>
                     </section>
-                    <section class="blog_body my-7 text-break ls-1">
+                    <section class="blog_body my-7 pe-5 text-break ls-1">
                         <p><?= $blog->body ?></p>
                     </section>
                 </article>
                 <aside class="col-3">
-                    <h5>
-                        目次
-                    </h5>
-                    <p></p>                
+                    <div class="mt-5 indexWrapper sticky-top text-break">
+                        <h5>
+                            目次
+                        </h5>
+                        <ol>
+                            <li>
+                                <a href="">foooo</a>
+                            </li>
+                            <li>
+                                <a href="">foooo</a>
+                            </li>
+                            <li>
+                                <a href="">foooo</a>
+                            </li>
+                            <li>
+                                <a href="">foooo</a>
+                            </li>
+                        </ol>
+
+                        <div class="mt-5 category_tagWrapper">
+                        <a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a>
+                        </div>
+                    </div>
+
+                
                 </aside>
             <?php endforeach; ?>
 
         </div>
     </div>
+</div>
+<div class="container my-5 breadcrumbs-wrapper">
+    <?= $this->Breadcrumbs->render() ?>
 </div>
 
 
