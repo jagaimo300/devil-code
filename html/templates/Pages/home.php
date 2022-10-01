@@ -29,7 +29,7 @@
 <section class="about my-5 pt-5">
     <div class="container my-5">
         <div class="row pb-5">
-            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ foo</h2>
+            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ fo</h2>
             <p>Web programmer's blog</p>
         </div>
         <div class="row">
