@@ -43,7 +43,7 @@ $cakeDescription = 'Takahiro Ueda';
 </head>
 
 <body>
-  <header>
+  <header class="position-fixed w-100 top-0">
     <div class="px-4 py-3 bg-dark text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -72,7 +72,7 @@ $cakeDescription = 'Takahiro Ueda';
       </div>
     </div>
   </header>
-  <main class="main">
+  <main class="main mt-5">
     <?= $this->fetch('content') ?>
   </main>
   <footer class="py-3 mt-4 bg-dark text-white">
