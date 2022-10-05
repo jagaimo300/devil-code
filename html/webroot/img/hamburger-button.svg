@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="512" height="384">
+
+<g transform="matrix(0.48 0 0 0.48 63.999992 -0)">
+	<g transform="matrix(1 0 0 1 -1159 -3091)">
+		<g transform="matrix(2.02015 0 0 2.02017 868.758 2534.8)">
+            <path d="M142.327 275.741L538.338 275.741L538.338 671.75195L142.327 671.75195z" stroke="none" fill="none" />
+			<g>
+				<g transform="matrix(0.495014 0 0 0.495007 20.8331 -127.895)">
+                    <path d="M376.538 946.522L914.334 946.522L914.334 1484.318L376.538 1484.318z" stroke="#FFFFFF" stroke-width="22.22" fill="none" />
+				</g>
+				<g transform="matrix(1 0 0 1 0.341708 -17.7807)">
+					<g transform="matrix(0.495014 0 0 0.495007 27.3552 -93.4813)">
+                        <path d="M466.07 1051.74L797.07 1051.74" stroke="#FFFFFF" stroke-width="22.22" fill="none" />
+					</g>
+					<g transform="matrix(0.495014 0 0 0.495007 27.3552 -29.0909)">
+                        <path d="M466.07 1051.74L797.07 1051.74" stroke="#FFFFFF" stroke-width="22.22" fill="none" />
+					</g>
+					<g transform="matrix(0.495014 0 0 0.495007 27.3552 35.2996)">
+                        <path d="M466.07 1051.74L797.07 1051.74" stroke="#FFFFFF" stroke-width="22.22" fill="none" />
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

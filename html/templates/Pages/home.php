@@ -29,7 +29,7 @@
 <section class="about my-5 pt-5">
     <div class="container my-5">
         <div class="row pb-5">
-            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ fo</h2>
+            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ</h2>
             <p>Web programmer's blog</p>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@
                 </div>
                 <p class="fw-lighter">
                     <a href="https://www.inkdrop.app/?r=KMUMZg48C" class="fw-bold">Inkdrop</a>に書き溜めた技術メモ、プログラミングについて。
-                    <br>たくさんのエンジニアの方々の技術ブログにお世話になった経験から私も誰かのためになれたらいいなと思い、プログラミングで得た知見を共有します。
+                    <br>たくさんのエンジニアの方々の技術ブログにお世話になった経験から私も誰かのためになりたい思い、プログラミングで得た知見を共有します。
                 </p>
             </div>
             <div class="col-md-4 pe-5 mt-5 mt-md-0">
@@ -110,7 +110,6 @@
         </div>
     </div>
 </section>
-
 <section class="profile">
     <div class="container my-5 py-5">
         <div class="profile-inner row h-50">

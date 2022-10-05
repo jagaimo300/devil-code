@@ -24,11 +24,22 @@ $cakeDescription = 'Takahiro Ueda';
   <?= $this->Html->charset() ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PN98ZV8');</script>
+  <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PN98ZV8');
+  </script>
   <!-- End Google Tag Manager -->
   <title>
     <?= $cakeDescription ?>:
@@ -44,30 +55,36 @@ $cakeDescription = 'Takahiro Ueda';
 
 <body>
   <header class="position-fixed w-100 top-0">
-    <div class="px-4 py-3 bg-dark text-white">
+    <div class="px-4 py-md-3 bg-dark text-white">
       <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+        <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center my-0 my-md-2 my-lg-0 me-lg-auto text-white text-decoration-none">
             <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
           </a>
-
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="/blog" class="nav-link text-white">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="/contact" class="nav-link text-white">
-                Contact
-              </a>
-            </li>
-          </ul>
+          <nav class="nav col-12 col-lg-auto my-md-0 text-small d-none d-md-inline-block">
+            <ul class="d-flex justify-content-center m-0 p-0">
+              <li>
+                <a href="/blog" class="nav-link text-white">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a href="/contact" class="nav-link text-white">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button type="button" class="bg-dark border-0 d-md-none justify-content-center" aria-label="toggle button" style="width: 48px; height: 48px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list text-white" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -86,9 +103,8 @@ $cakeDescription = 'Takahiro Ueda';
   <?= $this->fetch('scriptBottom') ?>
   <?= $this->Html->script(['index']) ?>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN98ZV8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN98ZV8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>
