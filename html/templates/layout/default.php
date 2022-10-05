@@ -59,7 +59,8 @@ $cakeDescription = 'Takahiro Ueda';
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-0 my-md-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
+          <?= $this->Html->image('brand-icon.png', ['alt' => 'Brand logo', 'width' => '24px', 'height' => '24px']) ?>
+          <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
           </a>
           <nav class="nav col-12 col-lg-auto my-md-0 text-small d-none d-md-inline-block">
             <ul class="d-flex justify-content-center m-0 p-0">
