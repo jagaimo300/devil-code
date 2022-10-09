@@ -110,7 +110,12 @@
 <section class="profile">
     <div class="container my-5 py-5">
         <div class="profile-inner row h-50">
-            <div class="ls-1 col-lg-6 col-md-12 text-dark">
+        <div class="col-lg-6 col-md-12 text-center">
+            <div class="border-image w-50 mx-auto">
+                <img class="prof-img" src="img/prof.jpg" style="width: 100%; display: block;" alt="プロフィール画像">
+            </div>
+        </div>
+        <div class="ls-1 col-lg-6 col-md-12 text-dark ">
                 <p>Author</p>
                 <h2>Takahiro Ueda</h2>
                 <p>Web Programmer</p>
@@ -120,15 +125,8 @@
                 </p>
                 <p class="lh-lg">Hello, I'm a Junior Web Developer based in Japan.
                     <br>I really enjoy using my skills to help improve things.
-                    <br>I like watching Rugby, Workout, Sushi, Cats
+                    <br>I like watching Rugby, Workout, Sushi, Cats.
                 </p>
-                <div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 text-center">
-                <div class="w-50 mx-auto">
-                    <img class="prof-img" src="img/prof.jpg" style="width: 100%; display: block;" alt="プロフィール画像">
-                </div>
             </div>
         </div>
     </div>

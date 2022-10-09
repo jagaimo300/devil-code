@@ -18,11 +18,13 @@
 $cakeDescription = 'Takahiro Ueda';
 ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
+
   <?= $this->Html->charset() ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {

@@ -114,7 +114,7 @@ $this->assign('title', ' - Blog');
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">
                 <h2 >Posts</h2>
-                <p class="mb-5">人気記事</p>
+                <p class="mb-5">記事一覧</p>
                 <?php foreach ($blogs as $index => $blog) : ?>
                     <a href="/blogs/view/<?= h($blog->slug) ?>" class="pe-lg-5 h-100">
                         <div class="d-flex justify-content-between align-items-center">

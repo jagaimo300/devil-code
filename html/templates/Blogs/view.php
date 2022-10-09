@@ -51,7 +51,7 @@ $this->assign('title', ' - Blog - '. $slug);
     <div class="container">
         <div class="row">
             <?php foreach ($blogs as $index => $blog) : ?>
-                <article class="col-9 min-vh-100">
+                <article class="col-12 col-md-9 min-vh-100">
                     <section class="blog_meta mt-5 mb-2">
                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
@@ -87,11 +87,11 @@ $this->assign('title', ' - Blog - '. $slug);
                     <section class="blog_title mt-0 mb-7">
                         <h1 class="blog_title-heading"><?= h($blog->title) ?></h1>
                     </section>
-                    <section class="blog_body my-7 pe-5 text-break ls-1">
+                    <section class="blog_body my-7 pe-5 pe-md-0 text-break ls-1">
                         <p><?= $blog->body ?></p>
                     </section>
                 </article>
-                <aside class="col-3">
+                <aside class="col-3 d-none d-md-block">
                     <div class="mt-5 indexWrapper sticky-top text-break">
                         <h5>
                             目次
