@@ -17,6 +17,13 @@ section {
 header {
   z-index: 100;
 }
+#toggleNavBtn[aria-expanded="true"] + #toggleNavMenu {
+  opacity: 1;
+}
+#toggleNavBtn[aria-expanded="false"] + #toggleNavMenu {
+  opacity: 0;
+}
+
 .swiper {
     width: 100%;
     height: 52vh;

@@ -8,9 +8,8 @@ return static function (RouteBuilder $routes) {
 
     $routes->scope('/', function (RouteBuilder $builder) {
 
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/', ['controller' => 'Blogs', 'action' => 'index', 'home']);
 
-        $builder->connect('/pages/*', 'Pages::display');
 
         $builder->fallbacks();
     });

@@ -22,10 +22,5 @@ return static function (RouteBuilder $routes) {
         $builder->fallbacks();
     });
 
-    $routes->scope('/blog', function (RouteBuilder $builder) {
 
-        $builder->connect('/', ['controller' => 'Blogs', 'action' => 'index']);
-
-        $builder->fallbacks();
-    });
 };

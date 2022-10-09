@@ -12,9 +12,6 @@
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide" style="background-image: url('../img/background-1.jpg')">
-            <div class="text-wrapper ls-1">
-                <h2 class="blog-ttl my-4"><span class="text-larger fw-bold">dev</span>il-code</h2>
-            </div>
         </div>
         <div class="swiper-slide" style="background-image: url('../img/background-2.jpg')">
             <div class="text-wrapper ls-1 mt-5">
@@ -27,39 +24,39 @@
     <div class="swiper-pagination"></div>
 </div>
 <section class="about my-5 pt-5">
-    <div class="container my-5">
-        <div class="row pb-5">
-            <h2 class="fs-7">地方で働くWEBプログラマーのホームページ</h2>
-            <p>Web programmer's blog</p>
+    <div class="container my-5 text-center text-md-start">
+        <div class="row mb-5 py-5">
+            <h3>知ること。</h3>
+            <p class="mb-5">Stay curious.</p>
         </div>
         <div class="row">
-            <div class="col-md-4 pe-5 mt-5 mt-md-0">
-                <div class="mb-3">
-                    <h3 class="fs-7">知識共有</h3>
+            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
+                <div class="mb-5">
+                    <h4 class="fs-7">知識共有</h4>
                     <span>Knowledge</span>
                 </div>
-                <p class="fw-lighter">
-                    <a href="https://www.inkdrop.app/?r=KMUMZg48C" class="fw-bold">Inkdrop</a>に書き溜めた技術メモ、プログラミングについて。
-                    <br>たくさんのエンジニアの方々の技術ブログにお世話になった経験から私も誰かのためになりたい思い、プログラミングで得た知見を共有します。
+                <p class="fw-lighter pe-md-5">
+                    技術メモ、プログラミング、学習について。
+                    <br>プログラミングで得た知見の備忘録として残したり、資格取得のために勉強したことを共有します。
                 </p>
             </div>
-            <div class="col-md-4 pe-5 mt-5 mt-md-0">
-                <div class="mb-3">
-                    <h3 class="fs-7">仕事</h3>
-                    <span>Work</span>
+            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
+                <div class="mb-5">
+                    <h4 class="fs-7">仕事</h4>
+                    <span>Career</span>
                 </div>
-                <p class="fw-lighter">仕事で経験したことや感じたこと、キャリアプランや技術習得などについて。
-                <br>WEBプログラマーになるうえで必要だったスキルや、ＩＴ人材としてのキャリア形成ついて私見を共有します。
+                <p class="fw-lighter pe-md-5">キャリアプランや就職活動などについて。
+                <br>WEBプログラマーになるうえで必要だったスキルや、これからのキャリア形成ついて私見を共有します。
                 </p>
             </div>
-            <div class="col-md-4 pe-10 mt-5 mt-md-0">
-                <div class="mb-3">
-                    <h3 class="fs-7">暮らし</h3>
+            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
+                <div class="mb-5">
+                    <h4 class="fs-7">暮らし</h4>
                     <span>Life style</span>
                 </div>
-                <p class="fw-lighter">
-                    異業種からの転職を経て変化したライフスタイル、宮城県を拠点としたその暮らしについて。
-                    <br>もともと居酒屋店員だった私がエンジニアに転職してからの変わった生活や、現在の活動拠点である宮城県での生活を共有します。
+                <p class="fw-lighter pe-md-5">
+                    異業種からの転職で変化したライフスタイル、その暮らしやお金のことについて。
+                    <br>居酒屋店員からエンジニアに転職して生活面で変わったことや、地方の会社に勤める生活を共有します。
                 </p>
             </div>
 
@@ -70,7 +67,7 @@
     <div class="album py-5 bg-white">
         <div class="container">
             <div class="row my-5 align">
-                <h2>最近の投稿</h2>
+                <h3>ブログ</h3>
                 <p>Lately posts</p>
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
@@ -130,7 +127,7 @@
             </div>
             <div class="col-lg-6 col-md-12 text-center">
                 <div class="w-50 mx-auto">
-                    <img class="prof-img" src="img/prof.jpg" style="width: 100%; display: block;">
+                    <img class="prof-img" src="img/prof.jpg" style="width: 100%; display: block;" alt="プロフィール画像">
                 </div>
             </div>
         </div>
