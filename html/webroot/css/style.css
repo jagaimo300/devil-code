@@ -195,15 +195,31 @@ header {
   z-index: 2;
 }
 
-.blog_body h1, .blog_body h2 {
-  margin-bottom: 32px;
+.blog {
+  position: relative;
+  top: 120px;
 }
-.blog_body h3 {
+.blog .blog_body h1, .blog .blog_body h2 {
+  margin-bottom: 32px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+.blog .blog_body h3 {
   margin-bottom: 28px;
 }
-.blog_body h4, .blog_body h5, .blog_body p, .blog_body i {
+.blog .blog_body h4, .blog .blog_body h5, .blog .blog_body p, .blog .blog_body i {
   margin-bottom: 14px;
   line-height: 32px;
+}
+.blog .blogIndexWrapper-listItem_heading {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+}
+.blog .blogIndexWrapper-listItem_bold {
+  margin-left: 16px;
+}
+
+.sticky-top {
+  top: 120px;
 }
 
 .breadcrumb {
@@ -228,6 +244,15 @@ header {
   margin-top: 8px;
 }
 
+@media screen and (max-width: 768px) {
+  .border-image::after {
+    width: 85%;
+    height: 85%;
+  }
+  .blog {
+    top: 36px;
+  }
+}
 @media screen and (max-width: 960px) {
   .border-btn {
     font-size: small;
@@ -242,9 +267,17 @@ header {
     margin-top: -2px;
   }
 }
-@media screen and (max-width: 768px) {
-  .border-image::after {
-    width: 85%;
-    height: 85%;
+@media screen and (max-width: 960px) {
+  .border-btn {
+    font-size: small;
+  }
+  .border-btn::after {
+    right: 9px;
+    width: 6px;
+    height: 6px;
+    border: 0px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    margin-top: -2px;
   }
 }/*# sourceMappingURL=style.css.map */
