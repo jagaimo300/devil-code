@@ -21,20 +21,29 @@ $this->Breadcrumbs->add(
         ]
     ]
 );
-foreach ($blogs as $index => $blog){
-    $slug =  $blog->slug;
-}
+
+$this->Breadcrumbs->add(
+    'カテゴリー（' . $cat . '）',
+    ['controller' => 'blogs', 'action' => $cat],
+    [
+        'templateVars' => [
+            'num' => '3'
+        ]
+    ]
+);
+
 
 $this->Breadcrumbs->add(
     "${slug}",
     ['controller' => 'blogs', 'action' => 'index'],
     [
         'templateVars' => [
-            'num' => '3',
+            'num' => '4',
             'active' => 'active'
         ]
     ]
 );
+
 $this->Breadcrumbs->setTemplates([
     'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
     'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -47,7 +56,7 @@ $this->assign('title', ' - Blog - '. $slug);
 
 ?>
 
-<div class="blog">
+<div class="blog ls-1">
     <div class="container">
         <div class="row">
             <?php foreach ($blogs as $index => $blog) : ?>
@@ -87,25 +96,43 @@ $this->assign('title', ' - Blog - '. $slug);
                     <section class="blog_title mt-0 mb-7">
                         <h1 class="blog_title-heading"><?= h($blog->title) ?></h1>
                     </section>
-                    <section id="blogBody" class="blog_body my-7 pe-5 pe-md-0 text-break ls-1">
+                    <section id="blogBody" class="blog_body my-7 pe-3 pe-md-0 text-break ls-1">
                         <?= $blog->body ?>
                     </section>
                 </article>
                 <aside class="col-3 d-none d-md-block">
                     <div class="mt-5 blogIndexWrapper sticky-top text-break">
-                        <h5 class="blogIndexWrapper-title">
-                            目次
-                        </h5>
+                        <h5>目次</h5>
+                    	<span>Contents</span>
                         <ol id="blogIndexWrapper-list" class="blogIndexWrapper-list">
                             <!-- Cleate elements using JavaSctipt -->
                         </ol>
                         <div class="mt-5 category_tagWrapper">
-                        <a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a><a href="">foooo</a>
+			                <?php foreach ($categories as $category) : ?>
+			                    <a href="blogs/<?= h($category->cat_label) ?>/" class="fs-5 d-inline-block" style="font-size:<?= h(($category->cat_count) * 0.5) ?>px; font-weight:<?= h(100 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+			                <?php endforeach; ?>
                         </div>
+
+                        <div class="mt-5 related_tagWrapper">
+                        	<h5>関連記事</h5>
+                        	<span>Related posts</span>
+                        	<ul class="p-0">
+                        		<li class="mt-3 d-flex justify-content-between">
+                        			<div class="imgarea w-20 border">
+										<a href=""><img src="https://devil-code.com/img/prof.jpg" width="95" height="95" alt="関連記事"></a>
+									</div>
+									<div class="textarea text-truncate ms-3">
+										<div class="created_date text-muted d-inline-block" style="font-size: 12px;">2022.10.14</div>
+										<div class="title"><a href="">Hellow World</a></div>
+										<div class="body text-muted w-lighter lh-32">foooofoooofoooofoooo・・・</div>
+									</div>
+								</li>
+                        	</ul>
+                        </div>
+
                     </div>
                 </aside>
             <?php endforeach; ?>
-
         </div>
     </div>
 </div>
@@ -113,6 +140,17 @@ $this->assign('title', ' - Blog - '. $slug);
     <?= $this->Breadcrumbs->render() ?>
 </div>
 <script type="text/javascript">
+        function toggleIndexActive(blogIndex){
+            console.log(blogIndex);
+            const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
+            for(let i = 0; i < tgtIndex.length; i++){
+                if(tgtIndex[i].classList.contains('index-active')){
+                    tgtIndex[i].classList.remove('index-active');
+                }
+            }
+            tgtIndex[blogIndex].classList.add('index-active');
+        }
+
     window.onload = () => {
 
         const bodyText = document.getElementById('blogBody');
@@ -127,23 +165,26 @@ $this->assign('title', ' - Blog - '. $slug);
                 headingIndex++;
                 targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
                 targetTags[i].classList.add('tgt-elm');
-                if(i == 0){
-                    targetTags[i].classList.add('cur_area');
-                    blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="index-active blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}">${targetTags[i].innerText}</a></li>`);
-                }else{
-                    blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}">${targetTags[i].innerText}</a></li>`);
-                }
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
             } else if(targetTags[i].outerHTML.match(/\<b/gi)) {
                 boldIndex++;
                 targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
-                if(i == 0){
-                    targetTags[i].classList.add('cur_area');
-                    blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="index-active blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}">${targetTags[i].innerText}</a></li>`);
-                }else{
-                    blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}">${targetTags[i].innerText}</a></li>`);
-                }
+                targetTags[i].classList.add('tgt-elm');
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
             }
         }
+        const headerHeight = document.getElementById('header').getBoundingClientRect().height;
+        const tgtElm = document.getElementsByClassName('tgt-elm');
+        const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
+
+        
+        window.addEventListener('scroll',() =>{
+	        for(let i = 0; i < tgtElm.length; i++){
+	            if((tgtElm[i].getBoundingClientRect().y + headerHeight) < 96){
+	                toggleIndexActive(i);
+	            }
+	        }
+        },false);
     }
 </script>
 

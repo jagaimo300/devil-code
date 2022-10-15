@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Routing\Router;
+use Cake\Http\Exception\NotFoundException;
 
 /**
  * Blogs Controller
@@ -9,6 +11,7 @@ namespace App\Controller;
  * @property \App\Model\Table\BlogsTable $Blogs
  * @method \App\Model\Entity\Blog[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
+
 class BlogsController extends AppController
 {
     /**
@@ -18,7 +21,6 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        $cat = $this->request->getQuery('cat');
         $this->set('news', $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
             'limit' => 3,
@@ -31,22 +33,20 @@ class BlogsController extends AppController
 		    'order' => 'BlogsFeatured.id ASC',
 		    'recursive' => -1,
 		)));
+		
+
+        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+
+		$this->set(compact('categories'));
 
         $this->loadComponent('Paginator');
-        if($cat){
-            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-                'conditions' => ['blogs.category_id'=>"${cat}"],
-                'contain' => ['BlogsCategories'],
-                'order' => 'Blogs.created ASC',
-                'recursive' => -1,
-            )));
-        }else{
-            $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-                'contain' => ['BlogsCategories'],
-                'order' => 'Blogs.created ASC',
-                'recursive' => -1,
-            )));
-        }
+
+        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+            'contain' => ['BlogsCategories'],
+            'order' => 'Blogs.created ASC',
+            'recursive' => -1,
+        )));
 
         $this->set(compact('blogs'));
     }
@@ -61,14 +61,38 @@ class BlogsController extends AppController
     public function view($slug = null)
     {
 
-        $blogs = $this->Blogs->find('all', array(
-			'conditions' => ['Blogs.slug'=>"$slug"],
-            'contain' => ['BlogsCategories'],
-            'limit' => 1,
-            'order' => 'Blogs.id ASC',
-            'recursive' => -1,
-		));
-        $this->set(compact('blogs'));
+		list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
+		
+			if($cat === "view"){
+		        throw new NotFoundException(__('404 Not Found'));
+			}
+
+
+			$this->set('cat', $cat);
+			$this->set('slug', $slug);
+
+	        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+	        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+
+			$this->set(compact('categories'));
+
+	        $this->set('relations',  $this->Blogs->find('all', array(
+				'conditions' => ['BlogsCategories.category_label'=>"$cat"],
+	            'contain' => ['BlogsCategories'],
+	            'order' => 'Blogs.created ASC',
+	            'recursive' => -1,
+	        )));
+
+	        $blogs = $this->Blogs->find('all', array(
+				'conditions' => ['Blogs.slug'=>"$slug"],
+	            'contain' => ['BlogsCategories'],
+	            'limit' => 1,
+	            'order' => 'Blogs.id ASC',
+	            'recursive' => -1,
+			));
+	        $this->set(compact('blogs'));
+        
+        
     }
 
     /**
@@ -136,4 +160,36 @@ class BlogsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Category method
+     *
+     * @param string|null $id Blog id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function category($cat = null)
+    {
+
+    	if(!$cat){
+	        list($dummy, $ctl, $cat) = explode("/", Router::url());
+    	}
+
+		if($cat === "view"){
+	        throw new NotFoundException(__('ページが見つかりません'));
+		}
+
+		$this->set('cat', $cat);
+
+        $this->loadComponent('Paginator');
+
+        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+			'conditions' => ['BlogsCategories.category_label'=>"$cat"],
+            'contain' => ['BlogsCategories'],
+            'order' => 'Blogs.created ASC',
+            'recursive' => -1,
+        )));
+        $this->set(compact('blogs'));
+    }
+
 }

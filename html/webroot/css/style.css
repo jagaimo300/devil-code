@@ -1,6 +1,11 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 html, body {
   font-family: "Noto Sans JP", sans-serif !important;
+}
+
+p {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ pro w3", Meiryo, メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
 }
 
 a {
@@ -223,6 +228,7 @@ header {
 }
 
 .breadcrumb {
+  margin-top: 120px;
   align-items: center;
 }
 .breadcrumb a.active {
@@ -251,6 +257,9 @@ header {
   }
   .blog {
     top: 36px;
+  }
+  .breadcrumb {
+    font-size: smaller;
   }
 }
 @media screen and (max-width: 960px) {

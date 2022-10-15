@@ -23,15 +23,15 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
 </div>
-<section class="about my-5 pt-5">
-    <div class="container my-5 text-center text-md-start">
-        <div class="row mb-5 py-5">
+<section class="about pt-3">
+    <div class="container text-center text-md-start">
+        <div class="row mb-5 py-5 ls-1">
             <h3>知ること。</h3>
             <p class="mb-5">Stay curious.</p>
         </div>
-        <div class="row">
+        <div class="row ls-1">
             <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5">
+                <div class="mb-5 mb-md-4">
                     <h4 class="fs-7">知識共有</h4>
                     <span>Knowledge</span>
                 </div>
@@ -41,7 +41,7 @@
                 </p>
             </div>
             <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5">
+                <div class="mb-5 mb-md-4">
                     <h4 class="fs-7">仕事</h4>
                     <span>Career</span>
                 </div>
@@ -50,7 +50,7 @@
                 </p>
             </div>
             <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5">
+                <div class="mb-5 mb-md-4">
                     <h4 class="fs-7">暮らし</h4>
                     <span>Life style</span>
                 </div>
@@ -63,10 +63,10 @@
         </div>
     </div>
 </section>
-<section class="blog">
+<section class="blog-wrapper">
     <div class="album py-5 bg-white">
         <div class="container">
-            <div class="row my-5 align">
+            <div class="row my-5 align ls-1">
                 <h3>ブログ</h3>
                 <p>Lately posts</p>
             </div>

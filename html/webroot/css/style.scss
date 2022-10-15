@@ -3,6 +3,9 @@
 html,body {
     font-family: 'Noto Sans JP', sans-serif !important;
 }
+p {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ pro w3", Meiryo, メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
+}
 
 a {
   text-decoration: none;
@@ -276,7 +279,8 @@ header {
 .sticky-top {
   top: 120px;
 }
-.breadcrumb{
+.breadcrumb {
+  margin-top: 120px;
   align-items: center;
   a.active {
     border-bottom: 1px solid #000;
@@ -310,6 +314,9 @@ header {
   .blog {
     top: 36px;
   }
+  .breadcrumb {
+    font-size: smaller;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -341,4 +348,3 @@ header {
       }
   }  
 }
-

@@ -21,6 +21,4 @@ return static function (RouteBuilder $routes) {
 
         $builder->fallbacks();
     });
-
-
 };
