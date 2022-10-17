@@ -50,7 +50,7 @@ $this->assign('title', ' - Blog - ' . $cat);
     <div class="container">
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">
-                <h2>カテゴリー - <?= h($cat) ?></h2>
+                <h2>カテゴリー別 - <?= h($cat) ?></h2>
                 <p class="mb-5">Category - <?= h($cat) ?></p>
                 <?php foreach ($blogs as $index => $blog) : ?>
                     <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>" class="pe-lg-5 h-100">
@@ -64,9 +64,11 @@ $this->assign('title', ' - Blog - ' . $cat);
             </div>
             <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
                 <div class="category my-5">
-                    <a href="?cat=1" class="fs-5 d-inline-block">fooo<a>
-                    <a href="?cat=1" class="fs-4 d-inline-block">fooo<a>
-                    <a href="?cat=1" class="fs-3 d-inline-block">fooo<a>
+                    <h5>他のカテゴリー</h5>
+                    <p class="mb-2">Other category</p>
+                    <?php foreach ($categories as $category) : ?>
+                        <a href="../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 2) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

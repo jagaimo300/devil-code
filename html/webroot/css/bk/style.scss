@@ -279,7 +279,8 @@ header {
 .sticky-top {
   top: 120px;
 }
-.breadcrumb{
+.breadcrumb {
+  margin-top: 120px;
   align-items: center;
   a.active {
     border-bottom: 1px solid #000;
@@ -312,6 +313,9 @@ header {
 
   .blog {
     top: 36px;
+  }
+  .breadcrumb {
+    font-size: smaller;
   }
 }
 

@@ -72,7 +72,7 @@
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
                 <?php foreach ($news as $index => $new) : ?>
-                    <a href="/blogs/view/<?= h($new->slug) ?>" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
+                    <a href="/blogs/<?= h($new->blogs_category->category_label) ?>/<?= h($new->slug) ?>/" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                         <div class="row card-item overflow-hidden position-relative">
                             <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
                             </div>
@@ -120,8 +120,8 @@
                 <h2>Takahiro Ueda</h2>
                 <p>Web Programmer</p>
                 <p class="lh-lg">宮城を拠点として活動しているWEBプログラマーです。
-                    <br>新しい技術や知見を得ることに生きがいを感じます。
-                    <br>趣味はラグビー観戦、筋トレ 好きな食べ物は寿司 猫派です。
+                    <br>新しい技術や知見を得ることに喜びと生きがいを感じます。
+                    <br>趣味はラグビー観戦、筋トレ、外国語学習 好きな食べ物は寿司 猫派です。
                 </p>
                 <p class="lh-lg">Hello, I'm a Junior Web Developer based in Japan.
                     <br>I really enjoy using my skills to help improve things.

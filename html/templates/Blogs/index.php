@@ -49,9 +49,9 @@ $this->assign('title', ' - Blog');
 </div>
 
 <section class="blog">
-    <div class="album bg-white">
+    <div class="album bg-white pb-5">
         <div class="container">
-            <div class="row my-5 align">
+            <div class="row mb-5 align">
                 <h2>最近の記事</h2>
                 <p>Lately posts</p>
             </div>
@@ -61,10 +61,10 @@ $this->assign('title', ' - Blog');
                         <?php foreach ($news as $index => $new) : ?>
                             <li class="list-group-item mb-3">
                                 <a href="/blogs/<?= h($new->blogs_category->category_label) ?>/<?= h($new->slug) ?>/">
-                                    <div class="d-md-flex">
+                                    <div class="d-md-flex"  style="line-height: 30px;">
                                         <div class="d-flex">
                                             <span class="catTag me-3" style="background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
-                                            <span class="me-3 text-muted" style="font-size: 12px; line-height: 30px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span>
+                                            <span class="me-3 text-muted" style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span>
                                         </div>
                                         <p class="mt-3 mt-md-0 text-truncate flex-wrap-reverse"><?= h($new->title) ?></p>
                                     </div>
@@ -84,7 +84,7 @@ $this->assign('title', ' - Blog');
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container py-5">
         <div class="row my-5">
             <h2>人気記事</h2>
             <p>Featured</p>
@@ -122,9 +122,11 @@ $this->assign('title', ' - Blog');
                 <?php endforeach; ?>
             </div>
             <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
-                <div class="category my-5">
+                <h5>カテゴリー</h5>
+                <p>Category</p>
+                <div class="category  mt-3 mb-5">
 	                <?php foreach ($categories as $category) : ?>
-	                    <a href="blogs/<?= h($category->cat_label) ?>/" class="fs-5 d-inline-block" style="font-size:<?= h(($category->cat_count) * 0.5) ?>px; font-weight:<?= h(100 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+	                    <a href="../blogs/<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 2) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
 	                <?php endforeach; ?>
                 </div>
             </div>

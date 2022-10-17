@@ -20,7 +20,6 @@ $cakeDescription = 'Takahiro Ueda';
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
   <?= $this->Html->charset() ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Pragma" content="no-cache">
@@ -56,7 +55,7 @@ $cakeDescription = 'Takahiro Ueda';
 </head>
 
 <body>
-  <header id="header" class="position-fixed w-100 top-0 position-relative">
+  <header id="header" class="position-fixed w-100 top-0 position-relative" style="z-index: 1000;">
     <div class="px-4 py-md-3 bg-dark text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-center justify-content-lg-start">
@@ -79,13 +78,13 @@ $cakeDescription = 'Takahiro Ueda';
                 </a>
               </li>
               <li class="mb-3">
-                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
-                  GitHub
+                <a href="/contact" class="nav-link text-white">
+                  Contact
                 </a>
               </li>
               <li class="mb-3">
-                <a href="/contact" class="nav-link text-white">
-                  Contact
+                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
+                  GitHub
                 </a>
               </li>
             </ul>
@@ -99,13 +98,13 @@ $cakeDescription = 'Takahiro Ueda';
                 </a>
               </li>
               <li>
-                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
-                  GitHub
+                <a href="/contact" class="nav-link text-white">
+                  Contact
                 </a>
               </li>
               <li>
-                <a href="/contact" class="nav-link text-white">
-                  Contact
+                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
+                  GitHub
                 </a>
               </li>
             </ul>
@@ -120,8 +119,8 @@ $cakeDescription = 'Takahiro Ueda';
   <footer class="py-3 mt-4 bg-dark text-white">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="/blog" class="nav-link px-2 text-muted">Blog</a></li>
-      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
       <li class="nav-item"><a href="/contact" class="nav-link px-2 text-muted">Contact</a></li>
+      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
     </ul>
     <p class="text-center text-muted">© 2022 devil code</p>
   </footer>

@@ -66,13 +66,13 @@ endif;
 	              </a>
 	            </li>
 	            <li>
-	              <a href="/contact" class="nav-link text-white">
-	                Contact
-	              </a>
-	            </li>
-				<li>
 	              <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
 	                GitHub
+	              </a>
+	            </li>
+	            <li>
+	              <a href="/contact" class="nav-link text-white">
+	                Contact
 	              </a>
 	            </li>
 	          </ul>
@@ -82,7 +82,6 @@ endif;
     </div>
   </header>
   <main class="main mt-5 h-100">
-
   	<div class="container text-center">
 		<div class="errorMesArea  p-5">
 				<h1 class="error-title p-5"><?= h($message) ?></h1>
@@ -101,7 +100,7 @@ endif;
 
 		<div class="errorImageArea">
 			<div class="errorImageWrapper">
-				<img src="//devil-code.com/img/404.jpg" width="100%">
+				<img src="//devil-code.com/img/851x315.png" widht="100%" style="max-width:100vw;">
 			</div>
 		</div>
 

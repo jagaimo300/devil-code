@@ -79,8 +79,9 @@ class BlogsController extends AppController
 	        $this->set('relations',  $this->Blogs->find('all', array(
 				'conditions' => ['BlogsCategories.category_label'=>"$cat"],
 	            'contain' => ['BlogsCategories'],
+	            'limit' => '5',
 	            'order' => 'Blogs.created ASC',
-	            'recursive' => -1,
+                'recursive' => -1,
 	        )));
 
 	        $blogs = $this->Blogs->find('all', array(
