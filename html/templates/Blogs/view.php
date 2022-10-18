@@ -104,7 +104,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                         </figure>
                     </section>
                     <section class="blogIndexWrapper text-break w-70">
-                        <div class="accordion-item border-0">
+                        <div class="accordion-item border" style="max-width: 720px;">
                             <h2 class="accordion-header border-0 border-bottom mx-auto" id="panelsStayOpen-headingOne" style="width:128px;">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                 目次
