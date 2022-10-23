@@ -131,5 +131,4 @@
         </div>
     </div>
 </section>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>

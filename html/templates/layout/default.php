@@ -103,9 +103,12 @@ $cakeDescription = 'Takahiro Ueda';
                 </a>
               </li>
               <li>
-                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
-                  GitHub
-                </a>
+              <form action="/blog" method="post" >
+                <!--postするデータ -->
+                <input name="text" placeholder="検索">
+                <!--csrfトークン -->
+                <input id="csrf" type="hidden" name="_csrfToken" autocomplete="off" value="<?= $this->request->getAttribute('csrfToken') ?>">
+              </form>
               </li>
             </ul>
           </nav>

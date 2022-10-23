@@ -188,17 +188,23 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
         let boldIndex = 0;
         for(let i = 0; i < targetTags.length; i++){
 
-            if(targetTags[i].outerHTML.match(/h1|h2|h3|h4|h5/gi)) {
+            if(targetTags[i].outerHTML.match(/h1|h2/gi)) {
                 headingIndex++;
                 targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
                 targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-            } else if(targetTags[i].outerHTML.match(/\<b/gi)) {
-                boldIndex++;
-                targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem mb-3 fw-bold"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+            } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
+                headingIndex++;
+                targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
                 targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
             }
+            //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
+            //     boldIndex++;
+            //     targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
+            //     targetTags[i].classList.add('tgt-elm');
+            //     blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+            // }
         }
         const headerHeight = document.getElementById('header').getBoundingClientRect().height;
         const tgtElm = document.getElementsByClassName('tgt-elm');
