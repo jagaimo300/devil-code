@@ -223,6 +223,9 @@ header {
 .blog .blog_body li {
   list-style: square;
 }
+.blog .blog_body img {
+  max-width: 696px;
+}
 .blog .blogIndexWrapper-list {
   border-radius: 12px;
 }
