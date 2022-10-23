@@ -192,12 +192,12 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                 headingIndex++;
                 targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
                 targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem mb-3 fw-bold"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
             } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
                 headingIndex++;
                 targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
                 targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-small mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
             }
             //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
             //     boldIndex++;

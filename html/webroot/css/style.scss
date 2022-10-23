@@ -262,7 +262,7 @@ header {
 
   .blog_body {
     h1,h2 {
-      margin-bottom: 32px;
+      margin: 48px 0px;
       border-bottom: 2px solid rgba(0, 0, 0, .3);
     }
     h3 {
@@ -272,17 +272,26 @@ header {
       margin-bottom: 14px;
       line-height: 32px;
     }
-  }
+    li {
+      list-style: square;
+    }
+}
 
   .blogIndexWrapper-list {
     border-radius: 12px;
+    .list-large {
+      list-style: square;
 
-    .blogIndexWrapper-listItem_heading {
-      border-bottom: 1px solid rgba(0, 0, 0, .3);
-      font-size: 18px;
+      .blogIndexWrapper-listItem_heading {
+          border-bottom: 1px solid rgba(0, 0, 0, .3);
+          font-size: 18px;
+          font-weight: bold;
+        }  
     }
-    .blogIndexWrapper-listItem_bold {
-      margin-left: 4px;
+    .list-small {
+      .blogIndexWrapper-listItem_heading {
+          font-size: 12px;
+      }  
     }
   }
 }

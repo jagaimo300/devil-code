@@ -208,7 +208,7 @@ header {
   font-size: clamp(24px, 5vw, 48px);
 }
 .blog .blog_body h1, .blog .blog_body h2 {
-  margin-bottom: 32px;
+  margin: 48px 0px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 .blog .blog_body h3 {
@@ -218,15 +218,22 @@ header {
   margin-bottom: 14px;
   line-height: 32px;
 }
+.blog .blog_body li {
+  list-style: square;
+}
 .blog .blogIndexWrapper-list {
   border-radius: 12px;
 }
-.blog .blogIndexWrapper-list .blogIndexWrapper-listItem_heading {
+.blog .blogIndexWrapper-list .list-large {
+  list-style: square;
+}
+.blog .blogIndexWrapper-list .list-large .blogIndexWrapper-listItem_heading {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   font-size: 18px;
+  font-weight: bold;
 }
-.blog .blogIndexWrapper-list .blogIndexWrapper-listItem_bold {
-  margin-left: 4px;
+.blog .blogIndexWrapper-list .list-small .blogIndexWrapper-listItem_heading {
+  font-size: 12px;
 }
 
 .sticky-top {
