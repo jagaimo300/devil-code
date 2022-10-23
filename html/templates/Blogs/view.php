@@ -99,7 +99,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                     <section class="blog_thumbnail mt-0 mb-7" style="max-width: 720px;">
                         <figure class="blog_thumbnailWra">
                             <span itemprop="image">
-                                <img src="/files/blogs/1.jpg" alt="" width="100%">
+                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%">
                             </span>
                         </figure>
                     </section>

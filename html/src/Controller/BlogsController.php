@@ -33,7 +33,14 @@ class BlogsController extends AppController
 		    'order' => 'BlogsFeatured.id ASC',
 		    'recursive' => -1,
 		)));
-		
+
+        $this->set('tops',  $this->Blogs->find('all', array(
+            'conditions' => ['Blogs.is_top'=> "1"],
+            'contain' => ['BlogsCategories'],
+            'limit' => '1',
+            'recursive' => -1,
+        )));
+
 
         $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
         $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');

@@ -78,9 +78,12 @@
                             </div>
                             <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
 
-                            <div class="col pb-4 px-4 d-flex flex-column position-relative">
-                                <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($new->title) ?></h3>
-                                <div class="mt-3 text-muted d-flex justify-content-between align-items-center"><span style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
+                            <div class="col pb-4 px-4 d-flex flex-column position-relative" style="height: 180px;">
+                                <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl lh-base"><?= h($new->title) ?></h3>
+                                <div class="mt-3 w-100 text-muted d-flex justify-content-between align-items-center position-absolute" style="bottom: 24px;">
+                                    <span style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span>
+                                    <span class="arrow"></span>
+                                </div>
                             </div>
                         </div>
                     </a>
