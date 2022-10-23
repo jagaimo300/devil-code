@@ -140,6 +140,7 @@ header {
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  right: 48px;
 }
 .arrow::after {
   content: "";
@@ -209,6 +210,7 @@ header {
 }
 .blog .blog_body h1, .blog .blog_body h2 {
   margin: 48px 0px;
+  padding-bottom: 8px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 .blog .blog_body h3 {
