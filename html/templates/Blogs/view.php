@@ -165,6 +165,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script type="text/javascript">
         function toggleIndexActive(blogIndex){
             console.log(blogIndex);
