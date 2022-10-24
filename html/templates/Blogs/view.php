@@ -143,7 +143,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                                     <?php foreach ($relations as $relation) : ?>
                                         <li class="mt-3 d-flex justify-content-md-between">
                                             <div class="imgarea border">
-                                                <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="https://devil-code.com/img/prof.jpg" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok.   ;"></a>
+                                                <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.jpg" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
                                             </div>
                                             <div class="textarea text-truncate ms-3">
                                                 <div class="created_date text-muted d-inline-block" style="font-size: 12px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
