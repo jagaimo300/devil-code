@@ -83,15 +83,40 @@ $cakeDescription = 'Takahiro Ueda';
                 </a>
               </li>
               <li class="mb-3">
-                <a href="<?= URL_GITHUB ?>" class="nav-link text-white">
-                  GitHub
-                </a>
+                <form action="/blog" method="post" class="py-1 px-2 align-items-center">
+                <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1; margin-bottom: 2px;" xml:space="preserve">
+                <style type="text/css">
+                  .st0{fill:#4B4B4B;}
+                </style>
+                <g>
+                  <path class="st0" d="M499.436,225.905L295.858,24.536c-16.623-16.438-43.428-16.305-59.866,0.328
+                    c-16.438,16.613-16.294,43.418,0.329,59.856l130.356,128.958H42.329C18.956,213.679,0,232.624,0,255.997
+                    c0,23.383,18.956,42.328,42.329,42.328h324.347L236.321,427.273c-16.623,16.438-16.767,43.254-0.329,59.867
+                    c16.438,16.622,43.243,16.766,59.866,0.328l203.578-201.368c8.044-7.963,12.564-18.792,12.564-30.102
+                    C512,244.685,507.479,233.866,499.436,225.905z" style="fill: rgb(153, 153, 153);"></path>
+                </g>
+                </svg>
+                  <input type="text" placeholder="検索" id="headerSearch" class="header_search bg-dark text-white border-0 py-0 px-2" nama="search">
+                  <button type="button" id="delBtn" class="del-btn bg-dark">
+                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
+                    <style type="text/css">
+                      .st0{fill:#4B4B4B;}
+                    </style>
+                    <g>
+                      <polygon class="st0" points="511.998,70.682 441.315,0 256.002,185.313 70.685,0 0.002,70.692 185.316,256.006 0.002,441.318 
+                        70.69,512 256.002,326.688 441.315,512 511.998,441.318 326.684,256.006 	" style="fill: rgb(153, 153, 153);"></polygon>
+                    </g>
+                    </svg>
+                  </button>
+                  <input id="csrf" type="hidden" name="_csrfToken" autocomplete="off" value="<?= $this->request->getAttribute('csrfToken') ?>">
+                </form>
               </li>
+
             </ul>
           </nav>
           <!-- nav bar for display md and up -->
           <nav class="nav col-12 col-lg-auto my-md-0 text-small d-none d-md-inline-block">
-            <ul class="d-flex justify-content-center m-0 p-0">
+            <ul class="d-flex align-items-center justify-content-center m-0 ms-5 ps-5 p-0 ">
               <li>
                 <a href="/blog" class="nav-link text-white">
                   Blog
@@ -102,13 +127,34 @@ $cakeDescription = 'Takahiro Ueda';
                   Contact
                 </a>
               </li>
-              <li>
-              <form action="/blog" method="post" >
-                <!--postするデータ -->
-                <input name="text" placeholder="検索">
-                <!--csrfトークン -->
-                <input id="csrf" type="hidden" name="_csrfToken" autocomplete="off" value="<?= $this->request->getAttribute('csrfToken') ?>">
-              </form>
+              <li class="ms-3 ms-xl-5">
+                <form action="/blog" method="post" class="py-1 px-2 align-items-center">
+                <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1; margin-bottom: 2px;" xml:space="preserve">
+                <style type="text/css">
+                  .st0{fill:#4B4B4B;}
+                </style>
+                <g>
+                  <path class="st0" d="M499.436,225.905L295.858,24.536c-16.623-16.438-43.428-16.305-59.866,0.328
+                    c-16.438,16.613-16.294,43.418,0.329,59.856l130.356,128.958H42.329C18.956,213.679,0,232.624,0,255.997
+                    c0,23.383,18.956,42.328,42.329,42.328h324.347L236.321,427.273c-16.623,16.438-16.767,43.254-0.329,59.867
+                    c16.438,16.622,43.243,16.766,59.866,0.328l203.578-201.368c8.044-7.963,12.564-18.792,12.564-30.102
+                    C512,244.685,507.479,233.866,499.436,225.905z" style="fill: rgb(153, 153, 153);"></path>
+                </g>
+                </svg>
+                  <input type="text" placeholder="検索" id="headerSearch" class="header_search bg-dark text-white border-0 py-0 px-2" nama="search">
+                  <button type="button" id="delBtn" class="del-btn bg-dark">
+                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
+                    <style type="text/css">
+                      .st0{fill:#4B4B4B;}
+                    </style>
+                    <g>
+                      <polygon class="st0" points="511.998,70.682 441.315,0 256.002,185.313 70.685,0 0.002,70.692 185.316,256.006 0.002,441.318 
+                        70.69,512 256.002,326.688 441.315,512 511.998,441.318 326.684,256.006 	" style="fill: rgb(153, 153, 153);"></polygon>
+                    </g>
+                    </svg>
+                  </button>
+                  <input id="csrf" type="hidden" name="_csrfToken" autocomplete="off" value="<?= $this->request->getAttribute('csrfToken') ?>">
+                </form>
               </li>
             </ul>
           </nav>

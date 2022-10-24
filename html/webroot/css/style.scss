@@ -19,6 +19,19 @@ section {
 }
 header {
   z-index: 100;
+  .header_search {
+    outline: none;
+    width: 136px;
+  }
+  .header_search::placeholder {
+    font-weight: bold;
+    font-size: 16px;
+    color: #999999;
+  }
+  .del-btn {
+    border: none;
+    opacity: 0;
+  }
 }
 #toggleNavBtn[aria-expanded="true"] + #toggleNavMenu {
   opacity: 1;
@@ -365,7 +378,14 @@ header {
         border-right: solid 2px #ffffff;
         margin-top: -2px;
       }
-  }  
+  }
+  .header_search {
+    text-align: center;
+  }
+  .header_search::placeholder {
+    text-align: center;
+  }
+  
 }
 
 @media screen and (max-width: 960px) {

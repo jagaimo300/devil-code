@@ -96,7 +96,7 @@ $this->assign('title', ' - Blog');
             <?php foreach ($features as $index => $feature) : ?>
                 <a href="/blogs/<?= h($feature->blogs_category->category_label) ?>/<?= h($feature->slug) ?>/" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                     <div class="row card-item overflow-hidden position-relative">
-                        <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
+                        <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $feature->id) ?>.jpg'); background-position: center; background-size: cover; height: 180px;">
                         </div>
                         <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($feature->blogs_category->category_color) ?>;"><?= h($feature->blogs_category->category_label) ?></span>
 

@@ -24,6 +24,29 @@ section {
 header {
   z-index: 100;
 }
+header .header_search {
+  outline: none;
+  width: 136px;
+}
+header .header_search::-moz-placeholder {
+  font-weight: bold;
+  font-size: 16px;
+  color: #999999;
+}
+header .header_search:-ms-input-placeholder {
+  font-weight: bold;
+  font-size: 16px;
+  color: #999999;
+}
+header .header_search::placeholder {
+  font-weight: bold;
+  font-size: 16px;
+  color: #999999;
+}
+header .del-btn {
+  border: none;
+  opacity: 0;
+}
 
 #toggleNavBtn[aria-expanded=true] + #toggleNavMenu {
   opacity: 1;
@@ -307,6 +330,18 @@ header {
     border-top: solid 2px #ffffff;
     border-right: solid 2px #ffffff;
     margin-top: -2px;
+  }
+  .header_search {
+    text-align: center;
+  }
+  .header_search::-moz-placeholder {
+    text-align: center;
+  }
+  .header_search:-ms-input-placeholder {
+    text-align: center;
+  }
+  .header_search::placeholder {
+    text-align: center;
   }
 }
 @media screen and (max-width: 960px) {
