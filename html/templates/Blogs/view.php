@@ -167,56 +167,45 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 </div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script type="text/javascript">
-        function toggleIndexActive(blogIndex){
-            console.log(blogIndex);
-            const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
-            for(let i = 0; i < tgtIndex.length; i++){
-                if(tgtIndex[i].classList.contains('index-active')){
-                    tgtIndex[i].classList.remove('index-active');
-                }
-            }
-            tgtIndex[blogIndex].classList.add('index-active');
-        }
-
-    window.onload = () => {
-
-        const bodyText = document.getElementById('blogBody');
-        const targetTags = bodyText.querySelectorAll('h1, h2, h3, h4, h5, b');
-        const blogIndexList = document.getElementById('blogIndexWrapper-list');
-
-        let headingIndex = 0;
-        let boldIndex = 0;
-        for(let i = 0; i < targetTags.length; i++){
-
-            if(targetTags[i].outerHTML.match(/h1|h2/gi)) {
-                headingIndex++;
-                targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
-                targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-            } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
-                headingIndex++;
-                targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
-                targetTags[i].classList.add('tgt-elm');
-                blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-small mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-            }
-            //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
-            //     boldIndex++;
-            //     targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
-            //     targetTags[i].classList.add('tgt-elm');
-            //     blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-            // }
-        }
-        const headerHeight = document.getElementById('header').getBoundingClientRect().height;
-        const tgtElm = document.getElementsByClassName('tgt-elm');
+    function toggleIndexActive(blogIndex){
+        console.log(blogIndex);
         const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
+        for(let i = 0; i < tgtIndex.length; i++){
+            if(tgtIndex[i].classList.contains('index-active')){
+                tgtIndex[i].classList.remove('index-active');
+            }
+        }
+        tgtIndex[blogIndex].classList.add('index-active');
+    }
 
-        window.addEventListener('scroll',() =>{
-	        for(let i = 0; i < tgtElm.length; i++){
-	            if((tgtElm[i].getBoundingClientRect().y + headerHeight) < 96){
-	                toggleIndexActive(i);
-	            }
-	        }
-        },false);
+
+    const bodyText = document.getElementById('blogBody');
+    const targetTags = bodyText.querySelectorAll('h1, h2, h3, h4, h5, b, img');
+    const blogIndexList = document.getElementById('blogIndexWrapper-list');
+
+    let headingIndex = 0;
+    let boldIndex = 0;
+    for(let i = 0; i < targetTags.length; i++){
+
+        if(targetTags[i].outerHTML.match(/h1|h2/gi)) {
+            headingIndex++;
+            targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
+            targetTags[i].classList.add('tgt-elm');
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+        } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
+            headingIndex++;
+            targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
+            targetTags[i].classList.add('tgt-elm');
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-small mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+        } else if(targetTags[i].outerHTML.match(/img/gi)) {
+            targetTags[i].outerHTML = `<a href="${targetTags[i].src}">${targetTags[i].outerHTML}</a>`;
+        }
+        //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
+        //     boldIndex++;
+        //     targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
+        //     targetTags[i].classList.add('tgt-elm');
+        //     blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+        // }
     }
 </script>
 <?= $this->Html->script(['bootstrap.bundle.min']) ?>
