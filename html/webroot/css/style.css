@@ -318,8 +318,8 @@ header .del-btn {
   .blog {
     top: 36px;
   }
-  .blog img {
-    width: 340px;
+  .blog .blog_body img {
+    max-width: 340px;
   }
   .breadcrumb {
     font-size: smaller;

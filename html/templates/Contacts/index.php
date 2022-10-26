@@ -1,4 +1,6 @@
-<?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
+<?php
+    $this->assign('title', ' - Homepage');
+?>
 
 <section>
     <div class="container">

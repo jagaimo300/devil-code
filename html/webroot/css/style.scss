@@ -364,8 +364,10 @@ header {
 
   .blog {
     top: 36px;
-    img {
-      width: 340px;
+    .blog_body {
+      img {
+        max-width: 340px;
+      }
     }
   }
   .breadcrumb {
