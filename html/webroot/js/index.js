@@ -7,14 +7,18 @@ toggleNavBtn.addEventListener('click', () =>{
 }, false);
 
 
-const headerSearch = document.getElementById("headerSearch");
-const delBtn = document.getElementById("delBtn");
 
-headerSearch.addEventListener('input', () =>{
-    headerSearch.value ? delBtn.style.opacity = 1 : delBtn.style.opacity = 0;
-}, false);
-
-delBtn.onclick = () => {
-    headerSearch.value = '';
-    delBtn.style.opacity = 0;
+window.onload = () => {
+    const headerSearch = document.getElementsByClassName("header-search");
+    const delBtn = document.getElementsByClassName("del-btn");
+    for(let i = 0; i < headerSearch.length; i++){
+        headerSearch[i].oninput = () => {
+            headerSearch[i].value ? delBtn[i].style.opacity = 1 : delBtn[i].style.opacity = 0;
+            console.log('foo');
+        }
+        delBtn[i].onclick = () => {
+            headerSearch[i].value = '';
+            delBtn[i].style.opacity = 0;
+        }
+    }
 }
