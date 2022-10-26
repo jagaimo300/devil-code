@@ -19,11 +19,11 @@ section {
 }
 header {
   z-index: 100;
-  .header_search {
-    outline: none;
+  .header-search {
     width: 136px;
+    outline: none;
   }
-  .header_search::placeholder {
+  .header-search::placeholder {
     font-weight: bold;
     font-size: 16px;
     color: #999999;
@@ -351,6 +351,10 @@ header {
 }
 @media screen and (max-width: 768px) {
 
+  .header-search {
+    text-align: center;
+    width: 96px;
+  }
   .border-image {    
     &::after {
       width: 85%;
@@ -360,6 +364,9 @@ header {
 
   .blog {
     top: 36px;
+    img {
+      width: 340px;
+    }
   }
   .breadcrumb {
     font-size: smaller;
@@ -367,6 +374,13 @@ header {
 }
 
 @media screen and (max-width: 960px) {
+  .header-search {
+    text-align: center;
+    width: 120px;
+  }
+  .header-search::placeholder {
+    text-align: center;
+  }
   .border-btn {
     font-size: small;
     &::after {
@@ -379,29 +393,13 @@ header {
         margin-top: -2px;
       }
   }
-  .header_search {
-    text-align: center;
+  .blog {
+    img {
+      width: 480px;
+    }
+    .blogIndexWrapper {
+      top: 120px;
+    }   
   }
-  .header_search::placeholder {
-    text-align: center;
-  }
-  
 }
 
-@media screen and (max-width: 960px) {
-  .border-btn {
-    font-size: small;
-    &::after {
-        right: 9px;
-        width: 6px;
-        height: 6px;
-        border: 0px;
-        border-top: solid 2px #ffffff;
-        border-right: solid 2px #ffffff;
-        margin-top: -2px;
-      }
-  }
-  .blogIndexWrapper {
-    top: 120px;
-  }  
-}

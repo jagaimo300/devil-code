@@ -70,7 +70,7 @@ $cakeDescription = 'Takahiro Ueda';
             </svg>
           </button>
 
-          <nav id="toggleNavMenu" class="nav col-12 col-lg-auto ms-auto text-small d-md-none position-absolute bg-dark top-100 end-0 w-50">
+          <nav id="toggleNavMenu" class="nav col-12 col-lg-auto ms-auto text-small d-md-none position-absolute bg-dark top-100 end-0 w-100">
             <ul class="m-0 p-0 mx-auto text-center">
               <li class="mb-3">
                 <a href="/blog" class="nav-link text-white">
@@ -96,8 +96,8 @@ $cakeDescription = 'Takahiro Ueda';
                     C512,244.685,507.479,233.866,499.436,225.905z" style="fill: rgb(153, 153, 153);"></path>
                 </g>
                 </svg>
-                  <input type="text" placeholder="検索" id="headerSearch" class="header_search bg-dark text-white border-0 py-0 px-2" nama="search">
-                  <button type="button" id="delBtn" class="del-btn bg-dark">
+                  <input type="text" placeholder="検索" class="header-search bg-dark text-white border-0 py-0 px-2" nama="search">
+                  <button type="button" class="del-btn bg-dark" aria-label="button delete serch word for desktop">
                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
                       .st0{fill:#4B4B4B;}
@@ -141,9 +141,9 @@ $cakeDescription = 'Takahiro Ueda';
                     C512,244.685,507.479,233.866,499.436,225.905z" style="fill: rgb(153, 153, 153);"></path>
                 </g>
                 </svg>
-                  <input type="text" placeholder="検索" id="headerSearch" class="header_search bg-dark text-white border-0 py-0 px-2" nama="search">
-                  <button type="button" id="delBtn" class="del-btn bg-dark">
-                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
+                  <input type="text" placeholder="検索" class="header-search bg-dark text-white border-0 py-0 px-2" nama="search">
+                  <button type="button" class="del-btn bg-dark" aria-label="button delete serch word for desktop">
+                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
                       .st0{fill:#4B4B4B;}
                     </style>

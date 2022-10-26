@@ -24,21 +24,21 @@ section {
 header {
   z-index: 100;
 }
-header .header_search {
-  outline: none;
+header .header-search {
   width: 136px;
+  outline: none;
 }
-header .header_search::-moz-placeholder {
+header .header-search::-moz-placeholder {
   font-weight: bold;
   font-size: 16px;
   color: #999999;
 }
-header .header_search:-ms-input-placeholder {
+header .header-search:-ms-input-placeholder {
   font-weight: bold;
   font-size: 16px;
   color: #999999;
 }
-header .header_search::placeholder {
+header .header-search::placeholder {
   font-weight: bold;
   font-size: 16px;
   color: #999999;
@@ -307,6 +307,10 @@ header .del-btn {
 }
 
 @media screen and (max-width: 768px) {
+  .header-search {
+    text-align: center;
+    width: 96px;
+  }
   .border-image::after {
     width: 85%;
     height: 85%;
@@ -314,11 +318,27 @@ header .del-btn {
   .blog {
     top: 36px;
   }
+  .blog img {
+    width: 340px;
+  }
   .breadcrumb {
     font-size: smaller;
   }
 }
 @media screen and (max-width: 960px) {
+  .header-search {
+    text-align: center;
+    width: 120px;
+  }
+  .header-search::-moz-placeholder {
+    text-align: center;
+  }
+  .header-search:-ms-input-placeholder {
+    text-align: center;
+  }
+  .header-search::placeholder {
+    text-align: center;
+  }
   .border-btn {
     font-size: small;
   }
@@ -331,33 +351,10 @@ header .del-btn {
     border-right: solid 2px #ffffff;
     margin-top: -2px;
   }
-  .header_search {
-    text-align: center;
+  .blog img {
+    width: 480px;
   }
-  .header_search::-moz-placeholder {
-    text-align: center;
-  }
-  .header_search:-ms-input-placeholder {
-    text-align: center;
-  }
-  .header_search::placeholder {
-    text-align: center;
-  }
-}
-@media screen and (max-width: 960px) {
-  .border-btn {
-    font-size: small;
-  }
-  .border-btn::after {
-    right: 9px;
-    width: 6px;
-    height: 6px;
-    border: 0px;
-    border-top: solid 2px #ffffff;
-    border-right: solid 2px #ffffff;
-    margin-top: -2px;
-  }
-  .blogIndexWrapper {
+  .blog .blogIndexWrapper {
     top: 120px;
   }
 }/*# sourceMappingURL=style.css.map */
