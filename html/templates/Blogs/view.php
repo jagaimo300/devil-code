@@ -210,7 +210,6 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
         const tgtElm = document.getElementsByClassName('tgt-elm');
         const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
 
-        
         window.addEventListener('scroll',() =>{
 	        for(let i = 0; i < tgtElm.length; i++){
 	            if((tgtElm[i].getBoundingClientRect().y + headerHeight) < 96){
