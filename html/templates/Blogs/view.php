@@ -96,10 +96,10 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                     <section class="blog_title mt-0 mb-7 text-break">
                         <h1 class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
                     </section>
-                    <section class="blog_thumbnail mt-0 mb-7" style="max-width: 720px;">
-                        <figure class="blog_thumbnailWra">
+                    <section class="blog_thumbnail mt-0 mb-7">
+                        <figure class="blog_thumbnailWrapper">
                             <span itemprop="image">
-                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%">
+                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%" height="auto" style="max-width: 100%;">
                             </span>
                         </figure>
                     </section>
