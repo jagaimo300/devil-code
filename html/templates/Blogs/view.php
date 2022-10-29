@@ -132,7 +132,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                                 <span>Category</span>
                                 <div class="mt-1 categories">
                                     <?php foreach ($categories as $category) : ?>
-                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 2) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
