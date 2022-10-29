@@ -25,7 +25,7 @@ header {
   z-index: 100;
 }
 header .header-search {
-  width: 136px;
+  width: 118px;
   outline: none;
 }
 header .header-search::-moz-placeholder {
@@ -309,7 +309,7 @@ header .del-btn {
 @media screen and (max-width: 768px) {
   .header-search {
     text-align: center;
-    width: 96px;
+    margin-left: 16px;
   }
   .border-image::after {
     width: 85%;
@@ -327,17 +327,7 @@ header .del-btn {
 }
 @media screen and (max-width: 960px) {
   .header-search {
-    text-align: center;
     width: 120px;
-  }
-  .header-search::-moz-placeholder {
-    text-align: center;
-  }
-  .header-search:-ms-input-placeholder {
-    text-align: center;
-  }
-  .header-search::placeholder {
-    text-align: center;
   }
   .border-btn {
     font-size: small;

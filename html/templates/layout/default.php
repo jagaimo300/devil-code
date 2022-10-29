@@ -83,7 +83,7 @@ $cakeDescription = 'Takahiro Ueda';
                 </a>
               </li>
               <li class="mb-3">
-                <form action="/blog" method="post" class="py-1 px-2 align-items-center">
+                <form action="/blog" method="post" class="py-1 align-items-center">
                 <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1; margin-bottom: 2px;" xml:space="preserve">
                 <style type="text/css">
                   .st0{fill:#4B4B4B;}
@@ -96,7 +96,7 @@ $cakeDescription = 'Takahiro Ueda';
                     C512,244.685,507.479,233.866,499.436,225.905z" style="fill: rgb(153, 153, 153);"></path>
                 </g>
                 </svg>
-                  <input type="text" placeholder="検索" class="header-search bg-dark text-white border-0 py-0 px-2" nama="search">
+                  <input type="text" placeholder="検索" class="header-search bg-dark text-white border-0 py-0" nama="search">
                   <button type="button" class="del-btn bg-dark" aria-label="button delete serch word for desktop">
                     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
@@ -127,7 +127,7 @@ $cakeDescription = 'Takahiro Ueda';
                   Contact
                 </a>
               </li>
-              <li class="ms-3 ms-xl-5">
+              <li class="ms-3">
                 <form action="/blog" method="post" class="py-1 px-2 align-items-center">
                 <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1; margin-bottom: 2px;" xml:space="preserve">
                 <style type="text/css">
@@ -143,7 +143,7 @@ $cakeDescription = 'Takahiro Ueda';
                 </svg>
                   <input type="text" placeholder="検索" class="header-search bg-dark text-white border-0 py-0 px-2" nama="search">
                   <button type="button" class="del-btn bg-dark" aria-label="button delete serch word for desktop">
-                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
+                    <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 8px; height: 8px; opacity: 1;" xml:space="preserve">
                     <style type="text/css">
                       .st0{fill:#4B4B4B;}
                     </style>
