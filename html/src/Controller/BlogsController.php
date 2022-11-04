@@ -68,39 +68,43 @@ class BlogsController extends AppController
     public function view($slug = null)
     {
 
-		list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
-		
-			if($cat === "view"){
-		        throw new NotFoundException(__('404 Not Found'));
-			}
+        list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
+    
+        if($cat === "view"){
+            throw new NotFoundException(__('404'));
+        }
 
+        $this->set('cat', $cat);
+        $this->set('slug', $slug);
 
-			$this->set('cat', $cat);
-			$this->set('slug', $slug);
+        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
 
-	        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-	        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+        $this->set(compact('categories'));
 
-			$this->set(compact('categories'));
+        $this->set('relations',  $this->Blogs->find('all', array(
+            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"<> $slug"],
+            'contain' => ['BlogsCategories'],
+            'limit' => '5',
+            'order' => 'Blogs.created ASC',
+            'recursive' => -1,
+        )));
 
-	        $this->set('relations',  $this->Blogs->find('all', array(
-				'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"<> $slug"],
-	            'contain' => ['BlogsCategories'],
-	            'limit' => '5',
-	            'order' => 'Blogs.created ASC',
-                'recursive' => -1,
-	        )));
+        $blogs = $this->Blogs->find('all', array(
+            'conditions' => ['Blogs.slug'=>"$slug"],
+            'contain' => ['BlogsCategories'],
+            'limit' => 1,
+            'order' => 'Blogs.id ASC',
+            'recursive' => -1,
+        ));
 
-	        $blogs = $this->Blogs->find('all', array(
-				'conditions' => ['Blogs.slug'=>"$slug"],
-	            'contain' => ['BlogsCategories'],
-	            'limit' => 1,
-	            'order' => 'Blogs.id ASC',
-	            'recursive' => -1,
-			));
-	        $this->set(compact('blogs'));
-        
-        
+        $is_blog = $blogs->count();
+
+        if(!$is_blog){
+            throw new NotFoundException(__('404'));
+        }
+
+        $this->set(compact('blogs'));
     }
 
     /**
@@ -197,6 +201,13 @@ class BlogsController extends AppController
             'order' => 'Blogs.created ASC',
             'recursive' => -1,
         )));
+
+        $is_blog = $blogs->count();
+
+        if(!$is_blog){
+            throw new NotFoundException(__('404'));
+        }
+
         $this->set(compact('blogs'));
     }
 
