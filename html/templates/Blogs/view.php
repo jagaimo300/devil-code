@@ -94,7 +94,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                         <span class="catTag d-inline-block ms-2 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                     </section>
                     <section class="blog_title mt-0 mb-7 text-break">
-                        <h1 class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
+                        <h1 class="blog_title-heading text-wrap m-0" style="font-size: 32px;"><?= h($blog->title) ?></h1>
                     </section>
                     <section class="blog_thumbnail mt-0 mb-7">
                         <figure class="blog_thumbnailWrapper">
