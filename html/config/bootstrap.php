@@ -227,4 +227,4 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('uninflected', ['dontinflectme']);
 
 
-define("URL_GITHUB","https://github.com/devil-works");
+define("URL_GITHUB","https://github.com/devil-works/devil-code");
