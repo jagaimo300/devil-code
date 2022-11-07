@@ -72,15 +72,18 @@
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
                 <?php foreach ($news as $index => $new) : ?>
-                    <a href="/blogs/view/<?= h($new->slug) ?>" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
+                    <a href="/blogs/<?= h($new->blogs_category->category_label) ?>/<?= h($new->slug) ?>/" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                         <div class="row card-item overflow-hidden position-relative">
-                            <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/1.jpg'); background-position: center; background-size: cover; height: 180px;">
+                            <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('/files/blogs/thumbnails/<?= sprintf("%010d", $new->id) ?>.jpg'); background-position: center; background-size: cover; height: 180px;">
                             </div>
                             <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
 
-                            <div class="col pb-4 px-4 d-flex flex-column position-relative">
-                                <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl text-truncate"><?= h($new->title) ?></h3>
-                                <div class="mt-3 text-muted d-flex justify-content-between align-items-center"><span style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span><span class="arrow"></span></div>
+                            <div class="col pb-4 px-4 d-flex flex-column position-relative" style="height: 180px;">
+                                <h3 class="mt-3 mb-0 pb-5 fs-5 blog-ttl lh-base"><?= h($new->title) ?></h3>
+                                <div class="mt-3 w-100 text-muted d-flex justify-content-between align-items-center position-absolute" style="bottom: 24px;">
+                                    <span style="font-size: 12px;"><?= h($new->created->i18nFormat('yyyy.MM.dd')) ?></span>
+                                    <span class="arrow"></span>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -92,7 +95,6 @@
         </div>
     </div>
 </section>
-
 <section class="contact py-5">
     <div class="contact-bg container my-5">
         <div class="contact-inner row justify-content-center align-items-center text-center m-0">
@@ -120,8 +122,8 @@
                 <h2>Takahiro Ueda</h2>
                 <p>Web Programmer</p>
                 <p class="lh-lg">宮城を拠点として活動しているWEBプログラマーです。
-                    <br>新しい技術や知見を得ることに生きがいを感じます。
-                    <br>趣味はラグビー観戦、筋トレ 好きな食べ物は寿司 猫派です。
+                    <br>新しい技術や知見を得ることに喜びと生きがいを感じます。
+                    <br>趣味はラグビー観戦、筋トレ、外国語学習 好きな食べ物は寿司 猫派です。
                 </p>
                 <p class="lh-lg">Hello, I'm a Junior Web Developer based in Japan.
                     <br>I really enjoy using my skills to help improve things.
@@ -131,5 +133,4 @@
         </div>
     </div>
 </section>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>

@@ -55,12 +55,11 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 
 ?>
 
-<div class="blog ls-1"  style="min-height: 150vh;">
+<div class="blog ls-1" style="min-height: 150vh;">
     <div class="container">
         <div class="row">
             <?php foreach ($blogs as $index => $blog) : ?>
                 <article class="col-12 col-md-9">
-
                     <section class="blog_meta mb-2">
                         <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                             <style type="text/css">

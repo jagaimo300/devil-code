@@ -50,10 +50,12 @@ header .del-btn {
 
 #toggleNavBtn[aria-expanded=true] + #toggleNavMenu {
   opacity: 1;
+  transform: translateX(0px);
 }
 
 #toggleNavBtn[aria-expanded=false] + #toggleNavMenu {
   opacity: 0;
+  transform: translateX(100vw);
 }
 
 .swiper {
@@ -124,6 +126,20 @@ header .del-btn {
   position: relative;
 }
 .border-btn::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 0px;
+  border-top: solid 2px #ffffff;
+  border-right: solid 2px #ffffff;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  margin-top: -4px;
+}
+
+.btn-long::after {
   content: "";
   width: 12px;
   height: 12px;
@@ -304,6 +320,14 @@ header .del-btn {
 
 .accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23cc99ff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.errorImage {
+  background-image: url("https://devil-code.com/img/brand-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 280px;
+  height: 280px;
 }
 
 @media screen and (max-width: 768px) {

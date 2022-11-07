@@ -55,6 +55,12 @@ class BlogsController extends AppController
             'recursive' => -1,
         )));
 
+        $is_blog = $blogs->count();
+
+        if(!$is_blog){
+            throw new NotFoundException(__('404'));
+        }
+
         $this->set(compact('blogs'));
     }
 
