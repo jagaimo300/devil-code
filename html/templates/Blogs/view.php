@@ -3,9 +3,10 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
-$this->Breadcrumbs->add(
+
+ $this->Breadcrumbs->add(
     'Home',
-    ['controller' => 'pages', 'action' => 'display'],
+    ['controller' => '/', 'action' => '/'],
     [
         'templateVars' => [
             'num' => '1'
@@ -52,8 +53,50 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
-
 ?>
+
+<?php foreach ($blogs as $index => $blog) : ?>
+
+    <?php 
+        $create_date = new \DateTime($blog->created, new \DateTimeZone('Asia/Tokyo'));
+        $create_date->setTimezone( new \DateTimeZone('UTC'));
+        $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . 'Z';
+
+        $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
+        $modify_date->setTimezone( new \DateTimeZone('UTC'));
+        $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . 'Z';
+    ?>
+
+    
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://devil-code.com/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/"
+            },
+            "headline": "<?= h($blog->title) ?>",
+            "image": ["https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg"],
+            "datePublished": "<?=  h($created_iso8601) ?>",
+            "dateModified": "<?=  h($modified_iso8601) ?>",
+            "author": {
+                "@type": "Person",
+                "name": "Takahiro Ueda"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "devil code",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://devil-code.com/img/brand-icon.png"
+                }
+            },
+            "description": "<?= h($blog->description) ?>"
+        }
+    </script>
+<?php endforeach; ?>
 
 <div class="blog ls-1" style="min-height: 150vh;">
     <div class="container">
@@ -89,7 +132,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
                                 <rect x="111.386" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
                             </g>
                         </svg>
-                        <span class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></span>
+                        <time class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></time>
                         <span class="catTag d-inline-block ms-2 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                     </section>
                     <section class="blog_title mt-0 mb-7 text-break">
@@ -208,48 +251,3 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
     }
 </script>
 <?= $this->Html->script(['bootstrap.bundle.min']) ?>
-
-<!-- <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Blog'), ['action' => 'edit', $blog->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Blog'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Blogs'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="blogs view content">
-            <h3><?= h($blog->title) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Title') ?></th>
-                    <td><?= h($blog->title) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($blog->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Category Id') ?></th>
-                    <td><?= $this->Number->format($blog->category_id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($blog->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($blog->modified) ?></td>
-                </tr>
-            </table>
-            <div class="text">
-                <strong><?= __('Body') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($blog->body)); ?>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-</div> -->

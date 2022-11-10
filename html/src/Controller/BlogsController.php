@@ -73,9 +73,9 @@ class BlogsController extends AppController
      */
     public function view($slug = null)
     {
-
         list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
-    
+        
+        // アクション名をURLに使えなくする
         if($cat === "view"){
             throw new NotFoundException(__('404'));
         }
@@ -104,9 +104,7 @@ class BlogsController extends AppController
             'recursive' => -1,
         ));
 
-        $is_blog = $blogs->count();
-
-        if(!$is_blog){
+        if($blogs->isEmpty()){
             throw new NotFoundException(__('404'));
         }
 

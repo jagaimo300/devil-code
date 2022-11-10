@@ -35,5 +35,6 @@ class Blog extends Entity
         'created' => true,
         'modified' => true,
         'blogs_category' => true,
+        'description' => true,        
     ];
 }

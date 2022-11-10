@@ -51,7 +51,7 @@ $cakeDescription = 'Takahiro Ueda';
   <?= $this->Html->css(['bootstrap.min', 'style', 'sunburst']) ?>
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
-  <?= $this->fetch('scriptTop') ?>
+  <?= $this->fetch('jsonLd') ?>
 </head>
 
 <body>
