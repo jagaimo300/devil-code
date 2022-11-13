@@ -80,9 +80,20 @@ class PagesController extends AppController
         }
 
     }
-    
+
     public function contact()
     {
     }
+    
+    public function sitemaps()
+    {
+        $blogs = TableRegistry::getTableLocator()->get('Blogs');
+        $this->set('blogs', $blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+            'limit' => 4900,
+		    'order' => 'Blogs.created DESC',
+		    'recursive' => -1,
+		)));
     }
+}
     

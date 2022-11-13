@@ -83,7 +83,8 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
             "dateModified": "<?=  h($modified_iso8601) ?>",
             "author": {
                 "@type": "Person",
-                "name": "Takahiro Ueda"
+                "name": "Takahiro Ueda",
+                "url": "http://devil-code.com"
             },
             "publisher": {
                 "@type": "Organization",
@@ -207,7 +208,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 <script type="text/javascript">
     function toggleIndexActive(blogIndex){
         console.log(blogIndex);

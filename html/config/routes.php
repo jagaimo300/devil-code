@@ -16,15 +16,22 @@ return static function (RouteBuilder $routes) {
     });
 
 
-    $routes->scope('/contact/*', function (RouteBuilder $builder) {
+    $routes->scope('/contact', function (RouteBuilder $builder) {
 
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'contact']);
 
         $builder->fallbacks();
     });
 
-    
-    $routes->scope('/policy/*', function (RouteBuilder $builder) {
+    $routes->scope('/sitemaps', function (RouteBuilder $builder) {
+
+        $builder->connect('/', ['controller' => 'Pages', 'action' => 'sitemaps']);
+
+        $builder->fallbacks();
+    });
+
+
+    $routes->scope('/policy', function (RouteBuilder $builder) {
 
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'policy']);
 

@@ -144,8 +144,9 @@
   <footer class="py-3 mt-4 bg-dark text-white w-100">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item"><a href="/blog" class="nav-link px-2 text-muted">Blog</a></li>
-          <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
           <li class="nav-item"><a href="/contact" class="nav-link px-2 text-muted">Contact</a></li>
+          <li class="nav-item"><a href="/sitemaps/" class="nav-link px-2 text-muted">Sitemaps</a></li>
+          <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
       </ul>
       <p class="text-center text-muted">&copy; 2022 devil code</p>
   </footer>
