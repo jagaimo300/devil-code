@@ -20,10 +20,14 @@ $cakeDescription = 'Takahiro Ueda';
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <?= $this->Html->charset() ?>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Cache-Control" content="no-cache">
+  <title>
+    <?= $cakeDescription ?>:
+    <?= $this->fetch('title') ?>
+  </title>
+  <?= $this->fetch('meta') ?>
+
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -42,18 +46,13 @@ $cakeDescription = 'Takahiro Ueda';
     })(window, document, 'script', 'dataLayer', 'GTM-PN98ZV8');
   </script>
   <!-- End Google Tag Manager -->
-  <title>
-    <?= $cakeDescription ?>:
-    <?= $this->fetch('title') ?>
-  </title>
-  <?= $this->Html->meta('icon') ?>
 
+  <?= $this->Html->meta('icon') ?>
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" sizes="180x180">  
   <?= $this->Html->css(['bootstrap.min', 'style', 'sunburst']) ?>
-  <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
   <?= $this->fetch('jsonLd') ?>
 </head>
-
 <body>
   <header id="header" class="position-fixed w-100 top-0 position-relative" style="z-index: 1000;">
     <div class="px-4 py-md-3 bg-dark text-white">
@@ -118,12 +117,12 @@ $cakeDescription = 'Takahiro Ueda';
           <nav class="nav col-12 col-lg-auto my-md-0 text-small d-none d-md-inline-block">
             <ul class="d-flex align-items-center justify-content-center m-0 ms-5 ps-5 p-0 ">
               <li>
-                <a href="/blog" class="nav-link text-white">
+                <a href="/blog/" class="nav-link text-white">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="/contact" class="nav-link text-white">
+                <a href="/contact/" class="nav-link text-white">
                   Contact
                 </a>
               </li>

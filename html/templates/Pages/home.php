@@ -8,6 +8,24 @@
 ?>
 
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
+<meta name=”twitter:card” content=”Twitterカードの種類” />
+<meta name=”twitter:site” content=”@ユーザー名” />
+<meta name=”twitter:domain” content=”ドメイン名” />
+<meta name=”twitter:title” content=”Webページのタイトル” />
+<meta name=”twitter:description” content=”Webページの説明（ディスクリプション）” />
+<meta name=”twitter:image” content=”アイキャッチ画像のパス（URL）” />
+
+<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、キャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+
+
+<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.jpg"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">

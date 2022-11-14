@@ -59,15 +59,12 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 
     <?php 
         $create_date = new \DateTime($blog->created, new \DateTimeZone('Asia/Tokyo'));
-        $create_date->setTimezone( new \DateTimeZone('UTC'));
-        $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . 'Z';
+        $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . '+09:00';
 
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modify_date->setTimezone( new \DateTimeZone('UTC'));
-        $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . 'Z';
+        $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
     ?>
-
-    
 
     <script type="application/ld+json">
         {
