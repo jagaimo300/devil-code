@@ -39,9 +39,9 @@ $this->assign('title', ' - Blog');
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <?php foreach ($tops as $index => $top) : ?>
-            <div class="swiper-slide" style="background-image: url('../files/blogs/thumbnails/<?= sprintf("%010d", $top->id) ?>.jpg')">
+            <div class="swiper-slide slide-mask " style="background-image: url('../files/blogs/thumbnails/<?= sprintf("%010d", $top->id) ?>.jpg')">
                 <div class="text-wrapper ls-1">
-                    <h2 class="blog-ttl px-3 mt-4 mb-5 pb-5"><?= h($top->title) ?></h2>
+                    <h2 class="blog-ttl px-3 py-1 mx-3 mt-4 d-inline-block" style="margin-bottom: 120px;"><?= h($top->title) ?></h2>
                     <div class="text-wrapper ls-1 mt-5 pt-5">
                         <a href="/blogs/<?= h($top->blogs_category->category_label) ?>/<?= h($top->slug) ?>/" class="border-btn px-4 px-md-5 py-3 border border-3 border-white text-white text-nowrap">ブログを見る</a>
                     </div>
@@ -59,10 +59,10 @@ $this->assign('title', ' - Blog');
                 <p>Lately posts</p>
             </div>
             <div class="row mb-2 px-3">
-                <div class="col-xl-8 card-item pt-3">
+                <div class="col-xl-8 card-item pt-3 pt-md-0">
                     <ul class="list-group list-group-flush">
                         <?php foreach ($news as $index => $new) : ?>
-                            <li class="list-group-item mb-3 mb-md-0">
+                            <li class="list-group-item mb-3 mb-md-0 pt-md-4">
                                 <a href="/blogs/<?= h($new->blogs_category->category_label) ?>/<?= h($new->slug) ?>/">
                                     <div class="d-md-flex"  style="line-height: 30px;">
                                         <div class="d-flex">
