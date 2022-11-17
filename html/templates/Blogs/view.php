@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 
- $this->Breadcrumbs->add(
+$this->Breadcrumbs->add(
     'Home',
     ['controller' => '/', 'action' => '/'],
     [
@@ -57,13 +57,25 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
 
 <?php foreach ($blogs as $index => $blog) : ?>
 
+
     <?php 
         $create_date = new \DateTime($blog->created, new \DateTimeZone('Asia/Tokyo'));
         $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . '+09:00';
 
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
-        $modify_date->setTimezone( new \DateTimeZone('UTC'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
+        // description
+        $this->Html->meta(["name"=>"description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
+        // ogp
+        $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']);
+
+
+        $this->Html->meta(["property"=>"og:description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".jpg"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
     ?>
 
     <script type="application/ld+json">

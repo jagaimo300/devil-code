@@ -34,6 +34,7 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', ' - Sitemaps');
+$this->assign('canonical', '<link rel="canonical" href="http://devil-code.com/sitemaps/" />');
 
 $cat_exists = array();
 ?>

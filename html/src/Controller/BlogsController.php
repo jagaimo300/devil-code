@@ -31,7 +31,8 @@ class BlogsController extends AppController
 		$this->set('features', $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories','BlogsFeatured'],
 		    'order' => 'BlogsFeatured.id ASC',
-		    'recursive' => -1,
+		    'order' => 'Blogs.created DESC',
+            'recursive' => -1,
 		)));
 
         $this->set('tops',  $this->Blogs->find('all', array(
@@ -51,7 +52,7 @@ class BlogsController extends AppController
 
         $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
             'contain' => ['BlogsCategories'],
-            'order' => 'Blogs.created ASC',
+		    'order' => 'Blogs.created DESC',
             'recursive' => -1,
         )));
 
@@ -205,6 +206,11 @@ class BlogsController extends AppController
             'order' => 'Blogs.created ASC',
             'recursive' => -1,
         )));
+
+        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id')->where(['BlogsCategories.category_label IS NOT' => $cat]);
+
+		$this->set(compact('categories'));
 
         $is_blog = $blogs->count();
 
