@@ -52,12 +52,10 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
+$this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
 ?>
 
 <?php foreach ($blogs as $index => $blog) : ?>
-
-
     <?php 
         $create_date = new \DateTime($blog->created, new \DateTimeZone('Asia/Tokyo'));
         $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . '+09:00';
@@ -77,7 +75,6 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
     ?>
-
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -243,7 +240,7 @@ $this->assign('title', ' - Blog - ' . $cat . '-' . $slug);
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
             targetTags[i].classList.add('tgt-elm');
-            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${headingIndex}. ${targetTags[i].innerText}</a></li>`);
         } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);

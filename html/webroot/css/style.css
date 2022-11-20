@@ -345,6 +345,12 @@ header .del-btn {
   .blog .blog_body img {
     max-width: 340px;
   }
+  .blog .blog_body li {
+    margin-bottom: 8px;
+  }
+  .blog .blog_body h4, .blog .blog_body h5, .blog .blog_body p, .blog .blog_body i {
+    font-size: smaller;
+  }
   .breadcrumb {
     font-size: smaller;
   }

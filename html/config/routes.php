@@ -37,6 +37,7 @@ return static function (RouteBuilder $routes) {
 
         $builder->fallbacks();
     });
+    $routes->connect('/blogs/search', ['controller' => 'Blogs', 'action' => 'search']);
 
     $routes->connect('/blogs', ['controller' => 'Blogs', 'action' => 'index']);
 

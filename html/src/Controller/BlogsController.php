@@ -21,20 +21,12 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        $this->set('news', $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories'],
-            'limit' => 3,
-		    'order' => 'Blogs.created DESC',
-		    'recursive' => -1,
-		)));
+        // deny query strings
+        if($this->request->getQuery()){
+            throw new NotFoundException(__('404'));
+        }
 
-		$this->set('features', $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories','BlogsFeatured'],
-		    'order' => 'BlogsFeatured.id ASC',
-		    'order' => 'Blogs.created DESC',
-            'recursive' => -1,
-		)));
-
+        // top article
         $this->set('tops',  $this->Blogs->find('all', array(
             'conditions' => ['Blogs.is_top'=> "1"],
             'contain' => ['BlogsCategories'],
@@ -42,25 +34,34 @@ class BlogsController extends AppController
             'recursive' => -1,
         )));
 
+        // Lately posts
+        $this->set('news', $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+            'limit' => 3,
+		    'order' => 'Blogs.created DESC',
+		    'recursive' => -1,
+		)));
 
-        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
-
-		$this->set(compact('categories'));
-
-        $this->loadComponent('Paginator');
-
-        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-            'contain' => ['BlogsCategories'],
+        // Featured
+		$this->set('features', $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories','BlogsFeatured'],
+		    'order' => 'BlogsFeatured.id ASC',
 		    'order' => 'Blogs.created DESC',
             'recursive' => -1,
-        )));
+		)));
 
-        $is_blog = $blogs->count();
+        // Categories
+        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+		$this->set(compact('categories'));
 
-        if(!$is_blog){
-            throw new NotFoundException(__('404'));
-        }
+        $blogs = $this->Blogs->find('all', array(
+            'contain' => ['BlogsCategories'],
+            'offset' => 3,
+            'limit' => 8,
+		    'order' => 'Blogs.created DESC',
+            'recursive' => -1,
+        ));
 
         $this->set(compact('blogs'));
     }
@@ -74,6 +75,11 @@ class BlogsController extends AppController
      */
     public function view($slug = null)
     {
+        // deny query strings
+        if($this->request->getQuery()){
+            throw new NotFoundException(__('404'));
+        }
+
         list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
         
         // アクション名をURLに使えなくする
@@ -187,6 +193,10 @@ class BlogsController extends AppController
      */
     public function category($cat = null)
     {
+        // deny query strings
+        if($this->request->getQuery()){
+            throw new NotFoundException(__('404'));
+        }
 
     	if(!$cat){
 	        list($dummy, $ctl, $cat) = explode("/", Router::url());
@@ -207,18 +217,49 @@ class BlogsController extends AppController
             'recursive' => -1,
         )));
 
+        if($blogs->isEmpty()){
+            throw new NotFoundException(__('404'));
+        }
+        $this->set(compact('blogs'));
+
         $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
         $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id')->where(['BlogsCategories.category_label IS NOT' => $cat]);
 
 		$this->set(compact('categories'));
+    }
 
-        $is_blog = $blogs->count();
-
-        if(!$is_blog){
-            throw new NotFoundException(__('404'));
+    /**
+     * Search method
+     *
+     * @param string|null $q Blog title body slug description.
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function search($q = null)
+    {
+        // deny query strings
+        $q = $this->request->getQuery('q');
+        
+        if(!$q){
+            return $this->redirect(['action' => 'index']);
         }
+        $this->loadComponent('Paginator');
+
+        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
+			'conditions' => ['Blogs.title LIKE'=>"%$q%"],
+            'contain' => ['BlogsCategories'],
+            'order' => 'Blogs.created ASC',
+            'recursive' => -1,
+        )));
+        $blog_count = $blogs->count();
+		$this->set(['q' => $q, 'blog_count' => $blog_count]);
 
         $this->set(compact('blogs'));
+
+        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+
+		$this->set(compact('categories'));
     }
 
 }
