@@ -232,15 +232,17 @@ $this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
     const targetTags = bodyText.querySelectorAll('h1, h2, h3, h4, h5, b, img');
     const blogIndexList = document.getElementById('blogIndexWrapper-list');
 
+    let bigHeadingIndex = 0;
     let headingIndex = 0;
     let boldIndex = 0;
     for(let i = 0; i < targetTags.length; i++){
 
         if(targetTags[i].outerHTML.match(/h1|h2/gi)) {
+            bigHeadingIndex++;
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
             targetTags[i].classList.add('tgt-elm');
-            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${headingIndex}. ${targetTags[i].innerText}</a></li>`);
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${bigHeadingIndex}. ${targetTags[i].innerText}</a></li>`);
         } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);

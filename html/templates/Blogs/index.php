@@ -36,6 +36,14 @@ $this->assign('title', ' - Blog');
 
 ?>
 <?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
+<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage - Blog"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com/blogs/"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
+
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <?php foreach ($tops as $index => $top) : ?>
@@ -47,6 +55,7 @@ $this->assign('title', ' - Blog');
                     </div>
                 </div>
             </div>
+            <?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/<?= sprintf('%010d', $top->id) ?>.jpg"],null,["block"=>'meta']); ?>
         <?php endforeach; ?>
     </div>
 </div>

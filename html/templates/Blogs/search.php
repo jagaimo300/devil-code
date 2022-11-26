@@ -49,7 +49,7 @@ if(!$blog_count){
 }
 ?>
 
-<section class="blog">
+<section class="blog h-100">
     <div class="container">
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">

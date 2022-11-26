@@ -35,8 +35,7 @@ $this->Breadcrumbs->setTemplates([
 
 $this->assign('title', ' - Sitemaps');
 $this->assign('canonical', '<link rel="canonical" href="http://devil-code.com/sitemaps/" />');
-
-$cat_exists = array();
+$is_exits[] = ''
 ?>
 
 <section class="blog">
@@ -48,11 +47,13 @@ $cat_exists = array();
                 <ul>
                     <?php foreach ($blogs as $index => $blog) : ?>
                         <?php 
-                            if (!in_array($blogs->$category_id, $cat_exists)) {
-                                echo "<li><a href='/blogs/" . $blog->blogs_category->category_label ."'><span class='catTag mb-4' style='background-color:" . $blog->blogs_category->category_color . ";'>" . $blog->blogs_category->category_label . "</span></a></li>";
-                            }    
-                            $cat_exists[] = $blogs->$category_id;                        
+                            if(!in_array($blog->blogs_category->category_label, $is_exits)){
+                                echo "<li><a href='/blogs/" . $blog->blogs_category->category_label ."'><span class='catTag mb-4' style='background-color:" . $blog->blogs_category->category_color . ";'>" . $blog->blogs_category->category_label . "</span></a></li>";                            
+                            } 
+                            
+                            $is_exits[] = $blog->blogs_category->category_label;
                         ?>
+
                         <li style="list-style: square"><a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>" class="pe-lg-5 h-100">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>

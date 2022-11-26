@@ -239,14 +239,28 @@ class BlogsController extends AppController
     {
         // deny query strings
         $q = $this->request->getQuery('q');
-        
+
         if(!$q){
             return $this->redirect(['action' => 'index']);
         }
         $this->loadComponent('Paginator');
 
+        //テキストボックスの空白を半角スペースに置換し半角スペース区切りで配列に格納
+        $textboxs = explode(" ",mb_convert_kana($q,'s'));
+        
+        //SQL文に追加する字句の生成
+        foreach($textboxs as $textbox){
+            $value = '"%'.preg_replace('/ /', '', $textbox) . '%"';
+            $textboxCondition[] = "Blogs.title LIKE $value";            
+        }
+
+        //各Like条件を「OR」でつなぐ
+        $textboxCondition = implode(' OR ', $textboxCondition);
+
         $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-			'conditions' => ['Blogs.title LIKE'=>"%$q%"],
+			'conditions' => [
+                $textboxCondition
+            ],
             'contain' => ['BlogsCategories'],
             'order' => 'Blogs.created ASC',
             'recursive' => -1,
@@ -261,5 +275,4 @@ class BlogsController extends AppController
 
 		$this->set(compact('categories'));
     }
-
 }
