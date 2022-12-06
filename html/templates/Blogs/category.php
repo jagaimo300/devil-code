@@ -46,7 +46,7 @@ $this->assign('title', ' - Blog - ' . $cat);
 
 ?>
 
-<section class="blog">
+<section class="blog" style="min-height: 60vh;">
     <div class="container">
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">
@@ -68,7 +68,7 @@ $this->assign('title', ' - Blog - ' . $cat);
                     <h5>他のカテゴリー</h5>
                     <p class="mb-2">Other category</p>
                     <?php foreach ($categories as $category) : ?>
-                        <a href="../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 2) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+                        <a href="../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>

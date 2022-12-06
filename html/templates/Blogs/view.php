@@ -181,7 +181,7 @@ $this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
                                 <span>Category</span>
                                 <div class="mt-1 categories">
                                     <?php foreach ($categories as $category) : ?>
-                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@ $this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js" defer></script>
 <script type="text/javascript">
     function toggleIndexActive(blogIndex){
         console.log(blogIndex);
@@ -259,4 +259,4 @@ $this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
         // }
     }
 </script>
-<?= $this->Html->script(['bootstrap.bundle.min']) ?>
+<?= $this->Html->script(['bootstrap.bundle.min'],['defer']) ?>

@@ -104,7 +104,7 @@ class BlogsController extends AppController
         )));
 
         $blogs = $this->Blogs->find('all', array(
-            'conditions' => ['Blogs.slug'=>"$slug"],
+            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"$slug"],
             'contain' => ['BlogsCategories'],
             'limit' => 1,
             'order' => 'Blogs.id ASC',
