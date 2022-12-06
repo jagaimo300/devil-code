@@ -5,6 +5,7 @@
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 
+$this->Html->meta(["name"=>"robots","content"=>"noindex",],null,["block"=>'meta']);
 $this->Breadcrumbs->add(
     'Home',
     ['controller' => 'pages', 'action' => 'display'],

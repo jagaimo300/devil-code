@@ -213,7 +213,7 @@ class BlogsController extends AppController
         $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
 			'conditions' => ['BlogsCategories.category_label'=>"$cat"],
             'contain' => ['BlogsCategories'],
-            'order' => 'Blogs.created ASC',
+            'order' => 'Blogs.created DESC',
             'recursive' => -1,
         )));
 
