@@ -52,7 +52,6 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
 ?>
 
 <?php foreach ($blogs as $index => $blog) : ?>
@@ -62,6 +61,8 @@ $this->assign('title', ' - Blog - ' . $cat . ' - ' . $slug);
 
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
+        $this->assign('title', 'Blog - ' . $blog->title);
+
         // description
         $this->Html->meta(["name"=>"description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
         // ogp

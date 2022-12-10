@@ -15,7 +15,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'Takahiro Ueda';
+$cakeDescription = 'devil code';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
