@@ -245,30 +245,36 @@ header .del-btn {
 }
 .blog .blog_title-heading {
   padding-top: 8px;
-  font-size: clamp(24px, 5vw, 48px);
+  font-size: clamp(24px, 5vw, 32px);
 }
 .blog .blog_body h1, .blog .blog_body h2 {
-  margin: 48px 0px;
-  padding-bottom: 8px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   font-size: 32px;
   font-weight: 600;
+  margin: 48px 0px;
+  padding-bottom: 8px;
 }
 .blog .blog_body h3 {
-  margin-bottom: 28px;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 600;
+  margin: 48px 0px;
 }
-.blog .blog_body h4, .blog .blog_body h5, .blog .blog_body p, .blog .blog_body i {
+.blog .blog_body h4, .blog .blog_body h5 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 48px 0px;
+  line-height: 32px;
+}
+.blog .blog_body p, .blog .blog_body i {
   font-size: 16px;
   margin-bottom: 14px;
   line-height: 32px;
 }
-.blog .blog_body ul {
+.blog .blog_body ul, .blog .blog_body ol {
   max-width: 720px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-top: 48px;
+  margin-top: 12px;
   margin-bottom: 48px;
   padding-top: 24px;
 }
@@ -279,9 +285,6 @@ header .del-btn {
   margin-right: 3rem;
   margin-left: 3rem;
   padding-bottom: 24px;
-}
-.blog .blog_body p {
-  font-size: 16px;
 }
 .blog .blog_body strong {
   font-weight: 700;
@@ -315,6 +318,9 @@ header .del-btn {
 }
 .blog .blog_body table tr:nth-child(even) {
   background-color: #eee;
+}
+.blog .blog_body pre {
+  padding: 16px;
 }
 .blog .blogIndexWrapper-list {
   border-radius: 12px;
@@ -389,20 +395,24 @@ header .del-btn {
   .blog {
     top: 36px;
   }
+  .blog .blogIndexWrapper-list .list-large .blogIndexWrapper-listItem_heading {
+    font-weight: 600;
+  }
   .blog table th, .blog table td {
     font-size: 8px;
+  }
+  .blog .blog_body h1, .blog .blog_body h2, .blog .blog_body h3, .blog .blog_body h4, .blog .blog_body h5 {
+    font-size: 24px;
   }
   .blog .blog_body img {
     max-width: 340px;
   }
   .blog .blog_body li {
     margin-bottom: 8px;
-  }
-  .blog .blog_body h4, .blog .blog_body h5, .blog .blog_body p, .blog .blog_body i {
-    font-size: smaller;
+    font-size: 16px;
   }
   .breadcrumb {
-    font-size: smaller;
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 960px) {
