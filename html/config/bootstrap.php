@@ -226,5 +226,5 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 
-define("URL","https://devil-code.com/");
+define("BASE_URL","https://devil-code.com");
 define("URL_GITHUB","https://github.com/devil-works/devil-code");
