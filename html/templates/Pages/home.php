@@ -5,7 +5,7 @@
  * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
  */
     $this->assign('title', ' - Homepage');
-    $this->assign('canonical', '<link rel="canonical" href="http://devil-code.com" />');
+    $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
 

@@ -5,6 +5,7 @@
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 
+// パンくず生成
 $this->Breadcrumbs->add(
     'Home',
     ['controller' => 'pages', 'action' => 'display'],
@@ -32,14 +33,14 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', 'Blog');
-
+$this->assign('title', 'ブログ');
+$this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/" />');
 ?>
-<?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
-<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
+<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage - Blog"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com/blogs/"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
@@ -85,14 +86,6 @@ $this->assign('title', 'Blog');
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <!-- <div class="col-md-4 card-item">
-                    <ul class="row">
-                        <li class="mb-3"><a href="https://blog.naver.com/devil_code">힌국어 브로그</a></li>
-                        <li class="mb-3"><a href="https://medium.com/@devil-code">English blog</a></li>
-                        <li class="mb-3"><a href="https://twitter.com/devil_code_com">@devil_code_com</a></li>
-                        <li class="mb-3"><a href="https://www.instagram.com/devil_code_com/">@devil_code_com</a></li>
-                    </ul>
-                </div> -->
             </div>
         </div>
     </div>
@@ -142,7 +135,7 @@ $this->assign('title', 'Blog');
                 <p>Category</p>
                 <div class="category  mt-3 mb-5">
 	                <?php foreach ($categories as $category) : ?>
-	                    <a href="../blogs/<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+	                    <a href="../blogs/<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
 	                <?php endforeach; ?>
                 </div>
             </div>

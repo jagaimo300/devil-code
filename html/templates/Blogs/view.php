@@ -24,7 +24,7 @@ $this->Breadcrumbs->add(
 );
 
 $this->Breadcrumbs->add(
-    'カテゴリー（' . $cat . '）',
+    'カテゴリー（' . $cat . ')',
     ['controller' => 'blogs', 'action' => $cat],
     [
         'templateVars' => [
@@ -62,19 +62,18 @@ $this->Breadcrumbs->setTemplates([
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
         $this->assign('title', 'Blog - ' . $blog->title);
-
+        $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' .$blog->slug . '/"' . ' />');
         // description
         $this->Html->meta(["name"=>"description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
         // ogp
         $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']);
-
-
         $this->Html->meta(["property"=>"og:description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".jpg"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
+        
     ?>
     <script type="application/ld+json">
         {
@@ -141,10 +140,30 @@ $this->Breadcrumbs->setTemplates([
                             </g>
                         </svg>
                         <time class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></time>
+    
+                        <?php if($blog->created->i18nFormat('yyyy.MM.dd') !== $blog->modified->i18nFormat('yyyy.MM.dd')): ?>
+                            <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="margin-left:8px; width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0{fill:#4B4B4B;}
+                            </style>
+                            <g>
+                                <path class="st0" d="M403.925,108.102c-27.595-27.595-62.899-47.558-102.459-56.29L304.182,0L201.946,53.867l-27.306,14.454
+                                    l-5.066,2.654l8.076,4.331l38.16,20.542l81.029,43.602l2.277-42.859c28.265,7.546,53.438,22.53,73.623,42.638
+                                    c29.94,29.939,48.358,71.119,48.358,116.776c0,23.407-4.843,45.58-13.575,65.687l40.37,17.532
+                                    c11.076-25.463,17.242-53.637,17.242-83.219C465.212,198.306,441.727,145.904,403.925,108.102z" style="fill: rgb(75, 75, 75);"></path>
+                                <path class="st0" d="M296.256,416.151l-81.101-43.612l-2.272,42.869c-28.26-7.555-53.51-22.53-73.618-42.636
+                                    c-29.945-29.95-48.364-71.12-48.364-116.767c0-23.427,4.844-45.522,13.576-65.697l-40.37-17.531
+                                    c-11.076,25.53-17.242,53.723-17.242,83.228c0,57.679,23.407,110.157,61.21,147.893c27.595,27.594,62.899,47.548,102.453,56.202
+                                    l-2.716,51.9l102.169-53.878l27.455-14.454l4.988-2.643l-7.999-4.332L296.256,416.151z" style="fill: rgb(75, 75, 75);"></path>
+                            </g>
+                            </svg>
+                            <time class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->modified->i18nFormat('yyyy.MM.dd')) ?></time>
+                        <?php endif; ?>
+    
                         <span class="catTag d-inline-block ms-2 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                     </section>
                     <section class="blog_title mt-0 mb-7 text-break">
-                        <h1 class="blog_title-heading text-wrap m-0" style="font-size: 32px;"><?= h($blog->title) ?></h1>
+                        <h1 class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
                     </section>
                     <section class="blog_thumbnail mt-0 mb-7">
                         <figure class="blog_thumbnailWrapper">
@@ -182,7 +201,7 @@ $this->Breadcrumbs->setTemplates([
                                 <span>Category</span>
                                 <div class="mt-1 categories">
                                     <?php foreach ($categories as $category) : ?>
-                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
+                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 7.5) ?>px; font-weight:<?= h(7.5 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -215,7 +234,6 @@ $this->Breadcrumbs->setTemplates([
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js" defer></script>
 <script type="text/javascript">
     function toggleIndexActive(blogIndex){
         console.log(blogIndex);
@@ -238,18 +256,13 @@ $this->Breadcrumbs->setTemplates([
     let boldIndex = 0;
     for(let i = 0; i < targetTags.length; i++){
 
-        if(targetTags[i].outerHTML.match(/h1|h2/gi)) {
+        if(targetTags[i].outerHTML.match(/h1|h2|h3|h4|h5/gi)) {
             bigHeadingIndex++;
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
             targetTags[i].classList.add('tgt-elm');
             blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${bigHeadingIndex}. ${targetTags[i].innerText}</a></li>`);
-        } else if(targetTags[i].outerHTML.match(/h3|h4|h5/gi)) {
-            headingIndex++;
-            targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
-            targetTags[i].classList.add('tgt-elm');
-            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-small mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-        } else if(targetTags[i].outerHTML.match(/img/gi)) {
+        }else if(targetTags[i].outerHTML.match(/img/gi)) {
             targetTags[i].outerHTML = `<a href="${targetTags[i].src}">${targetTags[i].outerHTML}</a>`;
         }
         //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
@@ -260,4 +273,5 @@ $this->Breadcrumbs->setTemplates([
         // }
     }
 </script>
+<?= $this->Html->script(['run_pretty'],['defer']) ?>
 <?= $this->Html->script(['bootstrap.bundle.min'],['defer']) ?>

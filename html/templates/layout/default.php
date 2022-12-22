@@ -15,7 +15,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'devil code';
+$cakeDescription = 'devil code (デビルコード)';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -24,8 +24,7 @@ $cakeDescription = 'devil code';
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>
-    <?= $cakeDescription ?>:
-    <?= $this->fetch('title') ?>
+    <?= $cakeDescription ?> <?= $this->fetch('title') ?>
   </title>
   <?= $this->fetch('meta') ?>
 

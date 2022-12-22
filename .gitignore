@@ -2,7 +2,4 @@
 docker/phpmyadmin/sessions
 /html/config/app.php
 /html/config/app_local.php
-.vscode/sftp.json
-html/webroot/*
-html/config/bk/*
-html/src/Controller/bk/*
+.htaccess

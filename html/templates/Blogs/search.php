@@ -45,11 +45,11 @@ $this->Breadcrumbs->setTemplates([
 $this->assign('title', ' - Blog - 「' . $q . '」の検索結果');
 
 if(!$blog_count){
-    echo $this->Html->meta(["robots"=>"description","content"=>"noindex"],null,["block"=>'meta']);
+    echo $this->Html->meta(["name"=>"robots","content"=>"noindex"],null,["block"=>'meta']);
 }
 ?>
 
-<section class="blog h-100">
+<section class="blog" style="min-height: 60vh;">
     <div class="container">
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">
@@ -77,7 +77,7 @@ if(!$blog_count){
                     <h5>他のカテゴリー</h5>
                     <p class="mb-2">Other category</p>
                     <?php foreach ($categories as $category) : ?>
-                        <a href="../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 2) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?><a>
+                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 7.5) ?>px; font-weight:<?= h(7.5 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>

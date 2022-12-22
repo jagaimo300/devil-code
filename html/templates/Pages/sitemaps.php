@@ -34,7 +34,7 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', ' - Sitemaps');
-$this->assign('canonical', '<link rel="canonical" href="http://devil-code.com/sitemaps/" />');
+$this->assign('canonical', '<link rel="canonical" href="<?= $BASE_URL =>/sitemaps/" />');
 $is_exits[] = ''
 ?>
 
