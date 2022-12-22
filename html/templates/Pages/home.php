@@ -4,17 +4,16 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
  */
-    $this->assign('title', ' - Homepage');
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
 
 
-<?= $this->Html->css('https://unpkg.com/swiper@8/swiper-bundle.min.css', ['block' => 'css']) ?>
-<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
+<?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.jpg"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
@@ -32,7 +31,6 @@
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
 </div>
 <section class="about pt-3">
     <div class="container text-center text-md-start">
@@ -125,7 +123,7 @@
         <div class="profile-inner row h-50">
         <div class="col-lg-6 col-md-12 text-center">
             <div class="border-image w-50 mx-auto">
-                <img class="prof-img" src="img/prof.jpg" style="width: 100%; display: block;" alt="プロフィール画像">
+                <img class="prof-img" src="img/prof.jpg" width="480" height="480" style="width: 100%; height:auto; display: block;" alt="プロフィール画像" loading=”lazy”>
             </div>
         </div>
         <div class="ls-1 col-lg-6 col-md-12 text-dark ">
@@ -144,4 +142,4 @@
         </div>
     </div>
 </section>
-<?= $this->Html->script(['https://unpkg.com/swiper@8/swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>
+<?= $this->Html->script(['swiper-bundle.min.js','swiper'], ['block' => 'scriptBottom']) ?>
