@@ -4,6 +4,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
  */
+    $this->assign('title', 'ホームページ');
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 

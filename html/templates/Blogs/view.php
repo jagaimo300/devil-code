@@ -61,14 +61,14 @@ $this->Breadcrumbs->setTemplates([
 
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
-        $this->assign('title', 'Blog - ' . $blog->title);
+        $this->assign('title', 'ブログ - ' . $blog->title);
         $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' .$blog->slug . '/"' . ' />');
         // description
-        $this->Html->meta(["name"=>"description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"description","content"=>"devil code (デビルコード) ブログ - $blog->description"],null,["block"=>'meta']);
         // ogp
         $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']);
-        $this->Html->meta(["property"=>"og:description","content"=>"devil code Blog:$blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:description","content"=>"devil code (デビルコード) ブログ - $blog->description"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".jpg"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
