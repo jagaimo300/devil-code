@@ -91,7 +91,7 @@ class PagesController extends AppController
         $this->set('blogs', $blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
             'limit' => 4900,
-		    'order' => 'Blogs.created DESC',
+		    'order' => ['Blogs.category_id ASC','Blogs.created DESC'],
 		    'recursive' => -1,
 		)));
     }
