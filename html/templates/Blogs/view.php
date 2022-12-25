@@ -70,7 +70,7 @@ $this->Breadcrumbs->setTemplates([
         $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:description","content"=>"devil code (デビルコード) ブログ - $blog->description"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']);
-        $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".jpg"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".webp"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
         
@@ -84,7 +84,7 @@ $this->Breadcrumbs->setTemplates([
                 "@id": "https://devil-code.com/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/"
             },
             "headline": "<?= h($blog->title) ?>",
-            "image": ["https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg"],
+            "image": ["https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp"],
             "datePublished": "<?=  h($created_iso8601) ?>",
             "dateModified": "<?=  h($modified_iso8601) ?>",
             "author": {
@@ -168,7 +168,7 @@ $this->Breadcrumbs->setTemplates([
                     <section class="blog_thumbnail mt-0 mb-7">
                         <figure class="blog_thumbnailWrapper">
                             <span itemprop="image">
-                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.jpg" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%" height="auto" style="max-width: 100%;">
+                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%" height="auto" style="max-width: 100%;">
                             </span>
                         </figure>
                     </section>
@@ -212,7 +212,7 @@ $this->Breadcrumbs->setTemplates([
                                     <?php foreach ($relations as $relation) : ?>
                                         <li class="mt-3 d-flex justify-content-md-between">
                                             <div class="imgarea border">
-                                                <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.jpg" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
+                                                <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
                                             </div>
                                             <div class="textarea text-truncate ms-3">
                                                 <div class="created_date text-muted d-inline-block" style="font-size: 12px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>

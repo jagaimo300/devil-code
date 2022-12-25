@@ -48,7 +48,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <?php foreach ($tops as $index => $top) : ?>
-            <div class="swiper-slide slide-mask " style="background-image: url('../files/blogs/thumbnails/<?= sprintf("%010d", $top->id) ?>.jpg')">
+            <div class="swiper-slide slide-mask " style="background-image: url('../files/blogs/thumbnails/<?= sprintf("%010d", $top->id) ?>.webp')">
                 <div class="text-wrapper ls-1">
                     <h2 class="blog-ttl px-3 py-1 mx-3 mt-4 d-inline-block" style="margin-bottom: 120px;"><?= h($top->title) ?></h2>
                     <div class="text-wrapper ls-1 mt-5 pt-5">
@@ -56,7 +56,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
                     </div>
                 </div>
             </div>
-            <?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/<?= sprintf('%010d', $top->id) ?>.jpg"],null,["block"=>'meta']); ?>
+            <?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/<?= sprintf('%010d', $top->id) ?>.webp"],null,["block"=>'meta']); ?>
         <?php endforeach; ?>
     </div>
 </div>
@@ -98,7 +98,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
             <?php foreach ($features as $index => $feature) : ?>
                 <a href="/blogs/<?= h($feature->blogs_category->category_label) ?>/<?= h($feature->slug) ?>/" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                     <div class="row card-item overflow-hidden position-relative">
-                        <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $feature->id) ?>.jpg'); background-position: center; background-size: cover; height: 180px;">
+                        <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $feature->id) ?>.webp'); background-position: center; background-size: cover; height: 180px;">
                         </div>
                         <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($feature->blogs_category->category_color) ?>;"><?= h($feature->blogs_category->category_label) ?></span>
 
