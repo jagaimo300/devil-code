@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Contact');
+$this->assign('title', 'お問い合わせ');
 $this->assign('canonical', '<link rel="canonical" href="http://devil-code.com/contact/" />');
 ?>
 

@@ -84,7 +84,7 @@
                 <?php foreach ($news as $index => $new) : ?>
                     <a href="/blogs/<?= h($new->blogs_category->category_label) ?>/<?= h($new->slug) ?>/" class="col-md-12 col-lg-4 mb-5 pe-lg-5 h-100">
                         <div class="row card-item overflow-hidden position-relative">
-                            <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('/files/blogs/thumbnails/<?= sprintf("%010d", $new->id) ?>.webp'); background-position: center; background-size: cover; height: 180px;">
+                            <div class="col-auto blog-img w-100" style="overflow:hidden; background-image:url('/files/blogs/thumbnails/<?= sprintf("%010d", $new->id) ?>.webp'); background-position: center; background-size: contain; background-repeat: no-repeat; height: 180px;">
                             </div>
                             <span class="mb-2 catTag position-absolute" style="top: 32px; right: 16px; background-color:<?= h($new->blogs_category->category_color) ?>;"><?= h($new->blogs_category->category_label) ?></span>
 
