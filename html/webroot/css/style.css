@@ -169,6 +169,7 @@ header .del-btn {
 }
 .card-item:hover .blog-img {
   height: 220px;
+  background-image: cover　 !important;
 }
 
 .arrow {
@@ -202,9 +203,9 @@ header .del-btn {
   height: 30px;
   line-height: 30px;
   text-align: center;
-  color: #f8f9fa;
+  color: #fff;
   border-radius: 25px;
-  font-size: 0.7em;
+  font-size: 12px;
 }
 .catTag::before {
   content: "#";
@@ -295,10 +296,12 @@ header .del-btn {
   font-weight: 600;
 }
 .blog .blog_body img {
-  max-width: 696px;
-  display: block;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  height: auto;
   margin: 1.5em 0;
+  max-width: 696px;
+  width: 100%;
 }
 .blog .blog_body table {
   max-width: 696px;

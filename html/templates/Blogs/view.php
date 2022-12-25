@@ -168,7 +168,7 @@ $this->Breadcrumbs->setTemplates([
                     <section class="blog_thumbnail mt-0 mb-7">
                         <figure class="blog_thumbnailWrapper">
                             <span itemprop="image">
-                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="100%" height="auto" style="max-width: 100%;">
+                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="1200" height="630" style="width: 100%; height: auto;">
                             </span>
                         </figure>
                     </section>

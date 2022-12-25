@@ -213,6 +213,7 @@ header {
 
   &:hover .blog-img {
     height: 220px;
+    background-image: cover　!important;
   }
 }
 .arrow {
@@ -246,9 +247,9 @@ header {
   height: 30px;
   line-height: 30px;
   text-align: center;
-  color: #f8f9fa;
+  color: #fff;
   border-radius: 25px;
-  font-size: .7em;
+  font-size: 12px;
   &::before {
     content: '#';
     position: absolute;
@@ -341,10 +342,12 @@ header {
       font-weight: 600;
     }
     img {
-      max-width: 696px;
-      display: block;
       border: 1px solid rgba(0, 0, 0, .1);
+      display: block;
+      height: auto;
       margin: 1.5em 0;
+      max-width: 696px;
+      width: 100%;
     }
     table{
       max-width: 696px;
