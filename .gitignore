@@ -3,3 +3,6 @@ docker/phpmyadmin/sessions
 /html/config/app.php
 /html/config/app_local.php
 .htaccess
+.webp
+.jpg
+.png
