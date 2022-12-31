@@ -14,6 +14,7 @@ use Cake\Http\Exception\NotFoundException;
 
 class BlogsController extends AppController
 {
+
     /**
      * Index method
      *
@@ -75,25 +76,20 @@ class BlogsController extends AppController
      */
     public function view($slug = null)
     {
-        // deny query strings
+        // Show 404 page if query strings exsist
         if($this->request->getQuery()){
             throw new NotFoundException(__('404'));
         }
 
         list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
         
-        // アクション名をURLに使えなくする
+        // Change action name "view" to slug
         if($cat === "view"){
             throw new NotFoundException(__('404'));
         }
 
         $this->set('cat', $cat);
         $this->set('slug', $slug);
-
-        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
-
-        $this->set(compact('categories'));
 
         $this->set('relations',  $this->Blogs->find('all', array(
             'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"<> $slug"],
@@ -116,6 +112,12 @@ class BlogsController extends AppController
         }
 
         $this->set(compact('blogs'));
+
+        // Category links
+        $this->loadComponent('BlogLink');
+
+        $categories = $this->BlogLink->getCategoryLink($cat);
+        $this->set(compact('categories'));
     }
 
     /**
@@ -222,10 +224,11 @@ class BlogsController extends AppController
         }
         $this->set(compact('blogs'));
 
-        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id')->where(['BlogsCategories.category_label IS NOT' => $cat]);
+        // Category links
+        $this->loadComponent('BlogLink');
 
-		$this->set(compact('categories'));
+        $categories = $this->BlogLink->getCategoryLink($cat);
+        $this->set(compact('categories'));
     }
 
     /**
@@ -270,9 +273,10 @@ class BlogsController extends AppController
 
         $this->set(compact('blogs'));
 
-        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
+        // Category links
+        $this->loadComponent('BlogLink');
 
-		$this->set(compact('categories'));
+        $categories = $this->BlogLink->getCategoryLink("dammy");
+        $this->set(compact('categories'));
     }
 }

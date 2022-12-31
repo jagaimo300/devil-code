@@ -438,4 +438,7 @@ header .del-btn {
   .blog .blogIndexWrapper {
     top: 120px;
   }
+  .blog .tableWrapper {
+    overflow-x: scroll;
+  }
 }/*# sourceMappingURL=style.css.map */
