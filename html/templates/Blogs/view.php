@@ -197,34 +197,38 @@ $this->Breadcrumbs->setTemplates([
                 <aside class="col-12 col-md-3">
                         <div class="sticky-top" style="z-index: 1;">
                             <div class="mt-5 category_tagWrapper">
-                                <h5>カテゴリー</h5>
+                                <h5>他のカテゴリー</h5>
                                 <span>Category</span>
                                 <div class="mt-1 categories">
                                     <?php foreach ($categories as $category) : ?>
-                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 7.5) ?>px; font-weight:<?= h(7.5 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
+                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block"><?= h($category->cat_label) ?><span>(<?= h($category->cat_count) ?>)</span></a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
                             <div class="mt-5 related_tagWrapper" >
                                 <h5>関連記事</h5>
                                 <span>Related posts</span>
-                                <ul class="mt-1 p-0">
-                                    <?php foreach ($relations as $relation) : ?>
-                                        <li class="mt-3 d-flex justify-content-md-between">
-                                            <div class="imgarea border">
-                                                <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
-                                            </div>
-                                            <div class="textarea text-truncate ms-3">
-                                                <div class="created_date text-muted d-inline-block" style="font-size: 12px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                                                <div class="title"><a href=""><?= h($relation->title) ?></a></div>
-                                                <div class="body text-muted" style="font-size: 12px; font-weight: 100;"><?= mb_substr(strip_tags($relation->body),0,32) ?></div>
-                                            </div>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                                <div class="mt-2 text-end">
-                                    <a href="../../<?= $cat ?>" class="view-all">もっと見る</a>
-                                </div>
+                                <?php if (!empty($relations)) : ?>
+                                    <?php var_dump($relations); ?>
+                                    <ul class="mt-1 p-0">
+                                        <?php foreach ($relations as $relation) : ?>
+                                            <li class="mt-3 d-flex justify-content-md-between">
+                                                <div class="imgarea border">
+                                                    <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
+                                                </div>
+                                                <div class="textarea text-truncate ms-3">
+                                                    <div class="created_date text-muted d-inline-block" style="font-size: 12px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                                                    <div class="title"><a href=""><?= h($relation->title) ?></a></div>
+                                                    <div class="body text-muted" style="font-size: 12px; font-weight: 100;"><?= mb_substr(strip_tags($relation->body),0,32) ?></div>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    
+                                    <div class="mt-2 text-end">
+                                        <a href="../../<?= $cat ?>" class="view-all">もっと見る</a>
+                                    </div>
+                                <?php endif; ?>
                             </div>                            
                         </div>
                 </aside>

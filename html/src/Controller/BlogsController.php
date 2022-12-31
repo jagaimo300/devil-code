@@ -92,7 +92,7 @@ class BlogsController extends AppController
         $this->set('slug', $slug);
 
         $this->set('relations',  $this->Blogs->find('all', array(
-            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"<> $slug"],
+            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug !='=>"$slug"],
             'contain' => ['BlogsCategories'],
             'limit' => '5',
             'order' => 'Blogs.created ASC',
