@@ -287,7 +287,6 @@ header {
   position: relative;
   top: 120px;
 
-
   .blog_title-heading {
     padding-top: 8px;
     font-size: clamp(24px, 5vw, 32px);
@@ -327,7 +326,6 @@ header {
     }
     li {
       font-size: 16px;
-      font-weight: 600;
       list-style: decimal;
       margin-right: 3rem;
       margin-left: 3rem;
@@ -381,13 +379,17 @@ header {
     .list-large {
       .blogIndexWrapper-listItem_heading {
           font-size: 18px;
-          font-weight: bold;
         }  
     }
     .list-small {
       .blogIndexWrapper-listItem_heading {
           font-size: 14px;
       }  
+    }
+    a {
+      &:hover {
+        text-decoration: underline !important;
+      }
     }
   }
 }
@@ -453,15 +455,6 @@ header {
   }
   .blog {
     top: 36px;  
-
-    .blogIndexWrapper-list {
-      .list-large {
-        .blogIndexWrapper-listItem_heading {
-            font-weight: 600;
-          }  
-      }
-    }
-  
 
     table th,table td{
       font-size: 8px;

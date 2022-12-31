@@ -281,7 +281,6 @@ header .del-btn {
 }
 .blog .blog_body li {
   font-size: 16px;
-  font-weight: 600;
   list-style: decimal;
   margin-right: 3rem;
   margin-left: 3rem;
@@ -330,10 +329,12 @@ header .del-btn {
 }
 .blog .blogIndexWrapper-list .list-large .blogIndexWrapper-listItem_heading {
   font-size: 18px;
-  font-weight: bold;
 }
 .blog .blogIndexWrapper-list .list-small .blogIndexWrapper-listItem_heading {
   font-size: 14px;
+}
+.blog .blogIndexWrapper-list a:hover {
+  text-decoration: underline !important;
 }
 
 .sticky-top {
@@ -397,9 +398,6 @@ header .del-btn {
   }
   .blog {
     top: 36px;
-  }
-  .blog .blogIndexWrapper-list .list-large .blogIndexWrapper-listItem_heading {
-    font-weight: 600;
   }
   .blog table th, .blog table td {
     font-size: 8px;
