@@ -205,21 +205,19 @@ $this->Breadcrumbs->setTemplates([
                                     <?php endforeach; ?>
                                 </div>
                             </div>
-                            <div class="mt-5 related_tagWrapper" >
-                                <h5>関連記事</h5>
-                                <span>Related posts</span>
-                                <?php if (!empty($relations)) : ?>
-                                    <?php var_dump($relations); ?>
+                            <?php if (!empty($relations)) : ?>
+                                <div class="mt-5 related_tagWrapper">
+                                    <h5>関連記事</h5>
+                                    <span>Related posts</span>
                                     <ul class="mt-1 p-0">
                                         <?php foreach ($relations as $relation) : ?>
-                                            <li class="mt-3 d-flex justify-content-md-between">
-                                                <div class="imgarea border">
-                                                    <a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="80" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
+                                            <li class="mt-3 d-flex flex-column">
+                                                <div class="categoryLinks_image imgarea border">
+                                                    <a class="d-inline-block" href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="120" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
                                                 </div>
-                                                <div class="textarea text-truncate ms-3">
-                                                    <div class="created_date text-muted d-inline-block" style="font-size: 12px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                                                    <div class="title"><a href=""><?= h($relation->title) ?></a></div>
-                                                    <div class="body text-muted" style="font-size: 12px; font-weight: 100;"><?= mb_substr(strip_tags($relation->body),0,32) ?></div>
+                                                <div class="textarea">
+                                                    <div class="created_date text-muted mt-1" style="font-size: 14px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                                                    <div class="categoryLinks_title mt-1"><a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><?= h($relation->title) ?></a></div>
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
@@ -228,8 +226,8 @@ $this->Breadcrumbs->setTemplates([
                                     <div class="mt-2 text-end">
                                         <a href="../../<?= $cat ?>" class="view-all">もっと見る</a>
                                     </div>
-                                <?php endif; ?>
-                            </div>                            
+                                </div>                            
+                            <?php endif; ?>
                         </div>
                 </aside>
         </div>

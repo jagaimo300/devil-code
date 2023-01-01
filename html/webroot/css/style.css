@@ -337,6 +337,14 @@ header .del-btn {
   text-decoration: underline !important;
 }
 
+.related_tagWrapper {
+  font-size: 14px;
+}
+.related_tagWrapper .categoryLinks_image img {
+  width: 100%;
+  height: auto;
+}
+
 .sticky-top {
   top: 120px;
 }

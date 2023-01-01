@@ -393,6 +393,13 @@ header {
     }
   }
 }
+.related_tagWrapper {
+  font-size: 14px;
+  .categoryLinks_image img {
+    width: 100%;
+    height: auto;
+  }
+}
 .sticky-top {
   top: 120px;
 }
