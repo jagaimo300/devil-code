@@ -248,23 +248,37 @@ header .del-btn {
   padding-top: 8px;
   font-size: clamp(24px, 5vw, 32px);
 }
-.blog .blog_body h1, .blog .blog_body h2 {
+.blog .blog_body h1 {
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 48px 0px;
   padding-bottom: 8px;
 }
-.blog .blog_body h3 {
-  font-size: 32px;
-  font-weight: 600;
+.blog .blog_body h2 {
+  font-size: 28px;
+  font-weight: 400;
   margin: 48px 0px;
+  padding-bottom: 8px;
+}
+.blog .blog_body h2::before {
+  content: " ";
+  background-color: #dfbfff;
+  margin-right: 16px;
+}
+.blog .blog_body h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 48px 0px;
+  padding: 16px 24px;
+  border-radius: 5px;
+  border: 1px solid #dfbfff;
 }
 .blog .blog_body h4, .blog .blog_body h5 {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   margin: 48px 0px;
-  line-height: 32px;
+  line-height: 20px;
 }
 .blog .blog_body p, .blog .blog_body i {
   font-size: 16px;

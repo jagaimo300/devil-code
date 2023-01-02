@@ -293,24 +293,40 @@ header {
   }
 
   .blog_body {
-    h1,h2 {
+    h1 {
       border-bottom: 2px solid rgba(0, 0, 0, .3);
       font-size: 32px;
-      font-weight: 600;
+      font-weight: 400;
       margin: 48px 0px;
       padding-bottom: 8px;
     }
-    h3 {
-      font-size: 32px;
-      font-weight: 600;
+    h2 {
+      font-size: 28px;
+      font-weight: 400;
       margin: 48px 0px;
+      padding-bottom: 8px;
+      
+      &::before {
+        content: '\a0';
+        background-color: #dfbfff;
+        margin-right: 16px;
+      }
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: 400;
+      margin: 48px 0px;
+      padding: 16px 24px;
+      border-radius: 5px;
+      border: 1px solid #dfbfff;
     }
     h4, h5 {
-      font-size: 32px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 400;
       margin: 48px 0px;
-      line-height: 32px;
+      line-height: 20px;
     }
+
     p, i {
       font-size: 16px;
       margin-bottom: 14px;
