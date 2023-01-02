@@ -29,6 +29,7 @@ if (Configure::read('debug')) :
   $this->assign('title', $message);
   $this->assign('templateName', 'error400.php');
   $this->start('file');
+
 ?>
 
 <?php if (!empty($error->queryString)) : ?>
@@ -52,11 +53,17 @@ if (Configure::read('debug')) :
         <h1 class="error-statusCode mt-5 mb-3 fw-bold">404 Not Found</h1>
         <p>お探しのページが見つかりません。</p>
       </div>
-      <div class="col-lg-6 errorMesArea">
+      <div class="col-lg-5 errorMesArea">
         <div class="inkArea mb-5">
           <ul class="text-center my-5">
-            <li><a href="/blogs/java/"><span class="catTag me-3" style="background-color:#F89820;">java</span></a></li>
+            <?php foreach ($categories as $index => $category) : ?>
+              <li class="categoryLink d-inline-block">
+                <a class="d-inline-block me-3 mb-3" href="/blogs/<?= h($category->cat_label) ?>/"><span class="catTag" style="background-color: <?= h($category->cat_color) ?>;"><?= h($category->cat_label) ?></span></a>
+              </li>
+            <?php endforeach; ?>
           </ul>
+        </div>
+        <div>
         </div>
       </div>
       <div class="btn-wrapper ls-1 pt-5">

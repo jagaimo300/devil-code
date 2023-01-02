@@ -12,7 +12,7 @@ class BlogLinkComponent extends Component
     {
         $registryBlogs = TableRegistry::getTableLocator()->get('Blogs');
         $query  = $registryBlogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->where(['BlogsCategories.category_label !=' => $category_label])->group('Blogs.category_id');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label'])->where(['BlogsCategories.category_label !=' => $category_label])->group('Blogs.category_id');
 
         return $categories;
     }

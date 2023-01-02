@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Event\EventInterface;
+use Cake\ORM\TableRegistry;
 
 /**
  * Error Handling Controller
@@ -56,6 +57,12 @@ class ErrorController extends AppController
         parent::beforeRender($event);
 
         $this->viewBuilder()->setTemplatePath('Error');
+
+        // category tags
+        $registryBlogs = TableRegistry::getTableLocator()->get('Blogs');
+        $query  = $registryBlogs->find()->innerJoinWith('BlogsCategories');
+        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_color' => 'BlogsCategories.category_color'])->group('Blogs.category_id');
+        $this->set(compact('categories'));
     }
 
     /**
