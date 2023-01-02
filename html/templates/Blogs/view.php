@@ -61,19 +61,20 @@ $this->Breadcrumbs->setTemplates([
 
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
-        $this->assign('title', 'ブログ - ' . $blog->title);
+        $this->assign('title', $blog->title . '| devil code(デビルコード)');
         $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' .$blog->slug . '/"' . ' />');
         // description
-        $this->Html->meta(["name"=>"description","content"=>"devil code (デビルコード) ブログ - $blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"description","content"=>"$blog->description"],null,["block"=>'meta']);
         // ogp
-        $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:title","content"=>"$blog->title | devil code(デビルコード)"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']);
-        $this->Html->meta(["property"=>"og:description","content"=>"devil code (デビルコード) ブログ - $blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["property"=>"og:description","content"=>"$blog->description"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".webp"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
-        
+
+
     ?>
     <script type="application/ld+json">
         {
@@ -109,7 +110,7 @@ $this->Breadcrumbs->setTemplates([
     <div class="container">
         <div class="row">
             <?php foreach ($blogs as $index => $blog) : ?>
-                <article class="col-12 col-md-9">
+                <article class="col-12 col-md-9" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
                     <section class="blog_meta mb-2">
                         <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                             <style type="text/css">
@@ -139,9 +140,9 @@ $this->Breadcrumbs->setTemplates([
                                 <rect x="111.386" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
                             </g>
                         </svg>
-                        <time class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></time>
+                        <time itemprop="datePublished" class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy/MM/dd')) ?></time>
     
-                        <?php if($blog->created->i18nFormat('yyyy.MM.dd') !== $blog->modified->i18nFormat('yyyy.MM.dd')): ?>
+                        <?php if($blog->created->i18nFormat('yyyy/MM/dd') !== $blog->modified->i18nFormat('yyyy/MM/dd')): ?>
                             <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="margin-left:8px; width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
                             <style type="text/css">
                                 .st0{fill:#4B4B4B;}
@@ -157,18 +158,18 @@ $this->Breadcrumbs->setTemplates([
                                     l-2.716,51.9l102.169-53.878l27.455-14.454l4.988-2.643l-7.999-4.332L296.256,416.151z" style="fill: rgb(75, 75, 75);"></path>
                             </g>
                             </svg>
-                            <time class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->modified->i18nFormat('yyyy.MM.dd')) ?></time>
+                            <time itemprop="dateModified" class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->modified->i18nFormat('yyyy/MM/dd')) ?></time>
                         <?php endif; ?>
     
-                        <span class="catTag d-inline-block ms-2 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
+                        <a href="../../<?= h($blog->blogs_category->category_label) ?>/"><span class="catTag d-inline-block ms-0 ms-md-2 mt-1 mb-1 mt-md-0 mb-md-0 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span></a>
                     </section>
                     <section class="blog_title mt-0 mb-7 text-break">
-                        <h1 class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
+                        <h1 itemprop="name headline" class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
                     </section>
                     <section class="blog_thumbnail mt-0 mb-7">
                         <figure class="blog_thumbnailWrapper">
-                            <span itemprop="image">
-                                <img src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="1200" height="630" style="width: 100%; height: auto;">
+                            <span>
+                                <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="1200" height="630" style="width: 100%; height: auto;">
                             </span>
                         </figure>
                     </section>
@@ -188,7 +189,7 @@ $this->Breadcrumbs->setTemplates([
                             </div>
                         </div>
                     </section>
-                    <section id="blogBody" class="blog_body my-7 pe-3 pe-md-0 text-break ls-1">
+                    <section itemprop="articleBody" id="blogBody" class="blog_body my-7 pe-3 pe-md-0 text-break ls-1">
                         <?= $blog->body ?>
                     </section>
                 </article>
@@ -199,11 +200,13 @@ $this->Breadcrumbs->setTemplates([
                             <div class="mt-5 category_tagWrapper">
                                 <h5>他のカテゴリー</h5>
                                 <span>Category</span>
-                                <div class="mt-1 categories">
+                                <ul class="mt-3 mt-3 p-0 categories">
                                     <?php foreach ($categories as $category) : ?>
-                                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block"><?= h($category->cat_label) ?><span>(<?= h($category->cat_count) ?>)</span></a>
+                                        <li class="categoryLink d-inline-block">
+                                            <a class="d-inline-block" href="../../<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
+                                        </li>
                                     <?php endforeach; ?>
-                                </div>
+                                </ul>
                             </div>
                             <?php if (!empty($relations)) : ?>
                                 <div class="mt-5 related_tagWrapper">
@@ -212,7 +215,7 @@ $this->Breadcrumbs->setTemplates([
                                     <ul class="mt-1 p-0">
                                         <?php foreach ($relations as $relation) : ?>
                                             <li class="mt-3 d-flex flex-column">
-                                                <div class="categoryLinks_image imgarea border">
+                                                <div class="relatedLinks_image imgarea border">
                                                     <a class="d-inline-block" href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="120" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
                                                 </div>
                                                 <div class="textarea">
@@ -237,17 +240,6 @@ $this->Breadcrumbs->setTemplates([
     <?= $this->Breadcrumbs->render() ?>
 </div>
 <script type="text/javascript">
-    function toggleIndexActive(blogIndex){
-        console.log(blogIndex);
-        const tgtIndex = document.getElementsByClassName('blogIndexWrapper-listItem');
-        for(let i = 0; i < tgtIndex.length; i++){
-            if(tgtIndex[i].classList.contains('index-active')){
-                tgtIndex[i].classList.remove('index-active');
-            }
-        }
-        tgtIndex[blogIndex].classList.add('index-active');
-    }
-
 
     const bodyText = document.getElementById('blogBody');
     const targetTags = bodyText.querySelectorAll('h1, h2, h3, h4, h5, b, img');
@@ -263,16 +255,10 @@ $this->Breadcrumbs->setTemplates([
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
             targetTags[i].classList.add('tgt-elm');
-            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}" onclick="toggleIndexActive(${i});">${bigHeadingIndex}. ${targetTags[i].innerText}</a></li>`);
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}">${bigHeadingIndex}. ${targetTags[i].innerText}</a></li>`);
         }else if(targetTags[i].outerHTML.match(/img/gi)) {
             targetTags[i].outerHTML = `<a href="${targetTags[i].src}">${targetTags[i].outerHTML}</a>`;
         }
-        //  else if(targetTags[i].outerHTML.match(/\<b/gi)) {
-        //     boldIndex++;
-        //     targetTags[i].setAttribute('id',`targetBold${boldIndex}`);
-        //     targetTags[i].classList.add('tgt-elm');
-        //     blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem"><a class="blogIndexWrapper-listItem_bold" href="#targetBold${boldIndex}"  onclick="toggleIndexActive(${i});">${targetTags[i].innerText}</a></li>`);
-        // }
     }
 </script>
 <?= $this->Html->script(['run_pretty'],['defer']) ?>

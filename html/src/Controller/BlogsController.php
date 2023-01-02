@@ -91,7 +91,7 @@ class BlogsController extends AppController
         $this->set('cat', $cat);
         $this->set('slug', $slug);
 
-        relations        $relations = $this->Blogs->find('all', array(
+        $relations = $this->Blogs->find('all', array(
             'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug !='=>"$slug"],
             'contain' => ['BlogsCategories'],
             'limit' => '5',

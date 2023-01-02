@@ -4,7 +4,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Page[]|\Cake\Collection\CollectionInterface $pages
  */
-    $this->assign('title', 'ホームページ');
+    $this->assign('title', 'devil-code(デビルコード) - ホームページ');
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
@@ -78,7 +78,7 @@
         <div class="container">
             <div class="row my-5 align ls-1">
                 <h3>ブログ</h3>
-                <p>Lately posts</p>
+                <p>Latest posts</p>
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
                 <?php foreach ($news as $index => $new) : ?>

@@ -33,12 +33,12 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', 'ブログ');
+$this->assign('title', 'devil-code(デビルコード) - ブログ');
 $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/" />');
 ?>
 <?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
 <?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】Takahiro Ueda's Homepage - Blog"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:title","content"=>"devil-code(デビルコード) - ブログ"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com/blogs/"],null,["block"=>'meta']); ?>
@@ -130,14 +130,17 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
                     </a>
                 <?php endforeach; ?>
             </div>
-            <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
+
+            <div class="category_tagWrapper mt-5 col-md-3 h-100 px-md-5 sticky-top">
                 <h5>カテゴリー</h5>
                 <p>Category</p>
-                <div class="category  mt-3 mb-5">
+                <ul class="categories ps-0 mt-3 mb-5">
 	                <?php foreach ($categories as $category) : ?>
-	                    <a href="../blogs/<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
+                        <li class="categoryLink d-inline-block">
+                            <a class="d-inline-block" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
+                        </li>
 	                <?php endforeach; ?>
-                </div>
+                </ul>
             </div>
         </div>
     </div>

@@ -337,10 +337,17 @@ header .del-btn {
   text-decoration: underline !important;
 }
 
+.category_tagWrapper .categoryLink {
+  margin-right: 8px;
+}
+.category_tagWrapper .categoryLink::before {
+  content: "#";
+}
+
 .related_tagWrapper {
   font-size: 14px;
 }
-.related_tagWrapper .categoryLinks_image img {
+.related_tagWrapper .relatedLinks_image img {
   width: 100%;
   height: auto;
 }

@@ -393,9 +393,18 @@ header {
     }
   }
 }
+.category_tagWrapper {
+  .categoryLink {
+    margin-right: 8px;
+    
+    &::before {
+      content: '\0023';
+    }
+  }
+}
 .related_tagWrapper {
   font-size: 14px;
-  .categoryLinks_image img {
+  .relatedLinks_image img {
     width: 100%;
     height: auto;
   }

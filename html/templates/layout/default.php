@@ -15,7 +15,6 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'devil code (デビルコード)';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -23,9 +22,7 @@ $cakeDescription = 'devil code (デビルコード)';
   <?= $this->fetch('canonical') ?>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    <?= $cakeDescription ?> <?= $this->fetch('title') ?>
-  </title>
+  <title><?= $this->fetch('title') ?></title>
   <?= $this->fetch('meta') ?>
 
   <!-- Google Tag Manager -->
@@ -221,12 +218,12 @@ pre .str,code .str{color:#65b042}pre .kwd,code .kwd{color:#e28964}pre .com,code 
           <nav id="toggleNavMenu" class="nav col-12 col-lg-auto ms-auto text-small d-md-none position-absolute bg-dark top-100 end-0 w-100">
             <ul class="m-0 p-0 mx-auto text-center">
               <li class="mb-3">
-                <a href="/blog" class="nav-link text-white">
+                <a href="/blogs/" class="nav-link text-white">
                   Blog
                 </a>
               </li>
               <li class="mb-3">
-                <a href="/contact" class="nav-link text-white">
+                <a href="/contact/" class="nav-link text-white">
                   Contact
                 </a>
               </li>
@@ -265,7 +262,7 @@ pre .str,code .str{color:#65b042}pre .kwd,code .kwd{color:#e28964}pre .com,code 
           <nav class="nav col-12 col-lg-auto my-md-0 text-small d-none d-md-inline-block">
             <ul class="d-flex align-items-center justify-content-center m-0 ms-5 ps-5 p-0 ">
               <li>
-                <a href="/blog/" class="nav-link text-white">
+                <a href="/blogs/" class="nav-link text-white">
                   Blog
                 </a>
               </li>

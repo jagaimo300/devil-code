@@ -5,7 +5,7 @@
  * @var \App\Model\Entity\Blog[]|\Cake\Collection\CollectionInterface $blogs
  */
 
-$this->Html->meta(["name"=>"robots","content"=>"noindex",],null,["block"=>'meta']);
+$this->Html->meta(["name" => "robots", "content" => "noindex",], null, ["block" => 'meta']);
 $this->Breadcrumbs->add(
     'Home',
     ['controller' => 'pages', 'action' => 'display'],
@@ -43,7 +43,7 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', ' - Blog - ' . $cat);
+$this->assign('title', 'devil-code(デビルコード) - ブログ - ' . $cat);
 
 ?>
 
@@ -55,22 +55,26 @@ $this->assign('title', ' - Blog - ' . $cat);
                 <p class="mb-5">Category - <?= h($cat) ?></p>
                 <?php foreach ($blogs as $index => $blog) : ?>
                     <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/" class="pe-lg-5 h-100">
-                            <div class="d-md-flex justify-content-between align-items-center">
-                                <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
-                                <span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
-                            </div>
-                            <div class="mb-4 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                            <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body),0,120) ?></p>
-                        </a>
+                        <div class="d-md-flex justify-content-between align-items-center">
+                            <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
+                            <span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
+                        </div>
+                        <div class="mb-4 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                        <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body), 0, 120) ?></p>
+                    </a>
                 <?php endforeach; ?>
             </div>
             <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
-                <div class="category my-5">
+                <div class="mt-5 category_tagWrapper">
                     <h5>他のカテゴリー</h5>
-                    <p class="mb-2">Other category</p>
-                    <?php foreach ($categories as $category) : ?>
-                        <a href="../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 10) ?>px; font-weight:<?= h(10 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
-                    <?php endforeach; ?>
+                    <span>Category</span>
+                    <ul class="mt-3 mt-3 p-0 categories">
+                        <?php foreach ($categories as $category) : ?>
+                            <li class="categoryLink d-inline-block">
+                                <a class="d-inline-block" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
         </div>
