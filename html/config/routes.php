@@ -45,7 +45,7 @@ return static function (RouteBuilder $routes) {
 	    '/blogs/{cat}/{slug}',
 	    ['controller' => 'Blogs', 'action' => 'view'],
 	)
-	->setPatterns(['cat' => '\w+', 'slug' => '\w+'])
+	->setPatterns(['cat' => '\w+', 'slug' => '[a-zA-Z_0-9-]+'])
 	->setPass(['cat', 'slug']);
 
 	$routes->connect(
