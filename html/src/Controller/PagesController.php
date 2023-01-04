@@ -70,6 +70,7 @@ class PagesController extends AppController
 		    'order' => 'Blogs.created DESC',
 		    'recursive' => -1,
 		)));
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
@@ -78,7 +79,6 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
-
     }
 
     public function contact()

@@ -74,7 +74,13 @@ $this->Breadcrumbs->setTemplates([
         $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']);
         $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']);
 
-
+        // twiiter
+        $this->Html->meta(["name"=>"twitter:card","value"=>"summary_large_image"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"twitter:site","value"=>"@devil_code_com"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"twitter:creator","value"=>"@devil_code_com"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"twitter:title","value"=>"$blog->title | devil code(デビルコード)"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"twitter:description","value"=>"$blog->description"],null,["block"=>'meta']);
+        $this->Html->meta(["name"=>"twitter:image","value"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".webp"],null,["block"=>'meta']);
     ?>
     <script type="application/ld+json">
         {

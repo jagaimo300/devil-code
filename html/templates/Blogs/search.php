@@ -72,14 +72,16 @@ if(!$blog_count){
                     </div>
                 <?php endif;?>
             </div>
-            <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
-                <div class="category my-5">
-                    <h5>他のカテゴリー</h5>
-                    <p class="mb-2">Other category</p>
+            <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top category_tagWrapper">
+                <h5>カテゴリー</h5>
+                <span>Category</span>
+                <ul class="mt-3 mt-3 p-0 categories">
                     <?php foreach ($categories as $category) : ?>
-                        <a href="../../<?= h($category->cat_label) ?>/" class="d-inline-block" style="font-size:<?= h(($category->cat_count) * 7.5) ?>px; font-weight:<?= h(7.5 * ($category->cat_count)) ?>"><?= h($category->cat_label) ?></a>
+                        <li class="categoryLink d-inline-block">
+                            <a class="d-inline-block" href="../../<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
+                        </li>
                     <?php endforeach; ?>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
