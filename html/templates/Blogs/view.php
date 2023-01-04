@@ -206,7 +206,7 @@ $this->Breadcrumbs->setTemplates([
                             <div class="mt-5 category_tagWrapper">
                                 <h5>他のカテゴリー</h5>
                                 <span>Category</span>
-                                <ul class="mt-3 mt-3 p-0 categories">
+                                <ul class="mt-3 p-0 categories">
                                     <?php foreach ($categories as $category) : ?>
                                         <li class="categoryLink d-inline-block">
                                             <a class="d-inline-block" href="../../<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
