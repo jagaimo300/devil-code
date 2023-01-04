@@ -71,6 +71,11 @@ class PagesController extends AppController
 		    'recursive' => -1,
 		)));
 
+        // Category links
+        $this->loadComponent('BlogLink');
+        $categories = $this->BlogLink->getCategoryLink("");
+        $this->set(compact('categories'));
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {

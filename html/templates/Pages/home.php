@@ -99,6 +99,17 @@
                     </a>
                 <?php endforeach; ?>
             </div>
+
+            <div class="mt-5 category_tagWrapper">
+                <ul class="p-0 categories">
+                    <?php foreach ($categories as $category) : ?>
+                        <li class="categoryLink d-inline-block">
+                            <a class="d-inline-block" href="blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
             <div class="mt-5 text-end">
                 <a href="/blogs" class="view-all">もっと見る</a>
             </div>
