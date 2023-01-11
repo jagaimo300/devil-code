@@ -199,7 +199,7 @@ header .del-btn {
 .catTag {
   position: relative;
   display: block;
-  width: 120px;
+  width: 148px;
   height: 30px;
   line-height: 30px;
   text-align: center;
@@ -353,6 +353,7 @@ header .del-btn {
 
 .category_tagWrapper .categoryLink {
   margin-right: 8px;
+  margin-bottom: 8px;
 }
 .category_tagWrapper .categoryLink::before {
   content: "#";
@@ -390,7 +391,7 @@ header .del-btn {
   border-width: 0.375em 0.64952em;
   border-left-color: currentColor;
   border-right: 0;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .accordion-button:focus {
@@ -469,7 +470,43 @@ header .del-btn {
   .blog .blog_body img {
     max-width: 340px;
   }
-  .breadcrumb {
+  .blog .blog_body h1 {
+    font-size: 24px;
+  }
+  .blog .blog_body h2 {
+    font-size: 18px;
+  }
+  .blog .blog_body h3 {
+    font-size: 18px;
+  }
+  .blog .blog_body h4, .blog .blog_body h5 {
     font-size: 16px;
+  }
+  .blog .blog_body p, .blog .blog_body i {
+    font-size: 14px;
+  }
+  .blog .blog_body ul, .blog .blog_body ol {
+    font-size: 14px;
+  }
+  .blog .blog_body li {
+    font-size: 14px;
+  }
+  .blog .blog_body strong {
+    font-size: 14px;
+  }
+  .blog .blog_body a {
+    font-size: 14px;
+  }
+  .breadcrumbs-wrapper nav .breadcrumb {
+    width: 100%;
+    overflow: auto;
+    flex-wrap: nowrap;
+  }
+  .breadcrumbs-wrapper nav .breadcrumb .breadcrumb-item {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    white-space: nowrap;
   }
 }/*# sourceMappingURL=style.css.map */
