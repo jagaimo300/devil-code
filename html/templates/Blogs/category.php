@@ -59,7 +59,7 @@ $this->assign('title', 'devil-code(デビルコード) - ブログ - ' . $cat);
                             <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
                             <span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
                         </div>
-                        <div class="mb-4 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
+                        <div class="mb-4 mt-2 mt-lg-0 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
                         <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body), 0, 120) ?></p>
                     </a>
                 <?php endforeach; ?>

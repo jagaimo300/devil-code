@@ -114,6 +114,12 @@ class BlogsController extends AppController
         if($blogs->isEmpty()){
             throw new NotFoundException(__('404'));
         }
+        // $results = $blogs->toArray();
+
+        // $blog_pv = $this->blogs_pv->newEmptyEntity();
+        // $this->blog_pv->id = $results[0]->id;
+        // $this->Recipe->save();
+
 
         $this->set(compact('blogs'));
 
@@ -122,6 +128,7 @@ class BlogsController extends AppController
 
         $categories = $this->BlogLink->getCategoryLink($cat);
         $this->set(compact('categories'));
+
     }
 
     /**
