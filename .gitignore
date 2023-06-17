@@ -1,8 +1,9 @@
 .env
-docker/phpmyadmin/sessions
+docker/phpmyadmin/*
 /html/config/app.php
 /html/config/app_local.php
-/html/webroot/*
+/html/webroot/files
+/html/webroot/img
 .htaccess
 .webp
 .jpg
