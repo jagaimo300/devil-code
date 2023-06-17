@@ -9,9 +9,7 @@ use Cake\ORM\Entity;
  * BlogsPv Entity
  *
  * @property int $id
- * @property int $blog_id
- *
- * @property \App\Model\Entity\Blog $blog
+ * @property int $pv
  */
 class BlogsPv extends Entity
 {
@@ -25,7 +23,6 @@ class BlogsPv extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'id' => true,
-        'pc' => true,
+        'pv' => true,
     ];
 }

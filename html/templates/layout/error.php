@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta name="robots" content="noindex">
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>

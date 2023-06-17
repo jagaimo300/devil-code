@@ -16,7 +16,7 @@
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.jpg"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.webp"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
@@ -135,7 +135,7 @@
         <div class="profile-inner row h-50">
         <div class="col-lg-6 col-md-12 text-center">
             <div class="border-image w-50 mx-auto">
-                <img class="prof-img" src="img/prof.jpg" width="480" height="480" style="width: 100%; height:auto; display: block;" alt="プロフィール画像" loading=”lazy”>
+                <img class="prof-img" src="img/prof.webp" width="480" height="480" style="width: 100%; height:auto; display: block;" alt="プロフィール画像" loading=”lazy”>
             </div>
         </div>
         <div class="ls-1 col-lg-6 col-md-12 text-dark ">

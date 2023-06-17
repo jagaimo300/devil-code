@@ -81,35 +81,35 @@ $this->Breadcrumbs->setTemplates([
         $this->Html->meta(["name"=>"twitter:title","value"=>"$blog->title | devil code(デビルコード)"],null,["block"=>'meta']);
         $this->Html->meta(["name"=>"twitter:description","value"=>"$blog->description"],null,["block"=>'meta']);
         $this->Html->meta(["name"=>"twitter:image","value"=>"https://devil-code.com/files/blogs/thumbnails/" . sprintf('%010d', $blog->id) . ".webp"],null,["block"=>'meta']);
+
+        $structuredData = array(
+            "@context" => "http://schema.org",
+            "@type" => "BlogPosting",
+            "mainEntityOfPage" => array(
+                "@type" => "WebPage",
+                "@id" => "https://devil-code.com/blogs/" . h($blog->blogs_category->category_label) . "/" . h($blog->slug) . "/"
+            ),
+            "headline" => h($blog->title),
+            "image" => array("https://devil-code.com/files/blogs/thumbnails/" . sprintf("%010d", $blog->id) . ".webp"),
+            "datePublished" => h($created_iso8601),
+            "dateModified" => h($modified_iso8601),
+            "author" => array(
+                "@type" => "Person",
+                "name" => "Takahiro Ueda",
+                "url" => "http://devil-code.com"
+            ),
+            "publisher" => array(
+                "@type" => "Organization",
+                "name" => "devil code",
+                "logo" => array(
+                    "@type" => "ImageObject",
+                    "url" => "https://devil-code.com/img/brand-icon.png"
+                )
+            ),
+            "description" => h($blog->description),
+            "inLanguage" => "ja"
+        );  
     ?>
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "BlogPosting",
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://devil-code.com/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/"
-            },
-            "headline": "<?= h($blog->title) ?>",
-            "image": ["https://devil-code.com/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp"],
-            "datePublished": "<?=  h($created_iso8601) ?>",
-            "dateModified": "<?=  h($modified_iso8601) ?>",
-            "author": {
-                "@type": "Person",
-                "name": "Takahiro Ueda",
-                "url": "http://devil-code.com"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "devil code",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://devil-code.com/img/brand-icon.png"
-                }
-            },
-            "description": "<?= h($blog->description) ?>"
-        }
-    </script>
 <?php endforeach; ?>
 
 <div class="blog ls-1" style="min-height: 150vh;">
@@ -214,37 +214,73 @@ $this->Breadcrumbs->setTemplates([
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
-                            <?php if (!empty($relations)) : ?>
-                                <div class="mt-5 related_tagWrapper">
-                                    <h5>関連記事</h5>
-                                    <span>Related posts</span>
-                                    <ul class="mt-1 p-0">
-                                        <?php foreach ($relations as $relation) : ?>
-                                            <li class="mt-3 d-flex flex-column">
-                                                <div class="relatedLinks_image imgarea border">
-                                                    <a class="d-inline-block" href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><img src="/files/blogs/thumbnails/<?= sprintf("%010d", $relation->id) ?>.webp" width="120" height="80" alt="<?= h($relation->title) ?>" style="display: inlne-blcok;"></a>
-                                                </div>
-                                                <div class="textarea">
-                                                    <div class="created_date text-muted mt-1" style="font-size: 14px;"><?= h($relation->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                                                    <div class="categoryLinks_title mt-1"><a href="../../<?= h($relation->blogs_category->category_label) ?>/<?= h($relation->slug) ?>/"><?= h($relation->title) ?></a></div>
-                                                </div>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+                            <?php
+                                if (!empty($relations)) {
+                                    $related_articles = '
+                                        <div class="mt-5 related_tagWrapper">
+                                            <h5>関連記事</h5>
+                                            <span>Related posts</span>
+                                            <ul class="mt-1 p-0">';
+                                    $relatedArticles = array();
+                                    foreach ($relations as $relation) {
+                                        $relatedArticles[] = array(
+                                            "@type" => "BlogPosting",
+                                            "headline" => h($relation->title),
+                                            "url" => BASE_URL . '/blogs/' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/'
+                                        );
+
+                                        $related_articles .= '
+                                                <li class="mt-3 d-flex flex-column">
+                                                    <div class="relatedLinks_image imgarea border">
+                                                        <a class="d-inline-block" href="../../' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/">
+                                                            <img src="/files/blogs/thumbnails/' . sprintf("%010d", $relation->id) . '.webp" width="120" height="80" alt="' . h($relation->title) . '" style="display: inlne-blcok;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="textarea">
+                                                        <div class="created_date text-muted mt-1" style="font-size: 14px;">' . h($relation->created->i18nFormat('yyyy.MM.dd')) . '</div>
+                                                        <div class="categoryLinks_title mt-1">
+                                                            <a href="../../' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/">' . h($relation->title) . '</a>
+                                                        </div>
+                                                    </div>
+                                                </li>';
+                                    }
+                                    $structuredData["mainEntity"] = $relatedArticles;
+
+                                    $related_articles .= '
+                                            </ul>
+                                            <div class="mt-2 text-end">
+                                                <a href="../../' . $cat . '" class="view-all">もっと見る</a>
+                                            </div>
+                                        </div>';
                                     
-                                    <div class="mt-2 text-end">
-                                        <a href="../../<?= $cat ?>" class="view-all">もっと見る</a>
-                                    </div>
-                                </div>                            
-                            <?php endif; ?>
+                                    echo $related_articles;
+                                }
+                            ?>
                         </div>
                 </aside>
         </div>
     </div>
 </div>
+<script type="application/ld+json">
+    <?php echo json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "name": "Devil Code",
+  "url": "https://devil-code.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://devil-code.com/blogs/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
+
 <script type="text/javascript">
 
     const bodyText = document.getElementById('blogBody');

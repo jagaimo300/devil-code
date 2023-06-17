@@ -20,7 +20,7 @@ pre.prettyprint, code.prettyprint {
 pre.prettyprint {
 	width: 100%;
 	white-space: pre-wrap;
-  border: 0px;
+  	border: 0px;
 }
 
 
@@ -41,4 +41,10 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
   pre .tag, code .tag { color: #006; font-weight: bold; }
   pre .atn, code .atn { color: #404; }
   pre .atv, code .atv { color: #060; }
+}
+
+@media screen and (max-width: 960px) and (max-width: 768px) {
+	pre.prettyprint {
+		font-size: 12px;
+	}
 }
