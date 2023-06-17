@@ -314,9 +314,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="nav-item"><a href="/blogs/" class="nav-link px-2 text-muted">Blog</a></li>
       <li class="nav-item"><a href="/contact/" class="nav-link px-2 text-muted">Contact</a></li>
       <li class="nav-item"><a href="/sitemaps/" class="nav-link px-2 text-muted">Sitemaps</a></li>
-      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
+      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted" target="_blank" rel="nofollow,noopener,noreffer">GitHub</a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 devil code</p>
+    <div class="copyright text-center text-muted"><small style="font-size: 16px;">&copy;</small><p class="d-inline-block ms-1">2022-2023 devil code</p></div>
   </footer>
   <?= $this->fetch('scriptBottom') ?>
   <?= $this->Html->script(['index']) ?>
