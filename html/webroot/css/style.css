@@ -1,5 +1,6 @@
 @charset "UTF-8";
-html, body {
+html,
+body {
   font-family: "Noto Sans JP", sans-serif !important;
 }
 
@@ -12,7 +13,8 @@ a {
   color: #000;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -28,11 +30,6 @@ header .header-search {
   outline: none;
 }
 header .header-search::-moz-placeholder {
-  font-weight: bold;
-  font-size: 16px;
-  color: #999999;
-}
-header .header-search:-ms-input-placeholder {
   font-weight: bold;
   font-size: 16px;
   color: #999999;
@@ -169,7 +166,7 @@ header .del-btn {
 }
 .card-item:hover .blog-img {
   height: 220px;
-  background-image: cover　 !important;
+  background-image: cover !important;
 }
 
 .arrow {
@@ -274,18 +271,21 @@ header .del-btn {
   border-radius: 5px;
   border: 2px solid #dfbfff;
 }
-.blog .blog_body h4, .blog .blog_body h5 {
+.blog .blog_body h4,
+.blog .blog_body h5 {
   font-size: 20px;
   font-weight: 400;
   margin: 48px 0px;
   line-height: 20px;
 }
-.blog .blog_body p, .blog .blog_body i {
+.blog .blog_body p,
+.blog .blog_body i {
   font-size: 16px;
   margin-bottom: 14px;
   line-height: 32px;
 }
-.blog .blog_body ul, .blog .blog_body ol {
+.blog .blog_body ul,
+.blog .blog_body ol {
   max-width: 720px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -326,7 +326,8 @@ header .del-btn {
   background-color: #fff;
   font-weight: bold;
 }
-.blog .blog_body table th, .blog .blog_body table td {
+.blog .blog_body table th,
+.blog .blog_body table td {
   padding: 10px 12px;
   border: 1px solid #6c757d;
   text-align: center;
@@ -410,7 +411,7 @@ header .del-btn {
 }
 
 .errorImage {
-  background-image: url("https://devil-code.com/img/brand-icon.png");
+  background-image: url("https://devil-code.com/img/brand-icon-lg.webp");
   background-size: contain;
   background-repeat: no-repeat;
   width: 280px;
@@ -464,7 +465,8 @@ header .del-btn {
   .blog {
     top: 36px;
   }
-  .blog table th, .blog table td {
+  .blog table th,
+  .blog table td {
     font-size: 8px;
   }
   .blog .blog_body img {
@@ -479,13 +481,16 @@ header .del-btn {
   .blog .blog_body h3 {
     font-size: 18px;
   }
-  .blog .blog_body h4, .blog .blog_body h5 {
+  .blog .blog_body h4,
+  .blog .blog_body h5 {
     font-size: 16px;
   }
-  .blog .blog_body p, .blog .blog_body i {
+  .blog .blog_body p,
+  .blog .blog_body i {
     font-size: 14px;
   }
-  .blog .blog_body ul, .blog .blog_body ol {
+  .blog .blog_body ul,
+  .blog .blog_body ol {
     font-size: 14px;
   }
   .blog .blog_body li {

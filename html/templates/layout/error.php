@@ -147,6 +147,6 @@
           <li class="nav-item"><a href="/sitemaps/" class="nav-link px-2 text-muted">Sitemaps</a></li>
           <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
       </ul>
-      <p class="text-center text-muted">&copy; 2022 devil code</p>
-  </footer>
+      <div class="copyright text-center text-muted"><small style="font-size: 16px;">&copy;</small><p class="d-inline-block ms-1">2022-2023 devil code</p></div>
+    </footer>
 </html>
