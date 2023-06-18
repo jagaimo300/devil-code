@@ -477,6 +477,23 @@ header {
     height: 280px;
 }
 
+.pagination-buttom {
+    line-height: 36px;
+    .current {
+        text-align: center;
+        background-color: #7f6197;
+        &:hover {
+            opacity: 0.7;
+        }
+        a {
+            display: block;
+            width: 36px;
+            height: 36px;
+            color: #fff !important;
+            cursor: pointer;
+        }
+    }
+}
 @media screen and (max-width: 960px) {
     .header-search {
         width: 120px;

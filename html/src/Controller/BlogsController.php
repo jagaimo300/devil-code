@@ -22,11 +22,6 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        // deny query strings
-        if($this->request->getQuery()){
-            throw new NotFoundException(__('404'));
-        }
-
         // top article
         $this->set('tops',  $this->Blogs->find('all', array(
             'conditions' => ['Blogs.is_top'=> "1"],
@@ -52,14 +47,20 @@ class BlogsController extends AppController
 		)));
 
         // Categories
-        $query  = $this->Blogs->find()->innerJoinWith('BlogsCategories');
-        $categories = $query->select(['cat_id'  => 'Blogs.category_id', 'cat_label' => 'BlogsCategories.category_label', 'cat_count' => $query ->func()->count('Blogs.category_id')])->group('Blogs.category_id');
-		$this->set(compact('categories'));
+        $this->loadComponent('BlogLink');
+        $categories = $this->BlogLink->getCategoryLink("");
+        $this->set(compact('categories'));
 
+        // Blog total count
+        $query = $this->Blogs->find();
+        $totalCount = $query->count();
+        $this->set('totalCount', $totalCount);
+
+        // Blog List
         $blogs = $this->Blogs->find('all', array(
             'contain' => ['BlogsCategories'],
             'offset' => 3,
-            'limit' => 8,
+            'limit' => 5,
 		    'order' => 'Blogs.created DESC',
             'recursive' => -1,
         ));
@@ -67,7 +68,7 @@ class BlogsController extends AppController
         $this->set(compact('blogs'));
     }
 
-    /**
+     /**
      * View method
      *
      * @param string|null $id Blog id.
@@ -125,10 +126,51 @@ class BlogsController extends AppController
 
         // Category links
         $this->loadComponent('BlogLink');
-
         $categories = $this->BlogLink->getCategoryLink($cat);
         $this->set(compact('categories'));
+    }
 
+    /**
+     * List method.
+     *
+     * @return \Cake\Http\Response|null|void Renders list, or redirects to another action.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When the record is not found.
+     */
+    public function list()
+    {
+        $this->loadComponent('Paginator');
+
+        // Get the page number from the query string
+        $page = $this->request->getQuery('page', 1);
+        $this->set('page', $page);
+
+        // Fetch the blog list
+        $query = $this->Blogs->find('all', [
+            'contain' => ['BlogsCategories'],
+            'order' => ['Blogs.created' => 'DESC'],
+            'recursive' => -1
+        ]);
+        
+        // Configure pagination
+        $limit = 5;
+        $blogs = $this->Paginator->paginate($query, [
+            'limit' => $limit,
+            'maxLimit' => $limit
+        ]);
+        $this->set(compact('blogs'));
+
+        // Calculate the displayed range
+        $totalCount = $query->count();
+        $from = ($page - 1) * $limit + 1;
+        $to = min($page * $limit, $totalCount);
+        $this->set('totalCount', $totalCount);
+        $this->set('from', $from);
+        $this->set('to', $to);
+
+        // Load category links
+        $this->loadComponent('BlogLink');
+        $categories = $this->BlogLink->getCategoryLink("");
+        $this->set(compact('categories'));
     }
 
     /**

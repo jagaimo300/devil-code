@@ -6,9 +6,14 @@ use Cake\Controller\Component;
 
 use Cake\ORM\TableRegistry;
 
+/**
+ * Category link component
+ *
+ * @param string|null $category_label Category_id.
+ */
 class BlogLinkComponent extends Component
 {
-    public function getCategoryLink($category_label)
+    public function getCategoryLink($category_label = null)
     {
         $registryBlogs = TableRegistry::getTableLocator()->get('Blogs');
         $query  = $registryBlogs->find()->innerJoinWith('BlogsCategories');
