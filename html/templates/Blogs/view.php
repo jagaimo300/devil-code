@@ -62,7 +62,7 @@ $this->Breadcrumbs->setTemplates([
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
         $this->assign('title', $blog->title . '| devil code(デビルコード)');
-        $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' .$blog->slug . '/"' . ' />');
+        $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' . $blog->slug . '/"' . ' />');
         // description
         $this->Html->meta(["name"=>"description","content"=>"$blog->description"],null,["block"=>'meta']);
         // ogp
@@ -195,12 +195,31 @@ $this->Breadcrumbs->setTemplates([
                             </div>
                         </div>
                     </section>
-                    <section itemprop="articleBody" id="blogBody" class="blog_body my-7 pe-3 pe-md-0 text-break ls-1">
+                    <section itemprop="articleBody" id="blogBody" class="blog_body my-5 pe-3 pe-md-0 text-break ls-1">
                         <?= $blog->body ?>
                     </section>
+                    <hr class="my-5">
+                    <div class="postLink-around container d-flex justify-content-between p-0 mb-5">
+                        <div class="row col-6 text-start border border-gray m-0">
+                            <?php foreach ($prevPost as $index => $prev) : ?>
+                                <a class="postLink postLink-prev position-relative ps-5 pe-3" href="/blogs/<?= h($prev->blogs_category->category_label) ?>/<?= h($prev->slug) ?>/">
+                                    <span class="d-block pt-3 pb-3">前の記事</span>
+                                    <span class="d-block pb-3 overflow-hidden text-truncate text-nowrap"><?= $prev->title ?></span>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="row col-6 text-end border border-gray m-0">
+                            <?php foreach ($nextPost as $index => $next) : ?>
+                                <a class="postLink postLink-next position-relative ps-3 pe-5" href="/blogs/<?= h($next->blogs_category->category_label) ?>/<?= h($next->slug) ?>/">
+                                    <span class="d-block pt-3 pb-3">次の記事</span>
+                                    <span class="d-block pb-3 overflow-hidden text-truncate text-nowrap"><?= $next->title ?></span>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                 </article>
                 <?php endforeach; ?>
-
+                
                 <aside class="col-12 col-md-3">
                         <div class="sticky-top" style="z-index: 1;">
                             <div class="mt-5 category_tagWrapper">

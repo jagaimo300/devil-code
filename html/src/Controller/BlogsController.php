@@ -77,10 +77,6 @@ class BlogsController extends AppController
      */
     public function view($slug = null)
     {
-        // Show 404 page if query strings exsist
-        if($this->request->getQuery()){
-            throw new NotFoundException(__('404'));
-        }
 
         list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
         
@@ -115,14 +111,26 @@ class BlogsController extends AppController
         if($blogs->isEmpty()){
             throw new NotFoundException(__('404'));
         }
-        // $results = $blogs->toArray();
-
-        // $blog_pv = $this->blogs_pv->newEmptyEntity();
-        // $this->blog_pv->id = $results[0]->id;
-        // $this->Recipe->save();
-
-
         $this->set(compact('blogs'));
+
+        $currentArticle = $blogs->first();
+
+        // Lately posts
+        $this->set('prevPost', $this->Blogs->find('all', array(
+            'conditions' => ['Blogs.id <' => $currentArticle->id],
+            'contain' => ['BlogsCategories'],
+            'order' => 'Blogs.id DESC',
+            'limit' => 1,
+		    'recursive' => -1,
+		)));
+
+        $this->set('nextPost', $this->Blogs->find('all', array(
+            'conditions' => ['Blogs.id >' => $currentArticle->id],
+            'contain' => ['BlogsCategories'],
+            'order' => 'Blogs.id ASC',
+            'limit' => 1,
+		    'recursive' => -1,
+		)));
 
         // Category links
         $this->loadComponent('BlogLink');
