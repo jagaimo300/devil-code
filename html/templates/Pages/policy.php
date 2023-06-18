@@ -16,8 +16,8 @@ $this->Breadcrumbs->add(
     ]
 );
 $this->Breadcrumbs->add(
-    'サイトマップ',
-    ['controller' => '/', 'action' => 'sitemaps'],
+    'サイトポリシー',
+    ['controller' => '/', 'action' => 'policy'],
     [
         'templateVars' => [
             'num' => '2'
@@ -35,10 +35,16 @@ $this->Breadcrumbs->setTemplates([
 
 $this->assign('title', 'サイトポリシー');
 $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/site-policy/" />');
-$is_exits[] = ''
 ?>
 
 <?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.jpg"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
 <section class="blog">
     <div class="container">
