@@ -261,22 +261,8 @@ $this->Breadcrumbs->setTemplates([
         </div>
     </div>
 </div>
-<script type="application/ld+json">
-    <?php echo json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>
-</script>
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "WebSite",
-  "name": "Devil Code",
-  "url": "https://devil-code.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://devil-code.com/blogs/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+
+
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
@@ -305,3 +291,11 @@ $this->Breadcrumbs->setTemplates([
 </script>
 <?= $this->Html->script(['run_pretty'],['defer']) ?>
 <?= $this->Html->script(['bootstrap.bundle.min'],['defer']) ?>
+
+<?php
+$jsonLdScript = '
+<script type="application/ld+json">
+    ' . json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '
+</script>';
+$this->assign('jsonLd', $jsonLdScript);
+?>
