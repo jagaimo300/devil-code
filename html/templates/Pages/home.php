@@ -8,8 +8,6 @@
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
-
-
 <?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
 <?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
@@ -47,7 +45,7 @@
                 </div>
                 <p class="fw-lighter pe-md-5">
                     技術メモ、プログラミング、学習について。
-                    <br>プログラミングで得た知見の備忘録として残したり、資格取得のために勉強したことを共有します。
+                    <br>技術やプログラミングに関する知識や経験を記録し、学習した内容を共有します。自分自身の備忘録として活用したり、資格取得のための勉強内容を共有します。
                 </p>
             </div>
             <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
@@ -55,8 +53,9 @@
                     <h4 class="fs-7">仕事</h4>
                     <span>Career</span>
                 </div>
-                <p class="fw-lighter pe-md-5">キャリアプランや就職活動などについて。
-                <br>WEBプログラマーになるうえで必要だったスキルや、これからのキャリア形成ついて私見を共有します。
+                <p class="fw-lighter pe-md-5">
+                キャリアプランや就職活動に関する情報を提供します。<br>
+                WEBプログラマーとして成功するために必要なスキルや、将来のキャリア形成についての私見を共有します。自身の経験から得た知識やアドバイスを通じて、誰かのキャリアの一助となることを目指しています。
                 </p>
             </div>
             <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
@@ -65,8 +64,8 @@
                     <span>Life style</span>
                 </div>
                 <p class="fw-lighter pe-md-5">
-                    異業種からの転職で変化したライフスタイル、その暮らしやお金のことについて。
-                    <br>居酒屋店員からエンジニアに転職して生活面で変わったことや、地方の会社に勤める生活を共有します。
+                    エンジニアとして働くことで、異業種からの転職や地方の会社での就業など、生活面での変化やお金についての経験を共有します。<br>
+                    居酒屋店員からエンジニアに転身した私の経験から、エンジニアの仕事の特徴や働き方、生活スタイルの変化についてお伝えします。将来エンジニアを目指す方や転職を考えている方にとって役立つ情報を提供します。
                 </p>
             </div>
 
@@ -141,12 +140,12 @@
         <div class="ls-1 col-lg-6 col-md-12 text-dark ">
                 <p>Author</p>
                 <h2>Takahiro Ueda</h2>
-                <p>Web Programmer</p>
-                <p class="lh-lg">宮城を拠点として活動しているWEBプログラマーです。
+                <p>Web Engineer</p>
+                <p class="lh-lg">宮城を拠点として活動しているWEBアプリケーションエンジニアです。
                     <br>新しい技術や知見を得ることに喜びと生きがいを感じます。
                     <br>趣味はラグビー観戦、筋トレ、外国語学習 好きな食べ物は寿司 猫派です。
                 </p>
-                <p class="lh-lg">Hello, I'm a Junior Web Developer based in Japan.
+                <p class="lh-lg">Hello, I'm a Web Developer based in Japan.
                     <br>I really enjoy using my skills to help improve things.
                     <br>I like watching Rugby, Workout, Sushi, Cats.
                 </p>

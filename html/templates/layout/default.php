@@ -195,19 +195,24 @@ pre .str, code .str{color: #65B042}pre .kwd, code .kwd{color: #E28964}pre .com, 
   <?= $this->Html->css(['style']) ?>
   <?= $this->fetch('css') ?>
   <?= $this->fetch('jsonLd') ?>
+
   <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "WebSite",
-  "name": "Devil Code",
-  "url": "https://devil-code.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://devil-code.com/blogs/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "devil code",
+    "url": "https://devil-code.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://devil-code.com/blogs/search/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Takahiro Ueda"
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
