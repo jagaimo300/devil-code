@@ -89,7 +89,11 @@ class PagesController extends AppController
     public function contact()
     {
     }
-    
+
+    public function policy()
+    {
+    }
+
     public function sitemaps()
     {
         $blogs = TableRegistry::getTableLocator()->get('Blogs');

@@ -43,7 +43,7 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', 'devil-code(デビルコード) - ブログ - 記事一覧');
-$this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/list/?page=$page" />');
+$this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/list/?page=' . $page . '" />');
 
 // 構造化データ
 $structuredData = array(

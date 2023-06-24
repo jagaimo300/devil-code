@@ -30,8 +30,7 @@ return static function (RouteBuilder $routes) {
         $builder->fallbacks();
     });
 
-
-    $routes->scope('/policy', function (RouteBuilder $builder) {
+    $routes->scope('/site-policy', function (RouteBuilder $builder) {
 
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'policy']);
 
