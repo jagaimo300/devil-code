@@ -11,7 +11,7 @@ https://devil-code.com
 ## Development directory structure
 
 ```
-├─dockersdf
+├─docker
 │  ├─phpmyadmin
 │  │  └─sessions
 │  ├─mysql
