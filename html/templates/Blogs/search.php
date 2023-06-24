@@ -42,12 +42,27 @@ $this->Breadcrumbs->setTemplates([
     'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
 ]);
 
-$this->assign('title', ' - Blog - 「' . $q . '」の検索結果');
+$this->assign('title', 'devil-code(デビルコード) - ブログ - 「'. $q . '」の検索結果');
 
 if(!$blog_count){
     echo $this->Html->meta(["name"=>"robots","content"=>"noindex"],null,["block"=>'meta']);
+}else{
+        // 構造化データ
+    $structuredData = array(
+        "@context" => "https://schema.org",
+        "@type" => "ItemList"
+    );  
 }
 ?>
+
+<?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.webp"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
 <section class="blog" style="min-height: 60vh;">
     <div class="container">
@@ -56,6 +71,16 @@ if(!$blog_count){
                 <?php if ($blog_count) :?>
                     <h2 class="mb-5">「<?= h($q) ?>」の検索結果 <?= h($blog_count) ?>件</h2>
                     <?php foreach ($blogs as $index => $blog) : ?>
+                        <?php
+                            // 動的に構造化データを生成
+                            $index++;
+                            $itemListElement[] = array(
+                                "@type" => "ListItem",
+                                "position" => $index,
+                                "url" => BASE_URL . '/blogs/' . $blog->blogs_category->category_label . '/' . $blog->slug . '/',
+                                "name"=> $blog->title
+                            );
+                        ?>
                         <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/" class="pe-lg-5 h-100">
                             <div class="d-md-flex justify-content-between align-items-center">
                                 <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
@@ -65,6 +90,10 @@ if(!$blog_count){
                             <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body),0,120) ?></p>
                         </a>
                     <?php endforeach; ?>
+                    <?php
+                        // 動的に生成した構造化データを格納
+                        $structuredData["itemListElement"] = $itemListElement;
+                    ?>
                 <?php else: ?>
                     <h2 class="mb-5">「<?= h($q) ?>」の検索結果 <?= h($blog_count) ?>件</h2>
                     <div class="d-flex justify-content-between align-items-center">
