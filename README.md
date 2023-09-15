@@ -31,6 +31,21 @@ Make directory to store phpMyAdmin container's session data.
 cd docker && mkdir phpmyadmin && mkdir phpmyadmin/sessions
 ```
 
+Rename .env.example to .env and edit it.
+
+```
+WEB_PORT=8888
+
+DB_NAME=your_dbname
+DB_USER=your_name
+DB_PASS=Pass1234
+DB_PORT=8810
+
+PMA_USER=your_name
+PMA_PASS=Pass1234
+PMA_PORT=8889
+```
+
 Install composer to html directory
 
 ```
