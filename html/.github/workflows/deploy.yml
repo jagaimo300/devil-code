@@ -1,0 +1,33 @@
+name: Deploy to Sakura VPS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'devil-code/html/src/**'
+      - 'devil-code/html/templates/**'
+      - 'devil-code/html/webroot/css/**'
+      - 'devil-code/html/webroot/js/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa your_vps_host >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: |
+          ssh -p 325 taka@ik1-335-27803.vs.sakura.ne.jp 'cd /var/www/html/devil-code.com && git pull origin main'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+:
