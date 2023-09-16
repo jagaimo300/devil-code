@@ -35,7 +35,7 @@
     <div class="album py-5 bg-white">
         <div class="container">
             <div class="row my-5 align ls-1">
-                <h3>ブログtest</h3>
+                <h3>ブログ</h3>
                 <p>Latest posts</p>
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
