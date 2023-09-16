@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - 'devil-code/html/src/**'
-      - 'devil-code/html/templates/**'
-      - 'devil-code/html/webroot/css/**'
-      - 'devil-code/html/webroot/js/**'
+      - '/html/src/**'
+      - '/html/templates/**'
+      - '/html/webroot/css/**'
+      - '/html/webroot/js/**'
 
 jobs:
   deploy:
