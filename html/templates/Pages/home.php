@@ -31,47 +31,6 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
 </div>
-<section class="about pt-3">
-    <div class="container text-center text-md-start">
-        <div class="row mb-5 py-5 ls-1">
-            <h3>知ること。</h3>
-            <p class="mb-5">Stay curious.</p>
-        </div>
-        <div class="row ls-1">
-            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5 mb-md-4">
-                    <h4 class="fs-7">知識共有</h4>
-                    <span>Knowledge</span>
-                </div>
-                <p class="fw-lighter pe-md-5">
-                    技術メモ、プログラミング、学習について。
-                    <br>技術やプログラミングに関する知識や経験を記録し、学習した内容を共有します。自分自身の備忘録として活用したり、資格取得のための勉強内容を共有します。
-                </p>
-            </div>
-            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5 mb-md-4">
-                    <h4 class="fs-7">仕事</h4>
-                    <span>Career</span>
-                </div>
-                <p class="fw-lighter pe-md-5">
-                キャリアプランや就職活動に関する情報を提供します。<br>
-                WEBプログラマーとして成功するために必要なスキルや、将来のキャリア形成についての私見を共有します。自身の経験から得た知識やアドバイスを通じて、誰かのキャリアの一助となることを目指しています。
-                </p>
-            </div>
-            <div class="col-md-4 pe-md-5 mt-5 mt-md-0">
-                <div class="mb-5 mb-md-4">
-                    <h4 class="fs-7">暮らし</h4>
-                    <span>Life style</span>
-                </div>
-                <p class="fw-lighter pe-md-5">
-                    エンジニアとして働くことで、異業種からの転職や地方の会社での就業など、生活面での変化やお金についての経験を共有します。<br>
-                    居酒屋店員からエンジニアに転身した私の経験から、エンジニアの仕事の特徴や働き方、生活スタイルの変化についてお伝えします。将来エンジニアを目指す方や転職を考えている方にとって役立つ情報を提供します。
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
 <section class="blog-wrapper">
     <div class="album py-5 bg-white">
         <div class="container">
