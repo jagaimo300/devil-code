@@ -24,9 +24,9 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ secrets.YOUR_VPS_HOST }}>> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to VPS
         run: |
           ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main'
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}:
