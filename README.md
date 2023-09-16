@@ -46,13 +46,13 @@ PMA_PASS=Pass1234
 PMA_PORT=8889
 ```
 
-Install composer to html directory(docker container)
-```
-docker exec -it <php container ID> && composer install
-```
-
 Start docker compose
 
 ```
 docker-compose up d
+```
+
+Install composer to html directory(docker container)
+```
+docker exec -it <php container ID> && composer install
 ```
