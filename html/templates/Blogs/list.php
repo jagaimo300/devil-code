@@ -68,9 +68,9 @@ $structuredData = array(
             <div class="col-md-8 me-md-1">
                 <h2>記事一覧</h2>
                 <p class="mb-5">Posts</p>
-                <div class="d-flex align-items-center justify-content-between mb-5">
+                <div class="d-md-flex align-items-center justify-content-between mb-5">
                     <p class="articleTotalCount mb-0"><?= $from; ?> 件から <?= $to; ?> 件を表示中（全 <?= $totalCount; ?> 件中）</p>
-                    <ul class="page-links d-flex mb-0 ps-0">
+                    <ul class="page-links d-flex my-3 my-md-0 mb-0 ps-0">
                         <?php
                             if ($this->Paginator->hasPrev()){
                                 echo $this->Paginator->prev(__('Previous'), [

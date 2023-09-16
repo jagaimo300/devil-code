@@ -217,6 +217,9 @@ $this->Breadcrumbs->setTemplates([
                             <?php endforeach; ?>
                         </div>
                     </div>
+					<div class="mt-2 text-end">
+					<a href="/blogs/list/" class="view-all">記事一覧へ</a>
+					</div>
                 </article>
                 <?php endforeach; ?>
                 

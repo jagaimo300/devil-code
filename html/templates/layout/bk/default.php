@@ -19,33 +19,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4391498059262861"
+     crossorigin="anonymous"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PPMCPKK');</script>
+<!-- End Google Tag Manager -->
+
   <?= $this->fetch('canonical') ?>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= $this->fetch('title') ?></title>
   <?= $this->fetch('meta') ?>
 
-  <!-- Google Tag Manager -->
-  <script defer>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-PN98ZV8');
-  </script>
-  <!-- End Google Tag Manager -->
 
-  <?= $this->Html->meta('icon') ?>
-  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" sizes="180x180">  
+  <!-- <?= $this->Html->meta('icon') ?> -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
 <style>
 /* bootstrap */
 @charset "UTF-8";:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-primary:#0d6efd;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#202023;--bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--bs-gradient:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,0))}*,:after,:before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-font-sans-serif);font-size:1rem;font-weight:400;line-height:1.5;color:#202023;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
@@ -198,15 +197,37 @@ pre .str, code .str{color: #65B042}pre .kwd, code .kwd{color: #E28964}pre .com, 
   <?= $this->Html->css(['style']) ?>
   <?= $this->fetch('css') ?>
   <?= $this->fetch('jsonLd') ?>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "devil code",
+    "url": "https://devil-code.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://devil-code.com/blogs/search/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Takahiro Ueda"
+    }
+  }
+  </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPMCPKK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <header id="header" class="position-fixed w-100 top-0 position-relative" style="z-index: 1000;">
     <div class="px-4 py-md-3 bg-dark text-white">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center my-0 my-md-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <?= $this->Html->image('brand-icon.png', ['alt' => 'Brand logo', 'width' => '24px', 'height' => '24px']) ?>
-            <?= $this->Html->image('brand-logo_white.png', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
+            <?= $this->Html->image('brand-icon.webp', ['alt' => 'Brand logo', 'width' => '24px', 'height' => '24px']) ?>
+            <?= $this->Html->image('brand-logo_white.webp', ['alt' => 'Brand logo', 'width' => '130px', 'height' => '32px']) ?>
           </a>
           <!-- nav menu for display sm -->
           <button id="toggleNavBtn" type="button" class="bg-dark border-0 d-md-none justify-content-center" aria-label="toggle button" style="width: 48px; height: 48px;" aria-expanded="false" aria-controls="toggleNavMenu">
@@ -313,15 +334,13 @@ pre .str, code .str{color: #65B042}pre .kwd, code .kwd{color: #E28964}pre .com, 
       <li class="nav-item"><a href="/blogs/" class="nav-link px-2 text-muted">Blog</a></li>
       <li class="nav-item"><a href="/contact/" class="nav-link px-2 text-muted">Contact</a></li>
       <li class="nav-item"><a href="/sitemaps/" class="nav-link px-2 text-muted">Sitemaps</a></li>
-      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted">GitHub</a></li>
+      <li class="nav-item"><a href="/site-policy/" class="nav-link px-2 text-muted">Site policy</a></li>
+      <li class="nav-item"><a href="<?= URL_GITHUB ?>" class="nav-link px-2 text-muted" target="_blank" rel="nofollow,noopener,noreffer">GitHub</a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 devil code</p>
+    <div class="copyright text-center text-muted"><small style="font-size: 16px;">&copy;</small><p class="d-inline-block ms-1">2022-2023 devil code</p></div>
   </footer>
   <?= $this->fetch('scriptBottom') ?>
   <?= $this->Html->script(['index']) ?>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN98ZV8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>

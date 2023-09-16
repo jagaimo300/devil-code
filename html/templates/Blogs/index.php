@@ -117,11 +117,12 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
     <div class="container">
         <div class="row my-5 d-flex">
             <div class="col-md-8 me-md-1">
-                <div class="d-flex align-items-center">
-                    <h2>記事一覧</h2><span class="articleTotalCount ms-3">全<?= h($totalCount) ?>件</span>
+				<h2>記事一覧</h2>
+				<p class="mb-5">Posts</p>
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <span class="articleTotalCount">全<?= h($totalCount) ?>件</span>
                     <a href="/blogs/list/" class="view-all ms-auto me-0">もっと見る</a>
                 </div>
-                <p class="mb-5">Posts</p>
                 <?php foreach ($blogs as $index => $blog) : ?>
                     <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/" class="pe-lg-5 h-100">
                         <div class="d-md-flex justify-content-between align-items-center">
