@@ -1,4 +1,4 @@
-name: Deploy to Sakura VPS
+name: Deploy to VPS
 
 on:
   push:
@@ -23,11 +23,10 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa your_vps_host >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa ${{ secrets.YOUR_VPS_HOST }}>> ~/.ssh/known_hosts
 
       - name: Deploy to VPS
         run: |
-          ssh -p 325 taka@ik1-335-27803.vs.sakura.ne.jp 'cd /var/www/html/devil-code.com && git pull origin main'
+          ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main'
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}:
