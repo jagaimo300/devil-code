@@ -29,4 +29,4 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin main'
+          ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin master'
