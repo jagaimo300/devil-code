@@ -1,14 +1,11 @@
-name: Deploy to VPS
+name: Deploy templates to VPS
 
 on:
   push:
     branches:
       - master
     paths:
-      - '/html/src/**'
       - '/html/templates/**'
-      - '/html/webroot/css/**'
-      - '/html/webroot/js/**'
 
 jobs:
   deploy:
