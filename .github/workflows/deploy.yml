@@ -2,6 +2,10 @@ name CD
 on:
   push:
     branches: [main]
+      - main
+    paths:
+      - '/html/templates/**'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
