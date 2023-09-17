@@ -3,26 +3,23 @@ name: Deploy templates to VPS
 on:
   push:
     branches:
-      - master
+      - main 
     paths:
       - 'html/templates/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v4
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up SSH key
-        run: |
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa_sakura
-          chmod 600 ~/.ssh/id_rsa_sakura
-          ssh-keyscan -t rsa ${{ secrets.YOUR_VPS_HOST }}>> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to VPS
-        run: |
-          ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin master'
+    uses: appleboy/ssh-action@master
+    with:
+      key: ${{ secrets.SSH_PRIVATE_KEY }}
+      host: ${{ secrets.YOUR_VPS_HOST }}
+      username: ${{ secrets.YOUR_USERNAME }}
+      port: ${{ secrets.PORT_NUMBER }}
+      script: |
+        cd ${{ secrets.DEPLOY_PATH }}
+        git pull origin main
+        echo "Deployment is done"
