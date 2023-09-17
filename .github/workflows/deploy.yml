@@ -25,11 +25,11 @@ jobs:
             git pull origin main
 
             deploy_targets=(
-              templates/src/*
-              templates/templates/*
-              webroot/css/*
-              webroot/js/*
+              templates/src
+              templates/templates
+              webroot/css
+              webroot/js
             )
             for path in "${deploy_targets[@]}"; do
-              cp -r "${{ secrets.VPS_REPO_PATH }}/html/$path" "${{ secrets.VPS_DEPLOY_PATH }}/$path"
+              cp -r "${{ secrets.VPS_REPO_PATH }}/html/$path/*" "${{ secrets.VPS_DEPLOY_PATH }}/$path/"
             done
