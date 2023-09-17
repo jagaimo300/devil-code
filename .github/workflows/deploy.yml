@@ -17,7 +17,6 @@ jobs:
 
       - name: Set up SSH key
         run: |
-          mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa_sakura
           chmod 600 ~/.ssh/id_rsa_sakura
           ssh-keyscan -t rsa ${{ secrets.YOUR_VPS_HOST }}>> ~/.ssh/known_hosts
