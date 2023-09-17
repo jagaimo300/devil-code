@@ -1,32 +1,13 @@
-name: Deploy to VPS
+name Deploy to VPS
 
 on:
   push:
     branches:
       - master
-    paths:
-      - '/html/src/**'
-      - '/html/templates/**'
-      - '/html/webroot/css/**'
-      - '/html/webroot/js/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa ${{ secrets.YOUR_VPS_HOST }}>> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to VPS
-        run: |
-          ssh -p ${{ secrets.PORT_NUMBER }} ${{ secrets.YOUR_USERNAME }}@${{ secrets.YOUR_VPS_HOST }} 'cd ${{ secrets.DEPLOY_DIRECTORY }} && git pull origin master'
+        run: echo "Hello world"
