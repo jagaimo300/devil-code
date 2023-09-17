@@ -8,7 +8,6 @@
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
-
 <?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
 <?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
