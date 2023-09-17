@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Test
 
 on:
   push:
@@ -6,7 +6,9 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
+    name: Greeting
+
     runs-on: ubuntu-latest
 
     steps:
