@@ -18,24 +18,11 @@
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
-<div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('../img/background-1.jpg')">
-        </div>
-        <div class="swiper-slide" style="background-image: url('../img/background-2.jpg')">
-            <div class="text-wrapper ls-1 mt-5">
-                <a href="/blogs" class="border-btn px-4 px-md-5 py-3 border border-3 border-white text-white text-nowrap">ブログを見る</a>
-            </div>
-        </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
 <section class="blog-wrapper">
     <div class="album py-5 bg-white">
         <div class="container">
             <div class="row my-5 align ls-1">
-                <h3>ブログ</h3>
+                <h3>ブログ </h3>
                 <p>Latest posts</p>
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">
