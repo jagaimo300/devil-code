@@ -13,13 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout code
-    uses: appleboy/ssh-action@master
-    with:
-      key: ${{ secrets.SSH_PRIVATE_KEY }}
-      host: ${{ secrets.YOUR_VPS_HOST }}
-      username: ${{ secrets.YOUR_USERNAME }}
-      port: ${{ secrets.PORT_NUMBER }}
-      script: |
-        cd ${{ secrets.DEPLOY_PATH }}
-        git pull origin main
-        echo "Deployment is done"
+      uses: appleboy/ssh-action@master
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        host: ${{ secrets.YOUR_VPS_HOST }}
+        username: ${{ secrets.YOUR_USERNAME }}
+        port: ${{ secrets.PORT_NUMBER }}
+        script: |
+          cd ${{ secrets.DEPLOY_PATH }}
+          git pull origin main
+          echo "Deployment is done"
