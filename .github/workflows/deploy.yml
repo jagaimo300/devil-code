@@ -31,5 +31,5 @@ jobs:
               webroot/js
             )
             for path in "${deploy_targets[@]}"; do
-              cp -r "${{ secrets.VPS_REPO_PATH }}/html/$path/*" "${{ secrets.VPS_DEPLOY_PATH }}/$path/"
+              cp -r "/var/git/devil-code/html/$path/*" "/var/www/html/devil-code.com/$path/"
             done
