@@ -12,8 +12,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install SSH Key for Deploy
+      - uses: actions/checkout@v4
+      - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SSH_KEY }}
