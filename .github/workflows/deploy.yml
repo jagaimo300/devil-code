@@ -1,11 +1,13 @@
-name: CD
+name: Deploy
 on:
   push:
     branches:
       - main
     paths:
+      - 'html/src/**'
       - 'html/templates/**'
-
+      - 'html/webroot/css/**'
+      - 'html/webroot/js/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,10 +16,20 @@ jobs:
       - name: Install SSH Key for Deploy
         uses: appleboy/ssh-action@master
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.YOUR_VPS_HOST }}
-          username: ${{ secrets.YOUR_USERNAME }}
-          port: ${{ secrets.PORT_NUMBER }}
+          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
+            cd ${{ secrets.VPS_REPO_PATH }}
             git pull origin main
+
+            deploy_targets=(
+              templates/src/*
+              templates/templates/*
+              webroot/css/*
+              webroot/js/*
+            )
+            for path in "${deploy_targets[@]}"; do
+              cp -r "${{ secrets.VPS_REPO_PATH }}/html/$path" "${{ secrets.VPS_DEPLOY_PATH }}/$path"
+            done
