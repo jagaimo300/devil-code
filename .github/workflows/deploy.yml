@@ -1,25 +1,19 @@
-name: Deploy templates to VPS
-
+name CD
 on:
   push:
-    branches:
-      - main 
-    paths:
-      - 'html/templates/**'
-
+    branches: [main]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Checkout code
-      uses: appleboy/ssh-action@master
-      with:
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        host: ${{ secrets.YOUR_VPS_HOST }}
-        username: ${{ secrets.YOUR_USERNAME }}
-        port: ${{ secrets.PORT_NUMBER }}
-        script: |
-          cd ${{ secrets.DEPLOY_PATH }}
-          git pull origin main
-          echo "Deployment is done"
+      - uses: actions/checkout@v2
+      - name: Install SSH Key for Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.YOUR_VPS_HOST }}
+          username: ${{ secrets.YOUR_USERNAME }}
+          port: ${{ secrets.PORT_NUMBER }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            git pull origin main
