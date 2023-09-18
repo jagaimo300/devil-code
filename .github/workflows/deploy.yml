@@ -25,15 +25,15 @@ jobs:
             git pull origin main
 
             deploy_targets=(
-              src/
-              templates/
-              webroot/css/
-              webroot/js/
+              src
+              templates
+              webroot/css
+              webroot/js
             )
 
             for path in "${deploy_targets[@]}"; do
-              source_path="${{ secrets.VPS_REPO_PATH }}/html/$path"
-              destination_path="${{ secrets.VPS_DEPLOY_PATH }}/${path%/}"
+              source_path="${{ secrets.VPS_REPO_PATH }}/html/$path/"
+              destination_path="${{ secrets.VPS_DEPLOY_PATH }}/$path}"
 
               if [ -d "$destination_path" ]; then
                 rm -rf "$destination_path"
