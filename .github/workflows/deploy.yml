@@ -25,10 +25,10 @@ jobs:
             git pull origin main
 
             deploy_targets=(
-              templates/src/
-              templates/templates/
-              webroot/css/
-              webroot/js/
+              src
+              templates
+              webroot/css
+              webroot/js
             )
 
             for path in "${deploy_targets[@]}"; do
