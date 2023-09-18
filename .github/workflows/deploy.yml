@@ -23,4 +23,21 @@ jobs:
           script: |
             cd ${{ secrets.VPS_REPO_PATH }}
             git pull origin main
-            cp -r "/var/git/devil-code/html/templates/" "/var/www/html/devil-code.com/templates/"
+
+            deploy_targets=(
+              templates/src/
+              templates/templates/
+              webroot/css/
+              webroot/js/
+            )
+
+            for path in "${deploy_targets[@]}"; do
+              source_path="${{ secrets.VPS_REPO_PATH }}/html/$path"
+              destination_path="${{ secrets.VPS_DEPLOY_PATH }}/$path"
+
+              if [ -d "$destination_path" ];
+                rm -rf "$destination_path"
+              fi
+
+              cp -r "$source_path" "$destination_path"
+            done
