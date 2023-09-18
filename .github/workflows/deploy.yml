@@ -35,7 +35,7 @@ jobs:
               source_path="${{ secrets.VPS_REPO_PATH }}/html/$path"
               destination_path="${{ secrets.VPS_DEPLOY_PATH }}/$path"
 
-              if [ -d "$destination_path" ];
+              if [ -d "$destination_path" ]; then
                 rm -rf "$destination_path"
               fi
 
