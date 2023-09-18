@@ -18,6 +18,10 @@
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
+
+
+
+
 <section class="blog-wrapper">
     <div class="album py-5 bg-white">
         <div class="container">
