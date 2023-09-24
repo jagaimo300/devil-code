@@ -88,29 +88,30 @@ class BlogsController extends AppController
         $this->set('cat', $cat);
         $this->set('slug', $slug);
 
-        $relations = $this->Blogs->find('all', array(
-            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug !='=>"$slug"],
-            'contain' => ['BlogsCategories'],
-            'limit' => '5',
-            'order' => 'Blogs.created DESC',
-            'recursive' => -1,
-        ));
+        $relations = $this->Blogs->find('all', [
+            'conditions' => ['BlogsCategories.category_label' => $cat, 'Blogs.slug !=' => $slug],
+                'contain' => ['BlogsCategories'],
+                    'limit' => '5',
+                        'order' => 'Blogs.created DESC',
+                            'recursive' => -1,
+                            ]);
 
-        if(!$relations->isEmpty()){
-            $this->set(compact('relations'));
+        if (!$relations->all()->isEmpty()) {
+                $this->set(compact('relations'));
         }
-        
-        $blogs = $this->Blogs->find('all', array(
-            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"$slug"],
-            'contain' => ['BlogsCategories'],
-            'limit' => 1,
-            'order' => 'Blogs.id ASC',
-            'recursive' => -1,
-        ));
 
-        if($blogs->isEmpty()){
-            throw new NotFoundException(__('404'));
+        $blogs = $this->Blogs->find('all', [
+            'conditions' => ['BlogsCategories.category_label' => $cat, 'Blogs.slug' => $slug],
+                'contain' => ['BlogsCategories'],
+                    'limit' => 1,
+                        'order' => 'Blogs.id ASC',
+                            'recursive' => -1,
+                            ]);
+
+        if ($blogs->all()->isEmpty()) {
+                throw new NotFoundException(__('404'));
         }
+
         $this->set(compact('blogs'));
 
         $currentArticle = $blogs->first();
