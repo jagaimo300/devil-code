@@ -13,7 +13,7 @@ const sourcemaps    = require('gulp-sourcemaps');
 
 const sass = () => {
     return gulp
-        .src('./sass/*.scss')
+        .src('./sass/**/*.scss')
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err.messageFormatted);
@@ -33,7 +33,7 @@ const sass = () => {
 }
 
 const watchSass = () => {
-watch('./sass/*.scss', series(sass));
+    watch('./sass/**/*.scss', series(sass));
 }
 
 exports.default = series(sass, watchSass);
