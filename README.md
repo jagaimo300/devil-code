@@ -1,4 +1,4 @@
-# Takahiro's Homepage
+# My Homepage
 
 https://devil-code.com
 
