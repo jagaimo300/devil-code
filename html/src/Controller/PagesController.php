@@ -64,17 +64,45 @@ class PagesController extends AppController
         $this->set(compact('page', 'subpage'));
 
         $blogs = TableRegistry::getTableLocator()->get('Blogs');
-        $this->set('news', $blogs->find('all', array(
-			'contain' => ['BlogsCategories'],
-            'limit' => 3,
-		    'order' => 'Blogs.created DESC',
-		    'recursive' => -1,
-		)));
+        $blogsTags = TableRegistry::getTableLocator()->get('BlogsTags');
 
-        // Category links
-        $this->loadComponent('BlogLink');
-        $categories = $this->BlogLink->getCategoryLink("");
-        $this->set(compact('categories'));
+        $news = $blogs->find('all', array(
+            'contain' => ['BlogsCategories', 'BlogsTags', 'BlogsTags.Tags'],
+            'limit' => 5,
+            'order' => 'Blogs.created DESC',
+            'recursive' => -1,
+        ));
+
+        $this->set('news', $news);
+
+        // ブログのIDを抽出して配列に格納
+        $blogIds = [];
+        foreach ($news as $blog) {
+            $blogIds[] = $blog->id;
+        }
+        // タグを取得するクエリを実行
+        $blogsTags = $blogsTags->find('all', [
+            'contain' => ['Tags'],
+            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
+        ]);
+
+        $blogTags = [];
+        foreach ($blogsTags as $blogsTag) {
+            $blog_id = $blogsTag->blog_id;
+            $tag_name = $blogsTag->tag->tag_name;
+            $tag_slug = $blogsTag->tag->slug;
+
+            // $blog_idをキーとした連想配列を作成
+            if (!isset($blogTags[$blog_id])) {
+                $blogTags[$blog_id] = [];
+            }
+            // タグ名とタグスラッグを追加
+            $blogTags[$blog_id][] = [
+                'tag_name' => $tag_name,
+                'tag_slug' => $tag_slug
+            ];
+        }
+        $this->set('blogTags', $blogTags);
 
         try {
             return $this->render(implode('/', $path));
@@ -105,4 +133,4 @@ class PagesController extends AppController
 		)));
     }
 }
-    
+

@@ -1,0 +1,53 @@
+@use "../global/mixin" as gm;
+
+.l-header {
+    background-color: var(--c-bg-base);
+    border-bottom: 1px solid var(--c-neutral-border-lighter);
+   &__inner {
+       margin: 0 auto;
+       padding: 0 40px;
+
+       @include gm.breakpoint(md){
+           padding: 0 25px;
+       }
+
+       &-upper {
+           align-items: center; 
+           display: flex;
+           height: var(--header-height);
+           justify-content: space-between;
+           
+           a {
+               text-decoration: none;
+           }
+           .logo {
+               align-items: center;
+               display: flex;
+
+               &-icon {
+                   height: var(--base-size-32);
+                   margin-right: var(--base-size-8);
+                   width: var(--base-size-32);
+               }
+
+               &-name {
+                   color: #000;
+                   font-size: var(--base-size-24);
+                   font-weight: 700;
+               }
+           }
+           .serch-icon {
+               color: var(--c-text-low-priority);
+               &:hover {
+                   color: var(--c-text-body);
+               }
+           }
+       }
+       &-downer{
+           background: #fff;
+           position: sticky;
+           top: 0;
+           z-index: 100;
+       } 
+    }
+}

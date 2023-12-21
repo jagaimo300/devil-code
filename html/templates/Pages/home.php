@@ -8,10 +8,6 @@
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
-
-
-
-
 <?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
 <?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
@@ -22,11 +18,15 @@
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
+
+
+
+
 <section class="blog-wrapper">
     <div class="album py-5 bg-white">
         <div class="container">
             <div class="row my-5 align ls-1">
-                <h3>ブログ </h3>
+                <h3>ブログ</h3>
                 <p>Latest posts</p>
             </div>
             <div class="row mb-2 px-3 d-flex justify-content-between align">

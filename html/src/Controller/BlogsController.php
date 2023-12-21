@@ -22,28 +22,12 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        // top article
-        $this->set('tops',  $this->Blogs->find('all', array(
-            'conditions' => ['Blogs.is_top'=> "1"],
-            'contain' => ['BlogsCategories'],
-            'limit' => '1',
-            'recursive' => -1,
-        )));
-
         // Lately posts
         $this->set('news', $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
             'limit' => 3,
 		    'order' => 'Blogs.created DESC',
 		    'recursive' => -1,
-		)));
-
-        // Featured
-		$this->set('features', $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories','BlogsFeatured'],
-		    'order' => 'BlogsFeatured.id ASC',
-		    'order' => 'Blogs.created DESC',
-            'recursive' => -1,
 		)));
 
         // Categories
@@ -79,7 +63,7 @@ class BlogsController extends AppController
     {
 
         list($dummy,$ctl, $cat, $slug) = explode("/", Router::url());
-        
+
         // Change action name "view" to slug
         if($cat === "view"){
             throw new NotFoundException(__('404'));
@@ -88,29 +72,30 @@ class BlogsController extends AppController
         $this->set('cat', $cat);
         $this->set('slug', $slug);
 
-        $relations = $this->Blogs->find('all', array(
-            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug !='=>"$slug"],
-            'contain' => ['BlogsCategories'],
-            'limit' => '5',
-            'order' => 'Blogs.created DESC',
-            'recursive' => -1,
-        ));
+        $relations = $this->Blogs->find('all', [
+            'conditions' => ['BlogsCategories.slug' => $cat, 'Blogs.slug !=' => $slug],
+                'contain' => ['BlogsCategories'],
+                    'limit' => '5',
+                        'order' => 'Blogs.created DESC',
+                            'recursive' => -1,
+                            ]);
 
-        if(!$relations->isEmpty()){
-            $this->set(compact('relations'));
+        if (!$relations->all()->isEmpty()) {
+                $this->set(compact('relations'));
         }
-        
-        $blogs = $this->Blogs->find('all', array(
-            'conditions' => ['BlogsCategories.category_label'=>"$cat",'Blogs.slug'=>"$slug"],
-            'contain' => ['BlogsCategories'],
-            'limit' => 1,
-            'order' => 'Blogs.id ASC',
-            'recursive' => -1,
-        ));
 
-        if($blogs->isEmpty()){
-            throw new NotFoundException(__('404'));
+        $blogs = $this->Blogs->find('all', [
+            'conditions' => ['BlogsCategories.slug' => $cat, 'Blogs.slug' => $slug],
+                'contain' => ['BlogsCategories'],
+                    'limit' => 1,
+                        'order' => 'Blogs.id ASC',
+                            'recursive' => -1,
+                            ]);
+
+        if ($blogs->all()->isEmpty()) {
+                throw new NotFoundException(__('404'));
         }
+
         $this->set(compact('blogs'));
 
         $currentArticle = $blogs->first();
@@ -158,7 +143,7 @@ class BlogsController extends AppController
             'order' => ['Blogs.created' => 'DESC'],
             'recursive' => -1
         ]);
-        
+
         // Configure pagination
         $limit = 5;
         $blogs = $this->Paginator->paginate($query, [
@@ -274,7 +259,7 @@ class BlogsController extends AppController
         $this->loadComponent('Paginator');
 
         $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-			'conditions' => ['BlogsCategories.category_label'=>"$cat"],
+			'conditions' => ['BlogsCategories.slug'=>"$cat"],
             'contain' => ['BlogsCategories'],
             'order' => 'Blogs.created DESC',
             'recursive' => -1,
@@ -311,11 +296,11 @@ class BlogsController extends AppController
 
         //テキストボックスの空白を半角スペースに置換し半角スペース区切りで配列に格納
         $textboxs = explode(" ",mb_convert_kana($q,'s'));
-        
+
         //SQL文に追加する字句の生成
         foreach($textboxs as $textbox){
             $value = '"%'.preg_replace('/ /', '', $textbox) . '%"';
-            $textboxCondition[] = "Blogs.title LIKE $value";            
+            $textboxCondition[] = "Blogs.title LIKE $value";
         }
 
         //各Like条件を「OR」でつなぐ

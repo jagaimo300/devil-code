@@ -66,7 +66,6 @@
            <svg class="logo-icon" version="1.0" xmlns="http://www.w3.org/2000/svg"
              width="256.000000pt" height="256.000000pt" viewBox="0 0 256.000000 256.000000"
               preserveAspectRatio="xMidYMid meet">
-
               <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
               fill="#8071ff" stroke="none">
               <path d="M1069 2534 c-526 -95 -932 -502 -1033 -1033 -23 -121 -21 -337 4
