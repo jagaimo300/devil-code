@@ -1,0 +1,48 @@
+@use "../../global/mixin" as gm;
+
+.c-searchFormDesktop {
+    position: relative;
+    &__searchBox {
+        background-color: var(--c-bg-neutral);
+        color: var(--c-bext-body);
+        font-size: var(--base-size-16);
+        line-height: 1.8;
+        width: 100%;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        border-radius: 8px;
+        padding: 4px 8px 4px 32px;
+
+        &:focus {
+            outline: 2px solid var(--c-text-low-priority);
+        }
+       @include gm.breakpoint(md){
+           display: none;
+       }
+        &-icon {
+            width: 20px;
+            height: 20px;
+
+           @include gm.breakpoint(md){
+               display: none;
+           }
+        }
+        &-label {
+            color: var(--c-text-lower-priority);
+            position: absolute;
+            left: 0.4rem;
+            top: 0.6rem;
+            display: inline-flex;
+            align-items: center;
+        }
+    }
+
+    &__toggleButton {
+        display: none;
+       @include gm.breakpoint(md){
+           display: block;
+       }
+    }
+}
