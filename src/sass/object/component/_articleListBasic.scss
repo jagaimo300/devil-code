@@ -1,0 +1,77 @@
+.c-articleListBasic {
+    display: grid;
+    gap: 16px;
+    &__article {
+        background-color: var(--c-bg-base);
+        cursor: pointer;
+        position: relative;
+        border-radius: 8px;
+        padding: 16px 24px;
+        transition: all 1.3s ease 0s;
+        &-categoryLink {
+            display: inline-flex;
+            flex-shrink: 0;
+            font-size: 12.5px;
+            height: 26px;
+            margin-right: 0.3em;
+            margin-bottom: 0.6em;
+            position: relative;
+            border: 1px solid var(--c-neutral-border-lighter);
+            border-radius: var(--rounded-full);
+            padding: 2px 12px;
+            text-decoration: none;
+        }
+        &-footer {
+            align-items: flex-end;
+            display: flex;
+            justify-content: space-between;
+            line-height: 1.5;
+            margin-top: 8px;
+            position: relative;
+        }
+        &-link {
+            position: absolute;
+            inset: 0px;
+        }
+        &-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.6em;
+            position: relative;
+            gap: 4px;
+            li {
+                a {
+                    background-color: var(--c-bg-neutral-lightest);
+                    color: var(--c-gray-800);
+                    display: block;
+                    font-size: var(--base-size-12);
+                    text-decoration: none;
+                    border-radius: var(--rounded-xs);
+                    padding: 0px 6px;
+                    a::before {
+                        content: "#";
+                        margin-right: 0.3em;
+                    }
+                }
+            }
+        }
+        &-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            max-height: 4.55em;
+            line-height: 1.5;
+            margin-top: 8px;
+            position: relative;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            z-index: 1;
+            display: -webkit-box !important;
+            overflow: hidden;
+            a {
+                display: block;
+                text-decoration: none;
+            }
+        }
+    }
+}

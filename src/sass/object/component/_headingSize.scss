@@ -1,0 +1,34 @@
+@use "../../global/mixin" as gm;
+
+.c-headingSize {
+    &__2xl {
+        font-size: 2.4rem;
+       @include gm.breakpoint(sm){
+            font-size:2rem;
+       }
+    }
+    &__xl {
+        font-size: 2rem;
+       @include gm.breakpoint(sm){
+            font-size:1.6rem;
+       }
+    }
+    &__lg {
+        font-size: 1.7rem;
+       @include gm.breakpoint(sm){
+            font-size:1.4rem;
+       }
+    }
+    &__md {
+        font-size: 1.3rem;
+       @include gm.breakpoint(sm){
+            font-size:1.2rem;
+       }
+    }
+    &__sm {
+        font-size: 1.1rem;
+       @include gm.breakpoint(sm){
+            font-size: 1.02rem;
+       }
+    }
+}

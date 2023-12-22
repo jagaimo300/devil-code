@@ -1,3 +1,22 @@
+@use "../global/mixin" as gm;
+
 .l-container {
-    max-width: 1200px;
+    max-width: 960px;
+    &__common {
+        padding: 0px 40px;
+        margin: 0px auto;
+
+       @include gm.breakpoint(sm){
+           padding: 0px 20px;
+       }
+       @include gm.breakpoint(md){
+           padding: 0px 25px;
+       }
+       @include gm.breakpoint(lg){
+           max-width: 100%;
+       }
+    }
+    &__wide {
+        max-width: 1200px;
+    }
 }
