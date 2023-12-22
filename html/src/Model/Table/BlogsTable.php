@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Blogs Model
  *
- * @property \App\Model\Table\BlogsCategoriesTable&\Cake\ORM\Association\BelongsTo $BlogsCategories
+ * @property \App\Model\Table\BlogsFeaturedTable&\Cake\ORM\Association\HasMany $BlogsFeatured
  *
  * @method \App\Model\Entity\Blog newEmptyEntity()
  * @method \App\Model\Entity\Blog newEntity(array $data, array $options = [])
@@ -47,13 +47,14 @@ class BlogsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('BlogsCategories', [
+        $this->hasOne('BlogsCategories', [
             'foreignKey' => 'category_id',
-            'joinType' => 'INNER',
+            'targetForeignKey' => 'category_id',
         ]);
-        $this->belongsTo('BlogsFeatured', [
-            'foreignKey' => 'id',
-            'joinType' => 'INNER',
+        $this->hasMany('BlogsTags', [
+            'foreignKey' => 'blog_id',
+            'targetForeignKey' => 'id',
+            'joinTable' => 'Tags',
         ]);
     }
 
@@ -77,24 +78,20 @@ class BlogsTable extends Table
             ->notEmptyString('body');
 
         $validator
+            ->scalar('description')
+            ->maxLength('description', 255)
+            ->allowEmptyString('description');
+
+        $validator
             ->integer('category_id')
             ->requirePresence('category_id', 'create')
             ->notEmptyString('category_id');
 
+        $validator
+            ->scalar('slug')
+            ->maxLength('slug', 255)
+            ->allowEmptyString('slug');
+
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn('category_id', 'BlogsCategories'), ['errorField' => 'category_id']);
-
-        return $rules;
     }
 }

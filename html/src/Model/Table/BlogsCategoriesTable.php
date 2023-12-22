@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * BlogsCategories Model
  *
- * @property \App\Model\Table\CatsTable&\Cake\ORM\Association\BelongsTo $Blogs
- *
  * @method \App\Model\Entity\BlogsCategory newEmptyEntity()
  * @method \App\Model\Entity\BlogsCategory newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\BlogsCategory[] newEntities(array $data, array $options = [])
@@ -42,11 +40,6 @@ class BlogsCategoriesTable extends Table
         $this->setTable('blogs_categories');
         $this->setDisplayField('category_id');
         $this->setPrimaryKey('category_id');
-
-        $this->belongsTo('Blogs', [
-            'foreignKey' => 'category_id',
-            'joinType' => 'INNER',
-        ]);
     }
 
     /**
@@ -58,30 +51,22 @@ class BlogsCategoriesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('category_id')
-            ->requirePresence('category_id', 'create')
-            ->notEmptyString('category_id');
+            ->scalar('category_name')
+            ->maxLength('category_name', 255)
+            ->requirePresence('category_name', 'create')
+            ->notEmptyString('category_name');
 
         $validator
-            ->scalar('category_label')
-            ->maxLength('category_label', 255)
-            ->requirePresence('category_label', 'create')
-            ->notEmptyString('category_label');
+            ->scalar('slug')
+            ->maxLength('slug', 255)
+            ->requirePresence('slug', 'create')
+            ->notEmptyString('slug');
+
+        $validator
+            ->scalar('category_color')
+            ->maxLength('category_color', 255)
+            ->allowEmptyString('category_color');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn('category_id', 'Blogs'), ['errorField' => 'category_id']);
-
-        return $rules;
     }
 }
