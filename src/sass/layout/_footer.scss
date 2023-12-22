@@ -1,3 +1,5 @@
+@use "../global/mixin" as gm;
+
 .l-footer {
     padding: 3rem 0px 0px;
     &__copyright {
@@ -30,13 +32,6 @@
             }
         }
     }
-    &__navColumns {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: end;
-        flex: 1 1 0%;
-        gap: 2rem;
-    }
     &__navColumn {
         font-size: 0.88rem;
         &-title {
@@ -53,8 +48,24 @@
             }
         }
     }
+    &__navColumns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: end;
+        flex: 1 1 0%;
+        gap: 2rem;
+
+       @include gm.breakpoint(md){
+            justify-items: start;
+            margin-top: 2.4rem;
+       }
+    }
     &__inner {
         display: flex;
+
+       @include gm.breakpoint(md){
+            display: block;
+       }
     }
     &__siteDescription {
         color: var(--c-text-lower-priority);
