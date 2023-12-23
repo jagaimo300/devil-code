@@ -103,8 +103,8 @@
                         <svg class="c-searchFormSmart__searchBox-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="#8f9faa" stroke-miterlimit="10" d="M27 9C17.075 9 9 17.075 9 27s8.075 18 18 18c4.13 0 7.926-1.413 10.967-3.76l13.082 13.082a2.315 2.315 0 1 0 3.273-3.273L41.24 37.967C43.587 34.927 45 31.129 45 27c0-9.925-8.075-18-18-18zm0 4c7.719 0 14 6.281 14 14s-6.281 14-14 14-14-6.281-14-14 6.281-14 14-14z" font-family="none" font-size="none" font-weight="none" style="mix-blend-mode:normal" text-anchor="none" transform="scale(4)"></path></svg>
                     </label>
                 <input type="search" name="q" placeholder="Search" id="toggleSmartSearch" class="c-searchFormSmart__searchBox">            </form>            <nav class="c-headerNav" role="navigation" aria-label="main">
-                <?= $this->Html->link('Home', '/', ['class' => $this->getRequest()->getParam('controller') === 'Pages' && $this->getRequest()->getParam('action') === 'home' ? 'c-headerNav__item active' : 'c-headerNav__item']); ?>
-                <?= $this->Html->link('Blog', '/', ['class' => $this->getRequest()->getParam('controller') === 'Blogs' ? 'c-headerNav__item active' : 'c-headerNav__item']); ?>
+                <?= $this->Html->link('Home', '/', ['class' => $this->getRequest()->getParam('controller') === 'Pages' && $this->getRequest()->getParam('action') === 'display' ? 'c-headerNav__item active' : 'c-headerNav__item']); ?>
+                <?= $this->Html->link('Blog', '/blogs/', ['class' => $this->getRequest()->getParam('controller') === 'Blogs' ? 'c-headerNav__item active' : 'c-headerNav__item']); ?>
       </nav>
         </div>
     </div>
