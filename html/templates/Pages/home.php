@@ -53,7 +53,7 @@
           </div>
     </div>
 
-    <div class="l-container l-container__common c-viewMore">
+    <div class="l-container c-viewMore">
         <a class=" c-viewMore__link" href="/blogs">ブログをもっと見る</a>
     </div>
 </section>
