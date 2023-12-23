@@ -8,7 +8,6 @@
     $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com" />');
 ?>
 
-<?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
 <?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード)ではプログラミングの技術メモや学習記録、ITのキャリアプランや就職などについてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】デビルコード プログラミングと情報技術"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
@@ -25,103 +24,33 @@
         </div>
 
         <div class="p-home__articles c-articleListBasic">
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/java/springboot-restful/" tabindex="-1" class="c-articleListBasic__article-link"></a>
+            <?php foreach ($news as $index => $new) : ?>
+                <article class="c-articleListBasic__article">
+                    <a href="/blogs/<?= h($new->blogs_category->slug) ?>/<?= h($new->slug) ?>/" tabindex="-1" class="c-articleListBasic__article-link"></a>
                     <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/java" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">Java</div>
+                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/<?= h($new->blogs_category->category_name) ?>/" tabidnex="1">
+                            <div class="c-articleListBasic__article-categoryName"><?= h($new->blogs_category->category_name) ?></div>
                         </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-07-21T12:32:35+09:00">2023-07-21</time></span>
+                        <span class="c-articleListBasic__article-created"><time datetime="<?= $this->Time->format($new->created, 'yyyy-MM-dd\'T\'HH:mm:ssXXX'); ?>"><?= h($new->created->i18nFormat('yyyy-MM-dd')) ?></time></span>
                     </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/java/springboot-restful/">Spring Boot + MySQLで CRUD RESTfulなエンドポイントを実装する方法
-</a></h4>
+                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/<?= h($new->blogs_category->slug) ?>/<?= h($new->slug) ?>/"><?= h($new->title) ?></a></h4>
                     <footer class="c-articleListBasic__article-footer">
                         <ul class="c-articleListBasic__article-tags">
                             <!-- テンプレート内のループ -->
-                                                                                                                                                                                                    <li><a href="/blogs/java/">Java</a></li>
-                                                                            <li><a href="/blogs/spring-boot/">Spring Boot</a></li>
-                                                                                                                                                                                    </ul>
+                            <?php if(isset($blogTags[$new->id])): ?>
+                                <?php foreach ($blogTags[$new->id] as $index => $blogTag) : ?>
+                                <li>
+                                    <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
+                                        <?= $blogTag["tag_name"]; ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
                     </footer>
                 </article>
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/mysql/transaction/" tabindex="-1" class="c-articleListBasic__article-link"></a>
-                    <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/mysql" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">MySQL</div>
-                        </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-06-24T17:58:08+09:00">2023-06-24</time></span>
-                    </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/mysql/transaction/">PHPとMySQLでトランザクションを実装する方法</a></h4>
-                    <footer class="c-articleListBasic__article-footer">
-                        <ul class="c-articleListBasic__article-tags">
-                            <!-- テンプレート内のループ -->
-                                                                                                                                        <li><a href="/blogs/java/">Java</a></li>
-                                                                            <li><a href="/blogs/spring-boot/">Spring Boot</a></li>
-                                                                                                                                                                                                                                                </ul>
-                    </footer>
-                </article>
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/infra/mysql-backup/" tabindex="-1" class="c-articleListBasic__article-link"></a>
-                    <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/infra" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">Infra</div>
-                        </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-06-04T12:24:52+09:00">2023-06-04</time></span>
-                    </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/infra/mysql-backup/">さくらVPS【CentOS7】MySQLデータをダンプしてInfiniCLOUDにバックアップする方法</a></h4>
-                    <footer class="c-articleListBasic__article-footer">
-                        <ul class="c-articleListBasic__article-tags">
-                            <!-- テンプレート内のループ -->
-                                                                                                                                                                                                                                        </ul>
-                    </footer>
-                </article>
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/apache/setting-subdomain/" tabindex="-1" class="c-articleListBasic__article-link"></a>
-                    <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/apache" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">Apache</div>
-                        </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-05-30T17:13:33+09:00">2023-05-30</time></span>
-                    </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/apache/setting-subdomain/">VPSでサブドメインを設定する方法 【CentOS7 + Apache】</a></h4>
-                    <footer class="c-articleListBasic__article-footer">
-                        <ul class="c-articleListBasic__article-tags">
-                            <!-- テンプレート内のループ -->
-                                                                                                                                                                                                                                        </ul>
-                    </footer>
-                </article>
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/study/study-blog/" tabindex="-1" class="c-articleListBasic__article-link"></a>
-                    <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/study" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">Study</div>
-                        </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-05-09T16:45:56+09:00">2023-05-09</time></span>
-                    </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/study/study-blog/">CakePHPでこのブログを作った話</a></h4>
-                    <footer class="c-articleListBasic__article-footer">
-                        <ul class="c-articleListBasic__article-tags">
-                            <!-- テンプレート内のループ -->
-                                                                                                                                                                                                                                        </ul>
-                    </footer>
-                </article>
-                            <article class="c-articleListBasic__article">
-                    <a href="/blogs/python/math-python/" tabindex="-1" class="c-articleListBasic__article-link"></a>
-                    <header class="c-articleListBasic__article-header">
-                        <a class="c-articleListBasic__article-categoryLink" href="/blogs/python" tabidnex="1">
-                            <div class="c-articleListBasic__article-categoryName">Python</div>
-                        </a>
-                        <span class="c-articleListBasic__article-created"><time datetime="2023-01-31T17:39:23+09:00">2023-01-31</time></span>
-                    </header>
-                    <h4 class="c-articleListBasic__article-title"><a href="/blogs/python/math-python/">Pythonで整数１～１億の総和を求める 【Pythonで数学】</a></h4>
-                    <footer class="c-articleListBasic__article-footer">
-                        <ul class="c-articleListBasic__article-tags">
-                            <!-- テンプレート内のループ -->
-                                                                                                                                                                                                                                                                <li><a href="/blogs/computer-science/">Computer Science</a></li>
-                                                                                                                        </ul>
-                    </footer>
-                </article>
-                    </div>
+            <?php endforeach; ?>
+          </div>
     </div>
 
     <div class="l-container l-container__common c-viewMore">
