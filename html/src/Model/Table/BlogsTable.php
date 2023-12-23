@@ -47,9 +47,8 @@ class BlogsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasOne('BlogsCategories', [
+        $this->belongsTo('BlogsCategories', [
             'foreignKey' => 'category_id',
-            'targetForeignKey' => 'category_id',
         ]);
         $this->hasMany('BlogsTags', [
             'foreignKey' => 'blog_id',
