@@ -35,13 +35,7 @@ $this->Breadcrumbs->add(
 
 $this->Breadcrumbs->add(
     "${slug}",
-    ['controller' => 'blogs', 'action' => 'index'],
-    [
-        'templateVars' => [
-            'num' => '4',
-            'active' => 'active'
-        ]
-    ]
+    false
 );
 
 $this->Breadcrumbs->setTemplates([
@@ -55,7 +49,7 @@ $this->Breadcrumbs->setTemplates([
 ?>
 
 <?php foreach ($blogs as $index => $blog) : ?>
-    <?php 
+    <?php
         $create_date = new \DateTime($blog->created, new \DateTimeZone('Asia/Tokyo'));
         $created_iso8601 = $create_date->format('Y-m-d\TH:i:s') . '+09:00';
 
@@ -108,189 +102,70 @@ $this->Breadcrumbs->setTemplates([
             ),
             "description" => h($blog->description),
             "inLanguage" => "ja"
-        );  
-    ?>
-<?php endforeach; ?>
+        );
+?>
 
-<div class="blog ls-1" style="min-height: 150vh;">
-    <div class="container">
-        <div class="row">
-            <?php foreach ($blogs as $index => $blog) : ?>
-                <article class="col-12 col-md-9" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-                    <section class="blog_meta mb-2">
-                        <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
-                            <style type="text/css">
-                                .st0{fill:#4B4B4B;}
-                            </style>
-                            <g>
-                                <path class="st0" d="M149.193,103.525c15.994,0,28.964-12.97,28.964-28.973V28.964C178.157,12.97,165.187,0,149.193,0
-                                    C133.19,0,120.22,12.97,120.22,28.964v45.589C120.22,90.555,133.19,103.525,149.193,103.525z" style="fill: rgb(75, 75, 75);"></path>
-                                <path class="st0" d="M362.815,103.525c15.995,0,28.964-12.97,28.964-28.973V28.964C391.78,12.97,378.81,0,362.815,0
-                                    c-16.002,0-28.972,12.97-28.972,28.964v45.589C333.843,90.555,346.813,103.525,362.815,103.525z" style="fill: rgb(75, 75, 75);"></path>
-                                <path class="st0" d="M435.164,41.287h-17.925v33.265c0,30.017-24.415,54.432-54.423,54.432c-30.017,0-54.431-24.415-54.431-54.432
-                                    V41.287H203.615v33.265c0,30.017-24.414,54.432-54.422,54.432c-30.016,0-54.432-24.415-54.432-54.432V41.287H76.836
-                                    c-38.528,0-69.763,31.234-69.763,69.763v331.187C7.073,480.765,38.309,512,76.836,512h358.328
-                                    c38.528,0,69.763-31.235,69.763-69.763V111.05C504.927,72.522,473.691,41.287,435.164,41.287z M450.023,429.988
-                                    c0,17.826-14.503,32.329-32.329,32.329H94.306c-17.826,0-32.329-14.503-32.329-32.329V170.876h388.047V429.988z" style="fill: rgb(75, 75, 75);"></path>
-                                <rect x="190.729" y="371.769" class="st0" width="51.191" height="51.192" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="190.729" y="292.419" class="st0" width="51.191" height="51.19" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="111.386" y="371.769" class="st0" width="51.19" height="51.192" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="111.386" y="292.419" class="st0" width="51.19" height="51.19" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="349.423" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="270.08" y="213.067" class="st0" width="51.199" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="270.08" y="292.419" class="st0" width="51.199" height="51.19" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="349.423" y="371.769" class="st0" width="51.19" height="51.192" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="349.423" y="292.419" class="st0" width="51.19" height="51.19" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="270.08" y="371.769" class="st0" width="51.199" height="51.192" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="190.729" y="213.067" class="st0" width="51.191" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
-                                <rect x="111.386" y="213.067" class="st0" width="51.19" height="51.191" style="fill: rgb(75, 75, 75);"></rect>
-                            </g>
-                        </svg>
-                        <time itemprop="datePublished" class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy/MM/dd')) ?></time>
-    
-                        <?php if($blog->created->i18nFormat('yyyy/MM/dd') !== $blog->modified->i18nFormat('yyyy/MM/dd')): ?>
-                            <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="margin-left:8px; width: 16px; height: 16px; opacity: 1;" xml:space="preserve">
-                            <style type="text/css">
-                                .st0{fill:#4B4B4B;}
-                            </style>
-                            <g>
-                                <path class="st0" d="M403.925,108.102c-27.595-27.595-62.899-47.558-102.459-56.29L304.182,0L201.946,53.867l-27.306,14.454
-                                    l-5.066,2.654l8.076,4.331l38.16,20.542l81.029,43.602l2.277-42.859c28.265,7.546,53.438,22.53,73.623,42.638
-                                    c29.94,29.939,48.358,71.119,48.358,116.776c0,23.407-4.843,45.58-13.575,65.687l40.37,17.532
-                                    c11.076-25.463,17.242-53.637,17.242-83.219C465.212,198.306,441.727,145.904,403.925,108.102z" style="fill: rgb(75, 75, 75);"></path>
-                                <path class="st0" d="M296.256,416.151l-81.101-43.612l-2.272,42.869c-28.26-7.555-53.51-22.53-73.618-42.636
-                                    c-29.945-29.95-48.364-71.12-48.364-116.767c0-23.427,4.844-45.522,13.576-65.697l-40.37-17.531
-                                    c-11.076,25.53-17.242,53.723-17.242,83.228c0,57.679,23.407,110.157,61.21,147.893c27.595,27.594,62.899,47.548,102.453,56.202
-                                    l-2.716,51.9l102.169-53.878l27.455-14.454l4.988-2.643l-7.999-4.332L296.256,416.151z" style="fill: rgb(75, 75, 75);"></path>
-                            </g>
-                            </svg>
-                            <time itemprop="dateModified" class="text-muted d-inline-block ms-1" style="font-size: 12px;"><?= h($blog->modified->i18nFormat('yyyy/MM/dd')) ?></time>
-                        <?php endif; ?>
-    
-                        <a href="../../<?= h($blog->blogs_category->category_label) ?>/"><span class="catTag d-inline-block ms-0 ms-md-2 mt-1 mb-1 mt-md-0 mb-md-0 ps-2" style="background-color: <?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span></a>
-                    </section>
-                    <section class="blog_title mt-0 mb-7 text-break">
-                        <h1 itemprop="name headline" class="blog_title-heading text-wrap m-0"><?= h($blog->title) ?></h1>
-                    </section>
-                    <section class="blog_thumbnail mt-0 mb-7">
-                        <figure class="blog_thumbnailWrapper">
-                            <span>
-                                <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id) ?>.webp" alt="ブログ <?= h($blog->title) ?>のサムネイル" width="1200" height="630" style="width: 100%; height: auto;">
-                            </span>
-                        </figure>
-                    </section>
-                    <section class="blogIndexWrapper text-break w-70">
-                        <div class="accordion-item border pb-3" style="max-width: 720px;">
-                            <h2 class="accordion-header border-0 border-bottom mx-auto" id="panelsStayOpen-headingOne" style="width:128px;">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                目次
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                            <div class="accordion-body">
-                            <ol id="blogIndexWrapper-list" class="blogIndexWrapper-list">
-                                <!-- Cleate elements using JavaSctipt -->
-                            </ol>
-                            </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section itemprop="articleBody" id="blogBody" class="blog_body my-5 pe-3 pe-md-0 text-break ls-1">
-                        <?= $blog->body ?>
-                    </section>
-                    <hr class="my-5">
-                    <div class="postLink-around container d-flex justify-content-between p-0 mb-5">
-                        <div class="row col-6 text-start border border-gray m-0">
-                            <?php foreach ($prevPost as $index => $prev) : ?>
-                                <a class="postLink postLink-prev position-relative ps-5 pe-3" href="/blogs/<?= h($prev->blogs_category->category_label) ?>/<?= h($prev->slug) ?>/">
-                                    <span class="d-block pt-3 pb-3">前の記事</span>
-                                    <span class="d-block pb-3 overflow-hidden text-truncate text-nowrap"><?= $prev->title ?></span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="row col-6 text-end border border-gray m-0">
-                            <?php foreach ($nextPost as $index => $next) : ?>
-                                <a class="postLink postLink-next position-relative ps-3 pe-5" href="/blogs/<?= h($next->blogs_category->category_label) ?>/<?= h($next->slug) ?>/">
-                                    <span class="d-block pt-3 pb-3">次の記事</span>
-                                    <span class="d-block pb-3 overflow-hidden text-truncate text-nowrap"><?= $next->title ?></span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
+<?= $this->Html->css(['sunburst']) ?>
+<section class="p-blogsView">
+    <article class="c-articleView">
+        <header class="c-articleView__header">
+            <div class="l-container__wide l-container__common">
+                <div class="c-articleView__header-main">
+                    <div class="c-articleView__header-thumbnail">
+                        <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf('%010d', $blog->id); ?>.webp" alt="ブログ <?= $blog->title; ?>のサムネイル" width="1200" height="630">
                     </div>
-					<div class="mt-2 text-end">
-					<a href="/blogs/list/" class="view-all">記事一覧へ</a>
-					</div>
-                </article>
-                <?php endforeach; ?>
-                
-                <aside class="col-12 col-md-3">
-                        <div class="sticky-top" style="z-index: 1;">
-                            <div class="mt-5 category_tagWrapper">
-                                <h5>他のカテゴリー</h5>
-                                <span>Category</span>
-                                <ul class="mt-3 p-0 categories">
-                                    <?php foreach ($categories as $category) : ?>
-                                        <li class="categoryLink d-inline-block">
-                                            <a class="d-inline-block" href="../../<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                    <h1 class="c-articleView__header-title"><span style="font-size:0.92em"><?= $blog->title; ?></span></h1>
+                    <div class="c-articleView__header-publishDate">
+                        <span class="c-articleView__header-publishDateCreated">Created at
+                            <time datetime="<?= $created_iso8601; ?>"><?= date_format($blog->created, "Y年m月d日"); ?></time>
+                        </span>
+                        <?php if($blog->created != $blog->modified): ?>
+                            <span class="c-articleView__header-publishDateModified">
+                                Modified at
+                                <time datetime="<?= $modified_iso8601; ?>"><?= date_format($blog->modified, "Y年m月d日"); ?></time>
+                            </span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="l-container__wide l-container__common">
+            <div class="l-container__undo">
+                <div class="c-articleView__inner">
+                    <div class="l-container__columns">
+                        <section class="c-articleView__content">
+                            <div class="c-articleView__main">
+                                <div class="l-container__wide l-container__common">
+                                    <div class="c-articleView__tags">
+                                    </div>
+                                    <div id="blogBody" class="c-articleView__bodyContent">
+                                        <?= $blog->body ?>
+                                    </div>
+                                </div>
                             </div>
-                            <?php
-                                if (!empty($relations)) {
-                                    $related_articles = '
-                                        <div class="mt-5 related_tagWrapper">
-                                            <h5>関連記事</h5>
-                                            <span>Related posts</span>
-                                            <ul class="mt-1 p-0">';
-                                    $relatedArticles = array();
-                                    foreach ($relations as $relation) {
-                                        $relatedArticles[] = array(
-                                            "@type" => "BlogPosting",
-                                            "headline" => h($relation->title),
-                                            "url" => BASE_URL . '/blogs/' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/'
-                                        );
-
-                                        $related_articles .= '
-                                                <li class="mt-3 d-flex flex-column">
-                                                    <div class="relatedLinks_image imgarea border">
-                                                        <a class="d-inline-block" href="../../' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/">
-                                                            <img src="/files/blogs/thumbnails/' . sprintf("%010d", $relation->id) . '.webp" width="120" height="80" alt="' . h($relation->title) . '" style="display: inlne-blcok;">
-                                                        </a>
-                                                    </div>
-                                                    <div class="textarea">
-                                                        <div class="created_date text-muted mt-1" style="font-size: 14px;">' . h($relation->created->i18nFormat('yyyy.MM.dd')) . '</div>
-                                                        <div class="categoryLinks_title mt-1">
-                                                            <a href="../../' . h($relation->blogs_category->category_label) . '/' . h($relation->slug) . '/">' . h($relation->title) . '</a>
-                                                        </div>
-                                                    </div>
-                                                </li>';
-                                    }
-                                    $structuredData["mainEntity"] = $relatedArticles;
-
-                                    $related_articles .= '
-                                            </ul>
-                                            <div class="mt-2 text-end">
-                                                <a href="../../' . $cat . '" class="view-all">もっと見る</a>
-                                            </div>
-                                        </div>';
-                                    
-                                    echo $related_articles;
-                                }
-                            ?>
-                        </div>
-                </aside>
+                        </section>
+                        <aside class="c-articleView__sidebar">
+                            <div class="c-articleView__sidebar-sticky">
+                                <div class="c-articleView__sidebar-tableContent">
+                                    <div class="c-articleView__sidebar-tableContentTitle">目次</div>
+                                    <ol id="blogIndexWrapper-list" class="c-articleView__sidebar-tableContentBody c-steps">
+                                    </ol>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
+    </article>
+</section>
+<?php endforeach; ?>
 
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
 
-<script type="text/javascript">
-
+<script>
     const bodyText = document.getElementById('blogBody');
     const targetTags = bodyText.querySelectorAll('h1, h2, h3, h4, h5, b, img');
     const blogIndexList = document.getElementById('blogIndexWrapper-list');
@@ -305,15 +180,58 @@ $this->Breadcrumbs->setTemplates([
             headingIndex++;
             targetTags[i].setAttribute('id',`targetHeading${headingIndex}`);
             targetTags[i].classList.add('tgt-elm');
-            blogIndexList.insertAdjacentHTML('beforeend',`<li class="blogIndexWrapper-listItem list-large mb-3"><a class="blogIndexWrapper-listItem_heading" href="#targetHeading${headingIndex}">${bigHeadingIndex}. ${targetTags[i].innerText}</a></li>`);
-        }else if(targetTags[i].outerHTML.match(/img/gi)) {
-            targetTags[i].outerHTML = `<a href="${targetTags[i].src}">${targetTags[i].outerHTML}</a>`;
+            blogIndexList.insertAdjacentHTML('beforeend',`<li class="c-articleView__sidebar-tableContentItem c-steps__content"><a class="c-steps__title" href="#targetHeading${headingIndex}">${targetTags[i].innerText}</a></li>`);
         }
     }
+    document.addEventListener('DOMContentLoaded', function () {
+        const tgtElms = document.querySelectorAll('.tgt-elm');
+        const blogIndexList = document.getElementById('blogIndexWrapper-list');
+
+        if (tgtElms && blogIndexList) {
+            window.onscroll = handleScroll;
+
+            function handleScroll() {
+                const middleThreshold = window.innerHeight / 2; // Half of the viewport height
+
+                for (let i = 0; i < tgtElms.length; i++) {
+                    const tgtElm = tgtElms[i];
+                    const targetId = tgtElm.getAttribute('id');
+                    const correspondingLink = blogIndexList.querySelector(`[href="#${targetId}"]`);
+
+                    // Get the top and bottom positions of the target element
+                    const targetTop = tgtElm.getBoundingClientRect;
+                    const targetBottom = targetTop + tgtElm.clientHeight;
+
+                    // Get the current scroll position
+                    const scrollPosition = window.scrollY || window.pageYOffset;
+
+                    // Check if the top of the element is in the top half of the viewport
+                    const isInTopHalf = targetTop >= scrollPosition && targetTop <= scrollPosition + middleThreshold;
+
+                    // Check if the bottom of the element is above the top of the viewport
+                    const isAboveViewport = targetBottom < scrollPosition;
+
+                    // Add or remove the "active" class based on the conditions
+                    if (isInTopHalf && !isAboveViewport) {
+                        correspondingLink.classList.add('active');
+                        if (correspondingLink.parentElement) {
+                            correspondingLink.parentElement.classList.add('active');
+                        }
+                    } else {
+                        correspondingLink.classList.remove('active');
+                        if (correspondingLink.parentElement) {
+                            correspondingLink.parentElement.classList.remove('active');
+                        }
+                    }
+                }
+            }
+
+            // Initial check on load
+            handleScroll();
+        }
+    });
 </script>
 <?= $this->Html->script(['run_pretty'],['defer']) ?>
-<?= $this->Html->script(['bootstrap.bundle.min'],['defer']) ?>
-
 <?php
 $jsonLdScript = '
 <script type="application/ld+json">
