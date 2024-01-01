@@ -1,0 +1,30 @@
+@use "../../global/mixin" as gm;
+
+.p-blogsView {
+    padding: 3.5rem 0px;
+    background: var(--c-bg-primary-lighter);
+
+    &__snsLinks {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 40px;
+        width: 100%;
+
+        .sns-x {
+            max-width: 24px;
+        }
+
+        .sns-facebook {
+            max-width: 32px;
+            position: relative;
+            top: -4px;
+        }
+        &.smart {
+            display: none;
+            @include gm.breakpoint(md){
+                display: flex;
+            }
+        }
+    }
+}

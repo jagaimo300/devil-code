@@ -151,8 +151,27 @@ $this->Breadcrumbs->setTemplates([
                                     <ol id="blogIndexWrapper-list" class="c-articleView__sidebar-tableContentBody c-steps">
                                     </ol>
                                 </div>
+                                <div class="p-blogsView__snsLinks desktop">
+                                    <a href="//twitter.com/intent/tweet?url=https://devil-code.com/blogs/<?= $cat; ?>/<?= $slug ?>/&amp;text=<?= $blog->title; ?>%0a%23デビルコード%20@devil_code_com%0a" target="_blank" rel="noopener noreferrer">
+                                                <svg class="sns-x" width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="black"/></svg>
+                                            </a>
+                                    <a href="https://www.facebook.com/share.php?u=https://devil-code.com/blogs/<?= $cat; ?>/<?= $slug ?>/" target="_blank" rel="noopener noreferrer">
+            <svg  class="sns-facebook" fill="#000000" width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"/></svg>
+                                            </a>
+                                </div>
                             </div>
                         </aside>
+                    </div>
+                    <!-- SNS LINKS for smart device -->
+                    <div class="p-blogsView__snsLinks smart">
+                        <a href="//twitter.com/intent/tweet?url=https://devil-code.com/blogs/<?= $cat; ?>/<?= $slug ?>/&amp;text=<?= $blog->title; ?>%0a%23デビルコード%20@devil_code_com%0a" target="_blank" rel="noopener noreferrer">
+                                    <svg class="sns-x" width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="black"/></svg>
+                                </a>
+                        <a href="https://www.facebook.com/share.php?u=https://devil-code.com/blogs/<?= $cat; ?>/<?= $slug ?>/" target="_blank" rel="noopener noreferrer">
+<svg  class="sns-facebook" fill="#000000" width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"/></svg>
+                                </a>
                     </div>
                 </div>
             </div>
