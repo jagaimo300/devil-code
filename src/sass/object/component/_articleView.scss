@@ -343,7 +343,10 @@
         &-tableContentItem.active {
             &:before {
                 background: var(--c-bg-primary);
-            }      
+            }
+            a {
+                color: #000;
+            }
         }
     }
 }

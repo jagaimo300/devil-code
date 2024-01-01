@@ -183,52 +183,34 @@ $this->Breadcrumbs->setTemplates([
             blogIndexList.insertAdjacentHTML('beforeend',`<li class="c-articleView__sidebar-tableContentItem c-steps__content"><a class="c-steps__title" href="#targetHeading${headingIndex}">${targetTags[i].innerText}</a></li>`);
         }
     }
-    document.addEventListener('DOMContentLoaded', function () {
-        const tgtElms = document.querySelectorAll('.tgt-elm');
-        const blogIndexList = document.getElementById('blogIndexWrapper-list');
 
-        if (tgtElms && blogIndexList) {
-            window.onscroll = handleScroll;
+    document.addEventListener("DOMContentLoaded", function() {
+      const listItems = document.querySelectorAll(".c-articleView__sidebar-tableContentItem");
 
-            function handleScroll() {
-                const middleThreshold = window.innerHeight / 2; // Half of the viewport height
+      function handleScroll() {
+        for (let i = 0; i < listItems.length; i++) {
+          const item = listItems[i];
+          const link = item.querySelector("a");
+          const targetId = link.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
 
-                for (let i = 0; i < tgtElms.length; i++) {
-                    const tgtElm = tgtElms[i];
-                    const targetId = tgtElm.getAttribute('id');
-                    const correspondingLink = blogIndexList.querySelector(`[href="#${targetId}"]`);
+          // ブラウザのスクリーンTOPからの距離を取得
+          const distanceFromTop = targetElement.getBoundingClientRect().top;
 
-                    // Get the top and bottom positions of the target element
-                    const targetTop = tgtElm.getBoundingClientRect;
-                    const targetBottom = targetTop + tgtElm.clientHeight;
-
-                    // Get the current scroll position
-                    const scrollPosition = window.scrollY || window.pageYOffset;
-
-                    // Check if the top of the element is in the top half of the viewport
-                    const isInTopHalf = targetTop >= scrollPosition && targetTop <= scrollPosition + middleThreshold;
-
-                    // Check if the bottom of the element is above the top of the viewport
-                    const isAboveViewport = targetBottom < scrollPosition;
-
-                    // Add or remove the "active" class based on the conditions
-                    if (isInTopHalf && !isAboveViewport) {
-                        correspondingLink.classList.add('active');
-                        if (correspondingLink.parentElement) {
-                            correspondingLink.parentElement.classList.add('active');
-                        }
-                    } else {
-                        correspondingLink.classList.remove('active');
-                        if (correspondingLink.parentElement) {
-                            correspondingLink.parentElement.classList.remove('active');
-                        }
-                    }
-                }
-            }
-
-            // Initial check on load
-            handleScroll();
+          // 距離が100px以内の場合にactiveクラスを追加、それ以外は削除
+          if (distanceFromTop <= window.innerHeight / 2 && distanceFromTop >= -100) {
+              item.classList.add("active");
+          } else {
+              item.classList.remove("active");
+          }
         }
+      }
+
+      // 初回実行
+      handleScroll();
+
+      // スクロールイベントを追加
+      window.addEventListener("scroll", handleScroll);
     });
 </script>
 <?= $this->Html->script(['run_pretty'],['defer']) ?>
