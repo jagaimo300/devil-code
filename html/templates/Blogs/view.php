@@ -136,8 +136,16 @@ $this->Breadcrumbs->setTemplates([
                         <section class="c-articleView__content">
                             <div class="c-articleView__main">
                                 <div class="l-container__wide l-container__common">
-                                    <div class="c-articleView__tags">
-                                    </div>
+                                    <?php if($blogsTags) : ?>
+                                    <ul class="p-blogsView__tags">
+
+                                        <?php foreach ($blogsTags as $index => $blogsTag) : ?>
+                                        <li>
+                                        <a href="/blogs/<?= $blogsTag->tag->slug;?>/"><?= $blogsTag->tag->tag_name;?></a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
                                     <div id="blogBody" class="c-articleView__bodyContent">
                                         <?= $blog->body ?>
                                     </div>
