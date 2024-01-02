@@ -56,7 +56,7 @@ $this->Breadcrumbs->setTemplates([
         $modify_date = new \DateTime($blog->modified, new \DateTimeZone('Asia/Tokyo'));
         $modified_iso8601 = $modify_date->format('Y-m-d\TH:i:s') . '+09:00';
         $this->assign('title', $blog->title . '| devil code(デビルコード)');
-        $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_label . '/' . $blog->slug . '/"' . ' />');
+        $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/' . $blog->blogs_category->category_name . '/' . $blog->slug . '/"' . ' />');
         // description
         $this->Html->meta(["name"=>"description","content"=>"$blog->description"],null,["block"=>'meta']);
         // ogp
@@ -117,12 +117,12 @@ $this->Breadcrumbs->setTemplates([
                     <h1 class="c-articleView__header-title"><span style="font-size:0.92em"><?= $blog->title; ?></span></h1>
                     <div class="c-articleView__header-publishDate">
                         <span class="c-articleView__header-publishDateCreated">Created at
-                            <time datetime="<?= $created_iso8601; ?>"><?= date_format($blog->created, "Y年m月d日"); ?></time>
+                            <time datetime="<?= $created_iso8601; ?>"><?= date_format($blog->created, "Y-m-d"); ?></time>
                         </span>
                         <?php if($blog->created != $blog->modified): ?>
                             <span class="c-articleView__header-publishDateModified">
                                 Modified at
-                                <time datetime="<?= $modified_iso8601; ?>"><?= date_format($blog->modified, "Y年m月d日"); ?></time>
+                                <time datetime="<?= $modified_iso8601; ?>"><?= date_format($blog->modified, "Y-m-d"); ?></time>
                             </span>
                         <?php endif; ?>
                     </div>
@@ -173,11 +173,40 @@ $this->Breadcrumbs->setTemplates([
 <svg  class="sns-facebook" fill="#000000" width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"/></svg>
                                 </a>
                     </div>
+
+                    <div class="p-blogsView__otherArticles">
+                        <div class="p-blogsView__otherArticles-header">
+                            Other articles
+                        </div>
+                        <ul class="p-blogsView__otherArticles-list">
+                        <?php foreach ($otherPosts as $index => $otherPost) : ?>
+                            <li class="p-blogsView__otherArticles-item">
+                                <article>
+                                <a href="/blogs/<?= h($otherPost->blogs_category->category_name); ?>/<?= h($otherPost->slug); ?>/">
+                                    <h2><?= $otherPost->title; ?></h2>
+                                        <div class="p-blogsView__otherArticles-created">
+                                        <time datetime="<?php
+                                            $create_date = new \DateTime($otherPost->created, new \DateTimeZone('Asia/Tokyo'));
+                                            echo $create_date->format('Y-m-d\TH:i:s') . '+09:00';
+                                        ?>">
+                                            <?= date_format($otherPost->created, "Y-m-d"); ?>
+                                            </time>
+                                        </div>
+                                    </a>
+                                </article>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
     </article>
-</section>
+    <div class="l-container c-viewMore">
+            <a class=" c-viewMore__link" href="/blogs">ブログTOPへ</a>
+        </div>
+    </section>
 <?php endforeach; ?>
 
 <div class="container my-5 breadcrumbs-wrapper">
