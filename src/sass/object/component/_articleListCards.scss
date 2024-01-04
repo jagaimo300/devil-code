@@ -1,0 +1,96 @@
+@use "../../global/mixin" as gm;
+
+.c-articleListCards {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--c-bg-base);
+    border: 1px solid var(--c-neutral-border-lighter);
+    border-radius: 12px;
+
+    &__categoryLink {
+        display: inline-flex;
+        flex-shrink: 0;
+        font-size: 12.5px;
+        height: 26px;
+        margin-right: 0.3em;
+        margin-bottom: 0.6em;
+        position: relative;
+        border: 1px solid var(--c-neutral-border-lighter);
+        border-radius: var(--rounded-full);
+        padding: 2px 12px;
+        text-decoration: none;
+
+        &:hover {
+            background: var(--c-bg-neutral-lightest);
+        }
+    }
+    &__footer {
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+        line-height: 1.5;
+        margin-top: auto;
+        margin-bottom: 0;
+        padding: .8em .7em;
+        position: relative;
+    }
+    &__header {
+        padding: .8em .7em 0;
+    }
+    &__link {
+        position: absolute;
+        inset: 0px;
+    }
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        gap: 4px;
+        li {
+            a {
+                background-color: var(--c-bg-neutral-lightest);
+                color: var(--c-gray-800);
+                display: block;
+                font-size: var(--base-size-12);
+                text-decoration: none;
+                border-radius: var(--rounded-xs);
+                padding: 0px 6px;
+                a::before {
+                    content: "#";
+                    margin-right: 0.3em;
+                }
+            }
+        }
+    }
+    &__title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        max-height: 4.55em;
+        line-height: 1.5;
+        margin-top: 8px;
+        position: relative;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        z-index: 1;
+        display: -webkit-box !important;
+        overflow: hidden;
+        a {
+            display: block;
+            text-decoration: none;
+        }
+
+      @include gm.breakpoint(sm){
+        max-height: 6.05em;
+        font-size: 14px;
+        -webkit-line-clamp: 4;
+      }
+    }
+    &__titleContainer {
+        display: block;
+        flex: 1;
+        padding: 0 .7rem;
+    }
+}
