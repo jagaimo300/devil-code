@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 use Cake\Routing\Router;
 use Cake\Http\Exception\NotFoundException;
-
+use Cake\ORM\TableRegistry;
 /**
  * Blogs Controller
  *
@@ -14,6 +14,23 @@ use Cake\Http\Exception\NotFoundException;
 
 class BlogsController extends AppController
 {
+    /** @var \Cake\ORM\Table The Blogs table instance. */
+    private $blogsTags;
+
+    /**
+     * Initialization method.
+     *
+     * This method is called before every controller action.
+     * It initializes the $blogs property with the Blogs table instance.
+     *
+     * @return void
+     */
+    public function initialize(): void {
+        // Call the parent class's initialize method to ensure proper initialization.
+        parent::initialize();
+
+        $this->blogsTags = TableRegistry::getTableLocator()->get('BlogsTags');
+    }
 
     /**
      * Index method
@@ -23,33 +40,124 @@ class BlogsController extends AppController
     public function index()
     {
         // Lately posts
-        $this->set('news', $this->Blogs->find('all', array(
+        $news = $this->Blogs->find('all', array(
 			'contain' => ['BlogsCategories'],
-            'limit' => 3,
+            'limit' => 6,
 		    'order' => 'Blogs.created DESC',
 		    'recursive' => -1,
-		)));
+		));
 
-        // Categories
-        $this->loadComponent('BlogLink');
-        $categories = $this->BlogLink->getCategoryLink("");
-        $this->set(compact('categories'));
+        $this->set(compact('news'));
 
-        // Blog total count
-        $query = $this->Blogs->find();
-        $totalCount = $query->count();
-        $this->set('totalCount', $totalCount);
+        // ブログのIDを抽出して配列に格納
+        $blogIds = [];
+        foreach ($news as $blog) {
+            $blogIds[] = $blog->id;
+        }
+        // タグを取得するクエリを実行
+        $blogsTags = $this->blogsTags->find('all', [
+            'contain' => ['Tags'],
+            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
+        ]);
 
-        // Blog List
-        $blogs = $this->Blogs->find('all', array(
-            'contain' => ['BlogsCategories'],
-            'offset' => 3,
-            'limit' => 5,
-		    'order' => 'Blogs.created DESC',
-            'recursive' => -1,
+        $blogTags = [];
+        foreach ($blogsTags as $blogsTag) {
+            $blog_id = $blogsTag->blog_id;
+            $tag_name = $blogsTag->tag->tag_name;
+            $tag_slug = $blogsTag->tag->slug;
+
+            // $blog_idをキーとした連想配列を作成
+            if (!isset($blogTags[$blog_id])) {
+                $blogTags[$blog_id] = [];
+            }
+            // タグ名とタグスラッグを追加
+            $blogTags[$blog_id][] = [
+                'tag_name' => $tag_name,
+                'tag_slug' => $tag_slug
+            ];
+        }
+
+        $this->set(compact('blogTags'));
+
+        // cs posts
+        $cs_posts = $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+            'limit' => 6,
+            'order' => 'Blogs.created DESC',
         ));
 
-        $this->set(compact('blogs'));
+        $cs_posts->leftJoinWith('BlogsTags')->leftJoinWith('Tags')->where(['OR'=> ['BlogsCategories.slug' => 'computer-science','Tags.slug' => 'computer-science']]);
+        $this->set(compact('cs_posts'));
+
+        // ブログのIDを抽出して配列に格納
+        $blogIds = [];
+        foreach ($cs_posts as $cs_post) {
+            $blogIds[] = $cs_post->id;
+        }
+        // タグを取得するクエリを実行
+        $csBlogsTags = $this->blogsTags->find('all', [
+            'contain' => ['Tags'],
+            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
+        ]);
+
+        $csBlogTags = [];
+        foreach ($csBlogsTags as $blogsTag) {
+            $blog_id = $blogsTag->blog_id;
+            $tag_name = $blogsTag->tag->tag_name;
+            $tag_slug = $blogsTag->tag->slug;
+
+            // $blog_idをキーとした連想配列を作成
+            if (!isset($csBlogTags[$blog_id])) {
+                $csBlogTags[$blog_id] = [];
+            }
+            // タグ名とタグスラッグを追加
+            $csBlogTags[$blog_id][] = [
+                'tag_name' => $tag_name,
+                'tag_slug' => $tag_slug
+            ];
+        }
+
+        $this->set(compact('csBlogTags'));
+
+        // life posts
+        $life_posts = $this->Blogs->find('all', array(
+			'contain' => ['BlogsCategories'],
+            'limit' => 6,
+            'order' => 'Blogs.created DESC',
+        ));
+
+        $life_posts->leftJoinWith('BlogsTags')->leftJoinWith('Tags')->where(['OR'=> ['BlogsCategories.slug' => 'java','Tags.slug' => 'java']]);
+        $this->set(compact('life_posts'));
+
+        // ブログのIDを抽出して配列に格納
+        $blogIds = [];
+        foreach ($life_posts as $life_post) {
+            $blogIds[] = $life_post->id;
+        }
+        // タグを取得するクエリを実行
+        $lifeBlogsTags = $this->blogsTags->find('all', [
+            'contain' => ['Tags'],
+            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
+        ]);
+
+        $lifeBlogTags = [];
+        foreach ($lifeBlogsTags as $blogsTag) {
+            $blog_id = $blogsTag->blog_id;
+            $tag_name = $blogsTag->tag->tag_name;
+            $tag_slug = $blogsTag->tag->slug;
+
+            // $blog_idをキーとした連想配列を作成
+            if (!isset($lifeBlogTags[$blog_id])) {
+                $lifeBlogTags[$blog_id] = [];
+            }
+            // タグ名とタグスラッグを追加
+            $lifeBlogTags[$blog_id][] = [
+                'tag_name' => $tag_name,
+                'tag_slug' => $tag_slug
+            ];
+        }
+
+        $this->set(compact('lifeBlogTags'));
     }
 
      /**
@@ -72,25 +180,14 @@ class BlogsController extends AppController
         $this->set('cat', $cat);
         $this->set('slug', $slug);
 
-        $relations = $this->Blogs->find('all', [
-            'conditions' => ['BlogsCategories.slug' => $cat, 'Blogs.slug !=' => $slug],
-                'contain' => ['BlogsCategories'],
-                    'limit' => '5',
-                        'order' => 'Blogs.created DESC',
-                            'recursive' => -1,
-                            ]);
-
-        if (!$relations->all()->isEmpty()) {
-                $this->set(compact('relations'));
-        }
 
         $blogs = $this->Blogs->find('all', [
             'conditions' => ['BlogsCategories.slug' => $cat, 'Blogs.slug' => $slug],
-                'contain' => ['BlogsCategories'],
-                    'limit' => 1,
-                        'order' => 'Blogs.id ASC',
-                            'recursive' => -1,
-                            ]);
+            'contain' => ['BlogsCategories'],
+            'limit' => 1,
+            'order' => 'Blogs.id ASC',
+            'recursive' => -1,
+        ]);
 
         if ($blogs->all()->isEmpty()) {
                 throw new NotFoundException(__('404'));
@@ -100,27 +197,23 @@ class BlogsController extends AppController
 
         $currentArticle = $blogs->first();
 
-        // Lately posts
-        $this->set('prevPost', $this->Blogs->find('all', array(
-            'conditions' => ['Blogs.id <' => $currentArticle->id],
-            'contain' => ['BlogsCategories'],
-            'order' => 'Blogs.id DESC',
-            'limit' => 1,
-		    'recursive' => -1,
-		)));
+        // タグを取得するクエリを実行
+        $blogsTags = $this->blogsTags->find('all', [
+            'contain' => ['Tags'],
+            'conditions' => ['BlogsTags.blog_id' => $currentArticle->id]
+        ]);
+        $this->set(compact('blogsTags'));
 
-        $this->set('nextPost', $this->Blogs->find('all', array(
-            'conditions' => ['Blogs.id >' => $currentArticle->id],
+        $otherPosts = $this->Blogs->find('all', [
+            'conditions' => ['Blogs.id <>' => $currentArticle->id],
             'contain' => ['BlogsCategories'],
-            'order' => 'Blogs.id ASC',
-            'limit' => 1,
-		    'recursive' => -1,
-		)));
+            'limit' => '5',
+            'order' => 'Blogs.created DESC',
+            'recursive' => -1,
+        ]);
 
-        // Category links
-        $this->loadComponent('BlogLink');
-        $categories = $this->BlogLink->getCategoryLink($cat);
-        $this->set(compact('categories'));
+        $this->set(compact('otherPosts'));
+
     }
 
     /**

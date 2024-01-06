@@ -3,8 +3,18 @@
     &__articles {
         margin-top: 2.2rem;
     }
-    &__blogs {
+    &__lately {
         padding: 3.5rem 0px;
         background: var(--c-bg-neutral-lighter);
+    }
+
+    &__cs {
+        padding: 3.5rem 0px;
+        background: var(--c-bg-neutral-lightest);
+    }
+
+    &__life {
+        padding: 3.5rem 0px;
+        background: var(--c-bg-primary-lighter);
     }
 }
