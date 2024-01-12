@@ -1,0 +1,57 @@
+.c-pagination {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--c-neutral-border-lighter);
+  border-radius: 0.6rem;
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  margin: 3rem;
+  &__item {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem;
+  }
+  &__link {
+    border-radius: var(--rounded-xs);
+    display: inline-block;
+    text-decoration: none;
+
+    &.number {
+        height: 2rem;
+        line-height: 1.8rem;
+        width: 2rem;
+        &:hover {
+          color: var(--c-general-primary);
+        }
+    }
+
+    &.number.active {
+      background: var(--c-bg-primary);
+      border: 1px solid var(--c-button-primary);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    &.prev {
+        display: block;
+        width: .8rem;
+        height: .8rem;
+        border-top: solid 3px var(--c-button-primary);
+        border-right: solid 3px var(--c-button-primary);
+        -webkit-transform: rotate(225deg);
+        transform: rotate(225deg);    
+    }
+
+    &.next {
+        display: block;
+        width: .8rem;
+        height: .8rem;
+        border-top: solid 3px var(--c-button-primary);
+        border-right: solid 3px var(--c-button-primary);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);    
+    }
+  }
+}

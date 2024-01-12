@@ -49,7 +49,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
 $structuredData = array(
     "@context" => "https://schema.org",
     "@type" => "ItemList"
-);  
+);
 
 ?>
 
@@ -62,89 +62,89 @@ $structuredData = array(
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
-<section class="blog" style="min-height: 60vh;">
-    <div class="container">
-        <div class="row my-5 d-flex">
-            <div class="col-md-8 me-md-1">
-                <h2>記事一覧</h2>
-                <p class="mb-5">Posts</p>
-                <div class="d-md-flex align-items-center justify-content-between mb-5">
-                    <p class="articleTotalCount mb-0"><?= $from; ?> 件から <?= $to; ?> 件を表示中（全 <?= $totalCount; ?> 件中）</p>
-                    <ul class="page-links d-flex my-3 my-md-0 mb-0 ps-0">
-                        <?php
-                            if ($this->Paginator->hasPrev()){
-                                echo $this->Paginator->prev(__('Previous'), [
-                                    'templates' => [
-                                        'prevActive' => '<li><a rel="prev" href="{{url}}">{{text}}</a></li>'
-                                ]]);
-                            }
-                            echo $this->Paginator->numbers([
-                                'templates' => [
-                                    'number' => '<li class="ms-1"><a href="{{url}}">{{text}}</a></li>',
-                                    'current' => '<li class="ms-1 active border-bottom border-dark"><a href="{{url}}">{{text}}</a></li>',
-                                ],
-                            ]);
-                            if ($this->Paginator->hasNext()){
-                                echo $this->Paginator->next(__('Next'), [
-                                    'templates' => [
-                                        'nextActive' => '<li class="ms-1"><a rel="next" href="{{url}}">{{text}}</a></li>'
-                                ]]);
-                            }
-                        ?>
-                    </ul>
-                </div>
+<section class="p-blogs__lately">
+    <div class="l-container l-container__common">
+        <div class="p-blogs__sectionTitle">
+           <h3 class="c-headingSize__2xl">Article list</h3>
+           <span>記事一覧</span>
+        </div>
 
-                <?php foreach ($blogs as $index => $blog) : ?>
-                    <?php
-                        // 動的に構造化データを生成
-                        $index++;
-                        $itemListElement[] = array(
-                            "@type" => "ListItem",
-                            "position" => $index,
-                            "url" => BASE_URL . '/blogs/' . $blog->blogs_category->category_label . '/' . $blog->slug . '/',
-                            "name"=> $blog->title
-                        );
-                    ?>
-                    <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/" class="pe-lg-5 h-100">
-                        <div class="d-md-flex justify-content-between align-items-center">
-                            <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
-                            <span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
-                        </div>
-                        <div class="mb-4 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                        <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body),0,120) ?></p>
-                    </a>
-                <?php endforeach; ?>
+        <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
+            <?php foreach ($blogs as $index => $blog) : ?>
                 <?php
-                    // 動的に生成した構造化データを格納
-                    $structuredData["itemListElement"] = $itemListElement;
+                    // 動的に構造化データを生成
+                    $index++;
+                    $itemListElement[] = array(
+                        "@type" => "ListItem",
+                        "position" => $index,
+                        "url" => BASE_URL . '/blogs/' . $blog->blogs_category->category_label . '/' . $blog->slug . '/',
+                        "name"=> $blog->title
+                    );
                 ?>
-                <div class="paginator w-100 mb-5">
-                    <ul class="pagination pagination-buttom d-flex justify-content-center mb-0 ps-0">
-                        <?php
-                            if ($this->Paginator->hasPrev()){
-                                echo $this->Paginator->prev(__("«"), [
-                                    'templates' => [
-                                        'prevActive' => '<li><a rel="prev" href="{{url}}" aria-label="Previous"><span aria-hidden="true">{{text}}</span></a></li>'
-                                ]]);
-                            }
-                            echo $this->Paginator->numbers([
-                                'templates' => [
-                                    'number' => '<li class="ms-3"><a href="{{url}}">{{text}}</a></li>',
-                                    'current' => '<li class="ms-3 active current"><a href="{{url}}">{{text}}</a></li>',
-                                ],
-                            ]);
-                            
-                            if ($this->Paginator->hasNext()){
-                                echo $this->Paginator->next(__("»"), [
-                                    'templates' => [
-                                        'nextActive' => '<li class="ms-3"><a rel="next" href="{{url}}" aria-label="Next"><span aria-hidden="true">{{text}}</span></a></li>'
-                                ]]);
-                            }
-                        ?>
-                    </ul>
-                </div>
-            </div>
+                <article class="c-articleListCards">
+                    <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $blog->id); ?>.webp" alt="ブログ <?= h($blog->title); ?>のサムネイル" width="1200" height="630">
+                    <a href="/blogs/<?= h($blog->blogs_category->slug) ?>/<?= h($blog->slug) ?>/" tabindex="-1" class="c-articleListCards__link"></a>
+                    <header class="c-articleListCards__header">
+                        <a class="c-articleListCards__categoryLink" href="/blogs/<?= h($blog->blogs_category->category_name) ?>/" tabidnex="1">
+                            <div class="c-articleListCards__categoryName"><?= h($blog->blogs_category->category_name) ?></div>
+                        </a>
+                        <span class="c-articleListCards__created"><time datetime="<?= $this->Time->format($blog->created, 'yyyy-MM-dd\'T\'HH:mm:ssXXX'); ?>"><?= h($blog->created->i18nFormat('yyyy-MM-dd')) ?></time></span>
+                    </header>
+                    <div class="c-articleListCards__titleContainer">
+                        <h4 class="c-articleListCards__title"><a href="/blogs/<?= h($blog->blogs_category->slug) ?>/<?= h($blog->slug) ?>/"><?= h($blog->title) ?></a></h4>
+                    </div>
+                    <footer class="c-articleListCards__footer">
+                        <ul class="c-articleListCards__tags">
+                            <!-- テンプレート内のループ -->
+                            <?php if(isset($blogTags[$blog->id])): ?>
+                                <?php foreach ($blogTags[$blog->id] as $index => $blogTag) : ?>
+                                <li>
+                                    <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
+                                        <?= $blogTag["tag_name"]; ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    </footer>
+                </article>
+            <?php endforeach; ?>
+            <?php
+                // 動的に生成した構造化データを格納
+                $structuredData["itemListElement"] = $itemListElement;
+            ?>
+          </div>
+    </div>
 
+    <div class="l-container c-viewMore">
+        <ul class="c-pagination">
+            <?php
+                if ($this->Paginator->hasPrev()) {
+                    echo $this->Paginator->prev(__('Previous'), [
+                        'templates' => [
+                            'prevActive' => '<li class="c-pagination__item"><a class="c-pagination__link prev" rel="prev" href="{{url}}"></a></li>'
+                    ]]);
+                }
+
+                echo $this->Paginator->numbers([
+                    'templates' => [
+                        'number' => '<li class="c-pagination__item"><a class="c-pagination__link number" href="{{url}}">{{text}}</a></li>',
+                        'current' => '<li class="c-pagination__item"><a class="c-pagination__link number active" gref="{{url}}">{{text}}</a></li>',
+                    ],
+                ]);
+
+                if ($this->Paginator->hasNext()) {
+                    echo $this->Paginator->next(__('Next'), [
+                        'templates' => [
+                            'nextActive' => '<li class="c-paginationa__item"><a class="c-pagination__link next" rel="next" href="{{url}}"></a></li>'
+                    ]]);
+                }
+            ?>
+        </ul>
+    </div>
+</section>
+
+<!--
             <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
                 <div class="mt-5 category_tagWrapper">
                     <h5>他のカテゴリー</h5>
@@ -158,9 +158,7 @@ $structuredData = array(
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+-->
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
