@@ -30,6 +30,8 @@ class BlogsController extends AppController
         parent::initialize();
 
         $this->blogsTags = TableRegistry::getTableLocator()->get('BlogsTags');
+
+        $this->loadComponent('Articles');
     }
 
     /**
@@ -39,125 +41,24 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        // Lately posts
-        $news = $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories'],
+        // Common conditions for fetching blog posts
+        $commonConditions = [
+            'contain' => ['BlogsCategories'],
             'limit' => 6,
-		    'order' => 'Blogs.created DESC',
-		    'recursive' => -1,
-		));
+            'order' => 'Blogs.created DESC',
+        ];
 
+        // lately posts
+        $news = $this->Articles->fetchArticlesAndTags($commonConditions);
         $this->set(compact('news'));
 
-        // ブログのIDを抽出して配列に格納
-        $blogIds = [];
-        foreach ($news as $blog) {
-            $blogIds[] = $blog->id;
-        }
-        // タグを取得するクエリを実行
-        $blogsTags = $this->blogsTags->find('all', [
-            'contain' => ['Tags'],
-            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
-        ]);
-
-        $blogTags = [];
-        foreach ($blogsTags as $blogsTag) {
-            $blog_id = $blogsTag->blog_id;
-            $tag_name = $blogsTag->tag->tag_name;
-            $tag_slug = $blogsTag->tag->slug;
-
-            // $blog_idをキーとした連想配列を作成
-            if (!isset($blogTags[$blog_id])) {
-                $blogTags[$blog_id] = [];
-            }
-            // タグ名とタグスラッグを追加
-            $blogTags[$blog_id][] = [
-                'tag_name' => $tag_name,
-                'tag_slug' => $tag_slug
-            ];
-        }
-
-        $this->set(compact('blogTags'));
-
         // cs posts
-        $cs_posts = $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories'],
-            'limit' => 6,
-            'order' => 'Blogs.created DESC',
-        ));
-
-        $cs_posts->leftJoinWith('BlogsTags')->leftJoinWith('Tags')->where(['OR'=> ['BlogsCategories.slug' => 'computer-science','Tags.slug' => 'computer-science']]);
+        $cs_posts = $this->Articles->fetchArticlesAndTags($commonConditions, ['slug' => 'computer-science']);
         $this->set(compact('cs_posts'));
 
-        // ブログのIDを抽出して配列に格納
-        $blogIds = [];
-        foreach ($cs_posts as $cs_post) {
-            $blogIds[] = $cs_post->id;
-        }
-        // タグを取得するクエリを実行
-        $csBlogsTags = $this->blogsTags->find('all', [
-            'contain' => ['Tags'],
-            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
-        ]);
-
-        $csBlogTags = [];
-        foreach ($csBlogsTags as $blogsTag) {
-            $blog_id = $blogsTag->blog_id;
-            $tag_name = $blogsTag->tag->tag_name;
-            $tag_slug = $blogsTag->tag->slug;
-
-            // $blog_idをキーとした連想配列を作成
-            if (!isset($csBlogTags[$blog_id])) {
-                $csBlogTags[$blog_id] = [];
-            }
-            // タグ名とタグスラッグを追加
-            $csBlogTags[$blog_id][] = [
-                'tag_name' => $tag_name,
-                'tag_slug' => $tag_slug
-            ];
-        }
-
-        $this->set(compact('csBlogTags'));
-
         // life posts
-        $life_posts = $this->Blogs->find('all', array(
-			'contain' => ['BlogsCategories'],
-            'limit' => 6,
-            'order' => 'Blogs.created DESC',
-        ));
-
-        $life_posts->leftJoinWith('BlogsTags')->leftJoinWith('Tags')->where(['OR'=> ['BlogsCategories.slug' => 'java','Tags.slug' => 'java']]);
+        $life_posts = $this->Articles->fetchArticlesAndTags($commonConditions, ['slug' => 'java']);
         $this->set(compact('life_posts'));
-
-        // ブログのIDを抽出して配列に格納
-        $blogIds = [];
-        foreach ($life_posts as $life_post) {
-            $blogIds[] = $life_post->id;
-        }
-        // タグを取得するクエリを実行
-        $lifeBlogsTags = $this->blogsTags->find('all', [
-            'contain' => ['Tags'],
-            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
-        ]);
-
-        $lifeBlogTags = [];
-        foreach ($lifeBlogsTags as $blogsTag) {
-            $blog_id = $blogsTag->blog_id;
-            $tag_name = $blogsTag->tag->tag_name;
-            $tag_slug = $blogsTag->tag->slug;
-
-            // $blog_idをキーとした連想配列を作成
-            if (!isset($lifeBlogTags[$blog_id])) {
-                $lifeBlogTags[$blog_id] = [];
-            }
-            // タグ名とタグスラッグを追加
-            $lifeBlogTags[$blog_id][] = [
-                'tag_name' => $tag_name,
-                'tag_slug' => $tag_slug
-            ];
-        }
-
-        $this->set(compact('lifeBlogTags'));
     }
 
      /**
@@ -224,7 +125,6 @@ class BlogsController extends AppController
      */
     public function list()
     {
-        $this->loadComponent('Paginator');
 
         // Get the page number from the query string
         $page = $this->request->getQuery('page', 1);
@@ -238,13 +138,13 @@ class BlogsController extends AppController
         ]);
 
         // Configure pagination
-        $limit = 5;
-        $blogs = $this->Paginator->paginate($query, [
+        $limit = 9;
+        $blogs = $this->paginate($query, [
             'limit' => $limit,
             'maxLimit' => $limit
         ]);
-        $this->set(compact('blogs'));
 
+        $this->set(compact('blogs'), $blogs);
         // Calculate the displayed range
         $totalCount = $query->count();
         $from = ($page - 1) * $limit + 1;
