@@ -53,12 +53,12 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
         </div>
 
         <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
-            <?php foreach ($news as $index => $new) : ?>
+            <?php foreach ($news['blogs'] as $index => $new) : ?>
                 <article class="c-articleListCards">
                     <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $new->id); ?>.webp" alt="ブログ <?= h($new->title); ?>のサムネイル" width="1200" height="630">
                     <a href="/blogs/<?= h($new->blogs_category->slug) ?>/<?= h($new->slug) ?>/" tabindex="-1" class="c-articleListCards__link"></a>
                     <header class="c-articleListCards__header">
-                        <a class="c-articleListCards__categoryLink" href="/blogs/<?= h($new->blogs_category->category_name) ?>/" tabidnex="1">
+                        <a class="c-articleListCards__categoryLink" href="/blogs/<?= h($new->blogs_category->slug) ?>/" tabidnex="1">
                             <div class="c-articleListCards__categoryName"><?= h($new->blogs_category->category_name) ?></div>
                         </a>
                         <span class="c-articleListCards__created"><time datetime="<?= $this->Time->format($new->created, 'yyyy-MM-dd\'T\'HH:mm:ssXXX'); ?>"><?= h($new->created->i18nFormat('yyyy-MM-dd')) ?></time></span>
@@ -69,8 +69,8 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
                     <footer class="c-articleListCards__footer">
                         <ul class="c-articleListCards__tags">
                             <!-- テンプレート内のループ -->
-                            <?php if(isset($blogTags[$new->id])): ?>
-                                <?php foreach ($blogTags[$new->id] as $index => $blogTag) : ?>
+                            <?php if(isset($news['blogTags'][$new->id])): ?>
+                                <?php foreach ($news['blogTags'][$new->id] as $index => $blogTag) : ?>
                                 <li>
                                     <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
                                         <?= $blogTag["tag_name"]; ?>
@@ -98,7 +98,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
         </div>
 
         <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
-            <?php foreach ($cs_posts as $index => $cs_post) : ?>
+            <?php foreach ($cs_posts['blogs'] as $index => $cs_post) : ?>
                 <article class="c-articleListCards">
                     <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $cs_post->id); ?>.webp" alt="ブログ <?= h($cs_post->title); ?>のサムネイル" width="1200" height="630">
                     <a href="/blogs/<?= h($cs_post->blogs_category->slug) ?>/<?= h($cs_post->slug) ?>/" tabindex="-1" class="c-articleListCards__link"></a>
@@ -114,8 +114,8 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
                     <footer class="c-articleListCards__footer">
                         <ul class="c-articleListCards__tags">
                             <!-- テンプレート内のループ -->
-                            <?php if(isset($csBlogTags[$cs_post->id])): ?>
-                                <?php foreach ($csBlogTags[$cs_post->id] as $index => $blogTag) : ?>
+                            <?php if(isset($cs_posts['blogTags'][$cs_post->id])): ?>
+                                <?php foreach ($cs_posts['blogTags'][$cs_post->id] as $index => $blogTag) : ?>
                                 <li>
                                     <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
                                         <?= $blogTag["tag_name"]; ?>
@@ -143,7 +143,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
         </div>
 
         <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
-            <?php foreach ($life_posts as $index => $life_post) : ?>
+            <?php foreach ($life_posts['blogs'] as $index => $life_post) : ?>
                 <article class="c-articleListCards">
                     <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $life_post->id); ?>.webp" alt="ブログ <?= h($life_post->title); ?>のサムネイル" width="1200" height="630">
                     <a href="/blogs/<?= h($life_post->blogs_category->slug) ?>/<?= h($life_post->slug) ?>/" tabindex="-1" class="c-articleListCards__link"></a>
@@ -159,8 +159,8 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
                     <footer class="c-articleListCards__footer">
                         <ul class="c-articleListCards__tags">
                             <!-- テンプレート内のループ -->
-                            <?php if(isset($lifeBlogTags[$life_post->id])): ?>
-                                <?php foreach ($lifeBlogTags[$life_post->id] as $index => $blogTag) : ?>
+                            <?php if(isset($life_posts['blogTags'][$life_post->id])): ?>
+                                <?php foreach ($life_posts['blogTags'][$life_post->id] as $index => $blogTag) : ?>
                                 <li>
                                     <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
                                         <?= $blogTag["tag_name"]; ?>
