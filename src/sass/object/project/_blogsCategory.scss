@@ -1,0 +1,53 @@
+@use "../../global/mixin" as gm;
+
+.p-blogsCategory {
+    padding: 3.5rem 0px;
+    background: var(--c-bg-base);
+
+    &__categoryLinks {
+
+        padding: 3.5rem 0px;
+        &-item {
+            display: inline-block;
+        }
+        &-link {
+            display: inline-flex;
+            flex-shrink: 0;
+            font-size: 12.5px;
+            height: 26px;
+            margin-right: 0.3em;
+            margin-bottom: 0.6em;
+            position: relative;
+            border: 1px solid var(--c-neutral-border-lighter);
+            border-radius: var(--rounded-full);
+            padding: 2px 12px;
+            text-decoration: none;
+
+            &.active,&:hover {
+                background-color: var(--c-bg-primary-lighter);
+                color: var(--c-bext-body);
+            }
+        }
+    }
+
+    &__tagLinks {
+        &-item {
+            display: inline-block;
+        }
+        
+        &-link {
+            background-color: var(--c-bg-neutral-lightest);
+            color: var(--c-gray-800);
+            display: block;
+            font-size: var(--base-size-12);
+            text-decoration: none;
+            border-radius: var(--rounded-xs);
+            padding: 4px 12px;
+
+            &.active,&:hover {
+                background-color: var(--c-bg-primary-lighter);
+                color: var(--c-bext-body);
+            }
+        }
+    }
+}

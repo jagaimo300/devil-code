@@ -249,25 +249,24 @@ class BlogsController extends AppController
 
 		$this->set('cat', $cat);
 
-        $this->loadComponent('Paginator');
-
-        $blogs = $this->Paginator->paginate($this->Blogs->find('all', array(
-			'conditions' => ['BlogsCategories.slug'=>"$cat"],
+        // Common conditions for fetching blog posts
+        $commonConditions = [
             'contain' => ['BlogsCategories'],
+            'limit' => 6,
             'order' => 'Blogs.created DESC',
-            'recursive' => -1,
-        )));
+        ];
 
-        if($blogs->isEmpty()){
-            throw new NotFoundException(__('404'));
-        }
-        $this->set(compact('blogs'));
+        $posts = $this->Articles->fetchArticlesAndTags($commonConditions, ['slug' => $cat]);
+        $this->set(compact('posts'));
 
         // Category links
         $this->loadComponent('BlogLink');
 
-        $categories = $this->BlogLink->getCategoryLink($cat);
+        $categories = $this->BlogLink->getCategoryLink('');
         $this->set(compact('categories'));
+
+        $tags = $this->BlogLink->getTagLink();
+        $this->set(compact('tags'));
     }
 
     /**

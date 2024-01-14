@@ -44,86 +44,81 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', 'devil-code(デビルコード) - ブログ - ' . $cat);
-
 ?>
 
-<section class="blog" style="min-height: 60vh;">
-    <div class="container">
-        <div class="row my-5 d-flex">
-            <div class="col-md-8 me-md-1">
-                <h2>カテゴリー別 - <?= h($cat) ?></h2>
-                <p class="mb-5">Category - <?= h($cat) ?></p>
-                <?php foreach ($blogs as $index => $blog) : ?>
-                    <a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>/" class="pe-lg-5 h-100">
-                        <div class="d-md-flex justify-content-between align-items-center">
-                            <h3 class="fs-5 fs-lg-4 blog-ttl lh-base"><?= h($blog->title) ?></h3>
-                            <span class="catTag" style="background-color:<?= h($blog->blogs_category->category_color) ?>;"><?= h($blog->blogs_category->category_label) ?></span>
-                        </div>
-                        <div class="mb-4 mt-2 mt-lg-0 text-muted"><span style="font-size: 12px;"><?= h($blog->created->i18nFormat('yyyy.MM.dd')) ?></div>
-                        <p class="mb-5 text-muted text-break" style="font-weight:100;"><?= mb_substr(strip_tags($blog->body), 0, 120) ?></p>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-            <div class="mt-5 col-md-3 h-100 px-md-5 sticky-top">
-                <div class="mt-5 category_tagWrapper">
-                    <h5>他のカテゴリー</h5>
-                    <span>Category</span>
-                    <ul class="mt-3 mt-3 p-0 categories">
-                        <?php foreach ($categories as $category) : ?>
-                            <li class="categoryLink d-inline-block">
-                                <a class="d-inline-block" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_label) ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
+<section class="p-blogsCategory">
+    <div class="l-container l-container__common">
+        <div class="p-blogs__sectionTitle">
+           <h3 class="c-headingSize__2xl">Computer Science</h3>
+           <span>コンピューターサイエンス</span>
         </div>
+
+        <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
+            <?php foreach ($posts['blogs'] as $index => $post) : ?>
+                <article class="c-articleListCards">
+                    <img itemprop="image" src="/files/blogs/thumbnails/<?= sprintf("%010d", $post->id); ?>.webp" alt="ブログ <?= h($post->title); ?>のサムネイル" width="1200" height="630">
+                    <a href="/blogs/<?= h($post->blogs_category->slug) ?>/<?= h($post->slug) ?>/" tabindex="-1" class="c-articleListCards__link"></a>
+                    <header class="c-articleListCards__header">
+                        <a class="c-articleListCards__categoryLink" href="/blogs/<?= h($post->blogs_category->category_name) ?>/" tabidnex="1">
+                            <div class="c-articleListCards__categoryName"><?= h($post->blogs_category->category_name) ?></div>
+                        </a>
+                        <span class="c-articleListCards__created"><time datetime="<?= $this->Time->format($post->created, 'yyyy-MM-dd\'T\'HH:mm:ssXXX'); ?>"><?= h($post->created->i18nFormat('yyyy-MM-dd')) ?></time></span>
+                    </header>
+                    <div class="c-articleListCards__titleContainer">
+                        <h4 class="c-articleListCards__title"><a href="/blogs/<?= h($post->blogs_category->slug) ?>/<?= h($post->slug) ?>/"><?= h($post->title) ?></a></h4>
+                    </div>
+                    <footer class="c-articleListCards__footer">
+                        <ul class="c-articleListCards__tags">
+                            <!-- テンプレート内のループ -->
+                            <?php if(isset($posts['blogTags'][$post->id])): ?>
+                                <?php foreach ($posts['blogTags'][$post->id] as $index => $blogTag) : ?>
+                                <li>
+                                    <a href="/blogs/<?= $blogTag["tag_slug"]; ?>/">
+                                        <?= $blogTag["tag_name"]; ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    </footer>
+                </article>
+            <?php endforeach; ?>
+          </div>
+    </div>
+
+    <div class="l-container c-viewMore">
+        <ul class="p-blogsCategory__categoryLinks">
+            <?php foreach ($categories as $category) : ?>
+
+                <?php
+                // Get the current URL path
+                $currentUrl = $this->request->getPath();
+
+                // Check if the current URL matches the tag's slug
+                $isActive = ($currentUrl === '/blogs/' . h($category->cat_label) . '/');
+                ?>
+                <li class="p-blogsCategory__categoryLinks-item">
+                    <a class="p-blogsCategory__categoryLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_name) ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <ul class="p-blogsCategory__tagLinks">
+            <?php foreach ($tags as $tag) : ?>
+                <?php
+                // Get the current URL path
+                $currentUrl = $this->request->getPath();
+                // Check if the current URL matches the tag's slug
+                $isActive = ($currentUrl === '/blogs/' . h($tag->slug) . '/');
+                ?>
+                <li class="p-blogsCategory__tagLinks-item">
+                    <a class="p-blogsCategory__tagLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($tag->slug) ?>/"><?= h($tag->tag_name) ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
 </section>
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>
 </div>
 
-<!-- <div class="blogs index content">
-    <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('title') ?></th>
-                    <th><?= $this->Paginator->sort('category_id') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($blogs as $blog) : ?>
-                    <tr>
-                        <td><?= $this->Number->format($blog->id) ?></td>
-                        <td><?= h($blog->title) ?></td>
-                        <td><?= h($blog->blogs_category->category_label) ?></td>
-                        <td><?= h($blog->created) ?></td>
-                        <td><?= h($blog->modified) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $blog->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $blog->id], ['confirm' => __('Are you sure you want to delete # {0}?', $blog->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
-</div> -->
