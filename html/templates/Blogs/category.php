@@ -44,15 +44,45 @@ $this->Breadcrumbs->setTemplates([
 ]);
 
 $this->assign('title', 'devil-code(デビルコード) - ブログ - ' . $cat);
+
 ?>
 
 <section class="p-blogsCategory">
     <div class="l-container l-container__common">
         <div class="p-blogs__sectionTitle">
-           <h3 class="c-headingSize__2xl">Computer Science</h3>
-           <span>コンピューターサイエンス</span>
+        <h3 class="c-headingSize__2xl">Caterogy</h3>
+           <span>カテゴリー別</span>
         </div>
+        <ul class="p-blogsCategory__categoryLinks">
+            <?php foreach ($categories as $category) : ?>
+                <?php
+                // Get the current URL path
+                $currentUrl = $this->request->getPath();
 
+                // Check if the current URL matches the tag's slug
+                $isActive = ($currentUrl === '/blogs/' . h($category->cat_label) . '/');
+                ?>
+
+                <li class="p-blogsCategory__categoryLinks-item">
+                    <a class="p-blogsCategory__categoryLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_name) ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <ul class="p-blogsCategory__tagLinks">
+            <?php foreach ($tags as $tag) : ?>
+                <?php
+                // Get the current URL path
+                $currentUrl = $this->request->getPath();
+
+                // Check if the current URL matches the tag's slug
+                $isActive = ($currentUrl === '/blogs/' . h($tag->slug) . '/');
+                ?>
+                <li class="p-blogsCategory__tagLinks-item">
+                    <a class="p-blogsCategory__tagLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($tag->slug) ?>/"><?= h($tag->tag_name) ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
         <div class="l-container__grid  l-container__grid-column3 p-blogs__articles">
             <?php foreach ($posts['blogs'] as $index => $post) : ?>
                 <article class="c-articleListCards">
@@ -86,37 +116,6 @@ $this->assign('title', 'devil-code(デビルコード) - ブログ - ' . $cat);
           </div>
     </div>
 
-    <div class="l-container c-viewMore">
-        <ul class="p-blogsCategory__categoryLinks">
-            <?php foreach ($categories as $category) : ?>
-
-                <?php
-                // Get the current URL path
-                $currentUrl = $this->request->getPath();
-
-                // Check if the current URL matches the tag's slug
-                $isActive = ($currentUrl === '/blogs/' . h($category->cat_label) . '/');
-                ?>
-                <li class="p-blogsCategory__categoryLinks-item">
-                    <a class="p-blogsCategory__categoryLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($category->cat_label) ?>/"><?= h($category->cat_name) ?></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-
-        <ul class="p-blogsCategory__tagLinks">
-            <?php foreach ($tags as $tag) : ?>
-                <?php
-                // Get the current URL path
-                $currentUrl = $this->request->getPath();
-                // Check if the current URL matches the tag's slug
-                $isActive = ($currentUrl === '/blogs/' . h($tag->slug) . '/');
-                ?>
-                <li class="p-blogsCategory__tagLinks-item">
-                    <a class="p-blogsCategory__tagLinks-link <?= $isActive ? 'active' : '' ?>" href="/blogs/<?= h($tag->slug) ?>/"><?= h($tag->tag_name) ?></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
 </section>
 <div class="container my-5 breadcrumbs-wrapper">
     <?= $this->Breadcrumbs->render() ?>

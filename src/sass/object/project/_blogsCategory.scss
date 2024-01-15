@@ -5,8 +5,8 @@
     background: var(--c-bg-base);
 
     &__categoryLinks {
+        padding: 3.5rem 0px 1.5rem 0px;
 
-        padding: 3.5rem 0px;
         &-item {
             display: inline-block;
         }
@@ -31,6 +31,7 @@
     }
 
     &__tagLinks {
+        padding: 0px 0px 1.5rem 0px;
         &-item {
             display: inline-block;
         }
