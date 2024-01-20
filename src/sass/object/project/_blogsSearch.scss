@@ -2,6 +2,16 @@
 
 .p-blogsSearch {
     padding: 3.5rem 0px 6.5rem;
-    background: var(--c-bg-neutral-lightest);
     border-bottom: 1px solid var(--c-neutral-border-lighter);
+    min-height: 100vh;
+    &__form {
+        margin-top: 2.2rem;
+    }
+    &__notFound {
+        font-weight: 700;
+        color: var(--c-text-lower-priority);
+        margin-top: 3rem;
+        text-align: center;
+        width: 100%;
+    }
 }
