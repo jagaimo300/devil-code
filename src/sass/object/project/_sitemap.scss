@@ -1,0 +1,29 @@
+@use "../../global/mixin" as gm;
+
+.p-sitemap {
+    border-bottom: 1px solid var(--c-neutral-border-lighter);
+    background: var(--c-bg-neutral-lightest);
+    padding: 3.5rem 0px 6.5rem;
+    &__list {
+        color: var(--c-text-low-priority);
+        margin-bottom: 2.5rem;
+        margin-top: .5rem;
+        &-item {
+            list-style: disc inside;
+            padding: .3rem 0;
+            a {
+                color: var(--c-text-link-primary);
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    &__view {
+        margin-top: 2.2rem;
+    }
+    .c-articleView__content {
+        width: 100%;
+    }
+}

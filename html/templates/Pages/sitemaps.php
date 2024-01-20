@@ -17,21 +17,17 @@ $this->Breadcrumbs->add(
 );
 $this->Breadcrumbs->add(
     'サイトマップ',
-    ['controller' => '/', 'action' => 'sitemaps'],
-    [
-        'templateVars' => [
-            'num' => '2'
-        ]
-    ]
+    false
 );
 
 $this->Breadcrumbs->setTemplates([
-    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
-    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    'wrapper' => '<nav class="c-breadcrumb l-container l-container__common" aria-label="breadcrumb"{{attrs}} ><ol class="c-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="c-breadcrumb__item"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
                </li>',
-    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+    'itemWithoutLink' => '<li class="c-breadcrumb__item active"{{attrs}}>{{title}}</li>',
 ]);
+
 
 $this->assign('title', 'サイトマップ');
 $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/sitemaps/" />');
@@ -47,56 +43,50 @@ $is_exits[] = ''
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
 
-<section class="blog">
-    <div class="container">
-        <div class="row my-5 d-flex">
-            <div class="col-md-8 me-md-1">
-                <h2>ブログ</h2>
-                <p>Blogs</p>
-                <ul>
-                    <?php foreach ($blogs as $index => $blog) : ?>
-                        <?php 
-                            if(!in_array($blog->blogs_category->category_label, $is_exits)){
-                                echo "<li><a href='/blogs/" . $blog->blogs_category->category_label ."'><span class='catTag mb-4' style='background-color:" . $blog->blogs_category->category_color . ";'>" . $blog->blogs_category->category_label . "</span></a></li>";                            
-                            } 
-                            
-                            $is_exits[] = $blog->blogs_category->category_label;
-                        ?>
+<section class="p-sitemap">
+    <div class="l-container l-container__common">
+        <div class="p-blogs__sectionTitle">
+        <h2 class="c-headingSize__2xl">Sitemap</h2>
+           <span>サイトマップ</span>
+        </div>
+        <div class="c-articleView p-sitemap__view">
+            <div class="c-articleView__content">
+                <article class="c-articleView__main">
+                    <div class="l-container l-container__common">
 
-                        <li style="list-style: square"><a href="/blogs/<?= h($blog->blogs_category->category_label) ?>/<?= h($blog->slug) ?>" class="pe-lg-5 h-100">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="fs-5 blog-ttl text-truncate"><?= h($blog->title) ?></h3>
-                            </div>
-                        </a></li>
-                    <?php endforeach; ?>
-                </ul>
+
+                        <h3 class="c-headingSize__md">Articles</h3>
+                        <ul class="p-sitemap__list">
+                            <?php foreach ($blogs as $index => $blog) : ?>
+                                <li class="p-sitemap__list-item">
+                                    <a href="/blogs/<?= h($blog->blogs_category->slug) ?>/<?= h($blog->slug) ?>/"><?= h($blog->title) ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <h3 class="c-headingSize__md">Pages</h3>
+
+                        <ul class="p-sitemap__list">
+                                <li class="p-sitemap__list-item">
+                                    <a href="/">サイトTOP</a>
+                                </li>
+                                <li class="p-sitemap__list-item">
+                                    <a href="/blogs/">ブログTOP</a>
+                                </li>
+                                <li class="p-sitemap__list-item">
+                                    <a href="/blogs/list/">ブログ一覧</a>
+                                </li>
+                                <li class="p-sitemap__list-item">
+                                    <a href="/blogs/site-policy/">サイトポリシー</a>
+                                </li>
+                                <li class="p-sitemap__list-item">
+                                    <a href="/blogs/contact/">お問い合わせ</a>
+                                </li>
+                        </ul>
+                    </div>
+                </article>
             </div>
         </div>
-        <div class="row my-5 d-flex">
-            <div class="col-md-8 me-md-1">
-                <h2>固定ページ</h2>
-                <p>Pages</p>
-                <ul>
-                    <li style="list-style: square">
-                        <a href="/contact/" class="pe-lg-5 h-100">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="fs-5 blog-ttl text-truncate">お問い合わせ</h3>
-                            </div>
-                        </a>
-                    </li>
-                    <li style="list-style: square">
-                        <a href="/sitemaps/" class="pe-lg-5 h-100">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="fs-5 blog-ttl text-truncate">サイトマップ</h3>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
     </div>
 </section>
-<div class="container my-5 breadcrumbs-wrapper">
-    <?= $this->Breadcrumbs->render() ?>
-</div>
+<?= $this->Breadcrumbs->render() ?>
