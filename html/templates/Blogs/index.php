@@ -17,30 +17,24 @@ $this->Breadcrumbs->add(
 );
 $this->Breadcrumbs->add(
     'ブログ',
-    ['controller' => 'blogs', 'action' => 'index'],
-    [
-        'templateVars' => [
-            'num' => '2',
-            'active' => 'active'
-        ]
-    ]
+    false
 );
 $this->Breadcrumbs->setTemplates([
-    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
-    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    'wrapper' => '<nav class="c-breadcrumb l-container l-container__common" aria-label="breadcrumb"{{attrs}} ><ol class="c-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="c-breadcrumb__item"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
                </li>',
-    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+    'itemWithoutLink' => '<li class="c-breadcrumb__item active"{{attrs}}>{{title}}</li>',
 ]);
 
 $this->assign('title', 'devil-code(デビルコード) - ブログ');
 $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/blogs/" />');
 ?>
 <?= $this->Html->css(['swiper-bundle.min.css'], ['block' => 'css']) ?>
-<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["name"=>"description","content"=>"devil codeではプログラミングの技術メモやコンピューターサイエンス学習ついてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"devil-code(デビルコード) - ブログ"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"article"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモや学習記録、ITのキャリアプランなどについてブログを投稿しています。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil codeではプログラミングの技術メモやコンピューターサイエンス学習ついてブログを投稿しています。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com/blogs/"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:locale","content"=>"ja_JP"],null,["block"=>'meta']); ?>
@@ -138,7 +132,7 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
 <section class="p-blogs__life">
     <div class="l-container l-container__common">
         <div class="p-blogs__sectionTitle">
-           <h3 class="c-headingSize__2xl">Everyday Life</h3>
+           <h3 class="c-headingSize__2xl">Lifestyle</h3>
            <span>日常</span>
         </div>
 
@@ -176,10 +170,9 @@ $this->assign('canonical', '<link rel="canonical" href="https://devil-code.com/b
     </div>
 
     <div class="l-container c-viewMore">
-        <a class=" c-viewMore__link" href="/blogs/everyday-life/">日常に関する記事をもっと見る</a>
+        <a class=" c-viewMore__link" href="/blogs/lifestyle/">日常に関する記事をもっと見る</a>
     </div>
+
 </section>
 
-<div class="container my-5 breadcrumbs-wrapper">
-    <?= $this->Breadcrumbs->render() ?>
-</div>
+<?= $this->Breadcrumbs->render() ?>

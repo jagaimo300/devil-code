@@ -39,11 +39,11 @@ $this->Breadcrumbs->add(
 );
 
 $this->Breadcrumbs->setTemplates([
-    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
-    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    'wrapper' => '<nav class="c-breadcrumb l-container__wide l-container__common" aria-label="breadcrumb"{{attrs}} ><ol class="c-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="c-breadcrumb__item"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
                </li>',
-    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+    'itemWithoutLink' => '<li class="c-breadcrumb__item active"{{attrs}}>{{title}}</li>',
 ]);
 
 ?>
@@ -136,12 +136,11 @@ $this->Breadcrumbs->setTemplates([
                         <section class="c-articleView__content">
                             <div class="c-articleView__main">
                                 <div class="l-container__wide l-container__common">
-                                    <?php if($blogsTags) : ?>
+                                    <?php if(isset($blogsTags) === true) : ?>
                                     <ul class="p-blogsView__tags">
-
                                         <?php foreach ($blogsTags as $index => $blogsTag) : ?>
                                         <li>
-                                        <a href="/blogs/<?= $blogsTag->tag->slug;?>/"><?= $blogsTag->tag->tag_name;?></a>
+                                            <a href="/blogs/<?= $blogsTag->tag->slug;?>/"><?= $blogsTag->tag->tag_name;?></a>
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -217,9 +216,7 @@ $this->Breadcrumbs->setTemplates([
     </section>
 <?php endforeach; ?>
 
-<div class="container my-5 breadcrumbs-wrapper">
-    <?= $this->Breadcrumbs->render() ?>
-</div>
+<?= $this->Breadcrumbs->render() ?>
 
 <script>
     const bodyText = document.getElementById('blogBody');

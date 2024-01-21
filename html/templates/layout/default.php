@@ -156,13 +156,14 @@
                <nav class="l-footer__navColumn">
                     <ul>
                         <h4 class="l-footer__navColumn-title">Pages</h4>
-                        <li><a href="/sitemaps">Sitemap</a></li>
-                        <li><a href="/site-policy">Site policy</a></li>
+                        <li><a href="/sitemaps/">Sitemap</a></li>
+                        <li><a href="/site-policy/">Site policy</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                </nav>
             </div>
         </div>
-        <div class="l-footer__copyright"><small>©</small><a href="/">2022-2023 devil code</a></div>
+        <div class="l-footer__copyright"><small>©</small><a href="/">2022-2024 devil code</a></div>
     </div>
   </footer>
   <?= $this->fetch('scriptBottom') ?>

@@ -53,10 +53,10 @@ $structuredData = array(
 
 ?>
 
-<?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード) プログラミングやITの技術に関するブログの記事一覧です。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["name"=>"description","content"=>"devil code(デビルコード）プログラミングの技術メモやコンピューターサイエンス学習に関するブログの記事一覧です。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:title","content"=>"【devil code】ブログ記事一覧"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:type","content"=>"website"],null,["block"=>'meta']); ?>
-<?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード) プログラミングやITの技術に関するブログの記事一覧です。"],null,["block"=>'meta']); ?>
+<?= $this->Html->meta(["property"=>"og:description","content"=>"devil code(デビルコード）プログラミングの技術メモやコンピューターサイエンス学習に関するブログの記事一覧です。"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:url","content"=>"https://devil-code.com"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:image","content"=>"https://devil-code.com/img/prof.webp"],null,["block"=>'meta']); ?>
 <?= $this->Html->meta(["property"=>"og:site_name","content"=>"devil code"],null,["block"=>'meta']); ?>
