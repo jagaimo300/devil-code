@@ -1,11 +1,12 @@
 @use "../../global/mixin" as gm;
 
 .p-blogsCategory {
-    padding: 3.5rem 0px;
+    padding: 3.5rem 0px 6.5rem;
     background: var(--c-bg-base);
-
+    border-bottom: 1px solid var(--c-neutral-border-lighter);
+    min-height: 100vh;
     &__categoryLinks {
-        padding: 3.5rem 0px 1.5rem 0px;
+        padding: 2.2rem 0px 1.5rem 0px;
 
         &-item {
             display: inline-block;
