@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Blogs Model
  *
- * @property \App\Model\Table\BlogsFeaturedTable&\Cake\ORM\Association\HasMany $BlogsFeatured
+ * @property \App\Model\Table\TagsTable&\Cake\ORM\Association\BelongsToMany $Tags
  *
  * @method \App\Model\Entity\Blog newEmptyEntity()
  * @method \App\Model\Entity\Blog newEntity(array $data, array $options = [])
@@ -47,13 +47,15 @@ class BlogsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('BlogsCategories', [
+        $this->hasOne('BlogsCategories', [
             'foreignKey' => 'category_id',
+            'bindingKey' => 'category_id',
+        ]);
+        $this->belongsToMany('Tags', [
+            'through' => 'BlogsTags', // 中間テーブルのモデル名
         ]);
         $this->hasMany('BlogsTags', [
             'foreignKey' => 'blog_id',
-            'targetForeignKey' => 'id',
-            'joinTable' => 'Tags',
         ]);
     }
 

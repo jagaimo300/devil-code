@@ -41,19 +41,9 @@ class TagsTable extends Table
         parent::initialize($config);
 
         $this->setTable('tags');
-        $this->setDisplayField('id');
+        $this->setDisplayField('tag_name');
         $this->setPrimaryKey('id');
 
-        $this->belongsToMany('Blogs', [
-            'foreignKey' => 'tag_id',
-            'targetForeignKey' => 'blog_id',
-            'joinTable' => 'blogs_tags',
-        ]);
-        $this->belongsToMany('Books', [
-            'foreignKey' => 'tag_id',
-            'targetForeignKey' => 'book_id',
-            'joinTable' => 'books_tags',
-        ]);
     }
 
     /**

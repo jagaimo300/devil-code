@@ -40,6 +40,10 @@ class BlogsCategoriesTable extends Table
         $this->setTable('blogs_categories');
         $this->setDisplayField('category_id');
         $this->setPrimaryKey('category_id');
+
+        $this->belongsToMany('Blogs', [
+            'foreignKey' => 'category_id',
+        ]);
     }
 
     /**

@@ -46,26 +46,7 @@ class BlogsTagsTable extends Table
 
         $this->belongsTo('Blogs', [
             'foreignKey' => 'blog_id',
-            'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Tags', [
-            'foreignKey' => 'tag_id',
-            'joinType' => 'INNER',
-        ]);
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn('blog_id', 'Blogs'), ['errorField' => 'blog_id']);
-        $rules->add($rules->existsIn('tag_id', 'Tags'), ['errorField' => 'tag_id']);
-
-        return $rules;
+        $this->belongsTo('Tags');
     }
 }
