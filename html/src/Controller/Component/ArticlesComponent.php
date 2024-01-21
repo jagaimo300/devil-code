@@ -24,35 +24,41 @@ class ArticlesComponent extends Component
         $blogs = $blogsTable->find('all', $commonConditions);
         if ($categorySlug) {
             $blogs->leftJoinWith('BlogsTags')->leftJoinWith('Tags')
-                ->where(['OR' => ['BlogsCategories.slug' => $categorySlug['slug'], 'Tags.slug' => $categorySlug['slug']]]);
+                ->where(['OR' => ['BlogsCategories.slug' => $categorySlug['slug'], 'Tags.slug' => $categorySlug['slug']]])->group('Blogs.id');
         }
 
         // Call all() before using extract()
         $blogIds = $blogs->all()->extract('id')->toList();
+        $blogCount = $blogs->count();
 
-        // Fetch tags for the extracted blog IDs
-        $blogsTags = $blogsTagsTable->find('all', [
-            'contain' => ['Tags'],
-            'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
-        ]);
+        // Fetch tags only if there are blog IDs available
+        if ($blogCount > 0) {
+            $blogsTags = $blogsTagsTable->find('all', [
+                'contain' => ['Tags'],
+                'conditions' => ['BlogsTags.blog_id IN' => $blogIds]
+            ]);
 
-        // Organize tags by blog ID
-        $blogTags = [];
-        foreach ($blogsTags as $blogsTag) {
-            $blog_id = $blogsTag->blog_id;
-            $tag_name = $blogsTag->tag->tag_name;
-            $tag_slug = $blogsTag->tag->slug;
+            // Organize tags by blog ID
+            $blogTags = [];
+            foreach ($blogsTags as $blogsTag) {
+                $blog_id = $blogsTag->blog_id;
+                $tag_name = $blogsTag->tag->tag_name;
+                $tag_slug = $blogsTag->tag->slug;
 
-            if (!isset($blogTags[$blog_id])) {
-                $blogTags[$blog_id] = [];
+                if (!isset($blogTags[$blog_id])) {
+                    $blogTags[$blog_id] = [];
+                }
+
+                $blogTags[$blog_id][] = [
+                    'tag_name' => $tag_name,
+                    'tag_slug' => $tag_slug
+                ];
             }
-
-            $blogTags[$blog_id][] = [
-                'tag_name' => $tag_name,
-                'tag_slug' => $tag_slug
-            ];
+            return compact('blogs', 'blogTags', 'blogCount');
+        } else {
+            // Handle the case when there are no blog IDs, for example:
+            return compact('blogs', 'blogCount');
         }
-        return compact('blogs', 'blogTags');
     }
 }
 
