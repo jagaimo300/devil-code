@@ -23,7 +23,7 @@ jobs:
           script: |
             cd ${{ secrets.VPS_REPO_PATH }}
             git pull origin main
-            #cp -r "${{ secrets.VPS_REPO_PATH }}/src/" "${{ secrets.VPS_DEPLOY_PATH }}/"
-            #cp -r "${{ secrets.VPS_REPO_PATH }}/templates/" "${{ secrets.VPS_DEPLOY_PATH }}/"
-            #cp -r "${{ secrets.VPS_REPO_PATH }}/webroot/js/" "${{ secrets.VPS_DEPLOY_PATH }}/webroot/"
-            #cp -r "${{ secrets.VPS_REPO_PATH }}/webroot/css/" "${{ secrets.VPS_DEPLOY_PATH }}/webroot/"
+            cp -r "${{ secrets.VPS_REPO_PATH }}/src/" "${{ secrets.VPS_DEPLOY_PATH }}/"
+            cp -r "${{ secrets.VPS_REPO_PATH }}/templates/" "${{ secrets.VPS_DEPLOY_PATH }}/"
+            cp -r "${{ secrets.VPS_REPO_PATH }}/webroot/js/" "${{ secrets.VPS_DEPLOY_PATH }}/webroot/"
+            cp -r "${{ secrets.VPS_REPO_PATH }}/webroot/css/" "${{ secrets.VPS_DEPLOY_PATH }}/webroot/"
