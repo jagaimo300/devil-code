@@ -25,21 +25,15 @@ $this->Breadcrumbs->add(
 );
 $this->Breadcrumbs->add(
     '記事一覧',
-    ['controller' => 'blogs', 'action' => 'list'],
-    [
-        'templateVars' => [
-            'num' => '3',
-            'active' => 'active'
-        ]
-    ]
+    false
 );
 
 $this->Breadcrumbs->setTemplates([
-    'wrapper' => '<nav aria-label="breadcrumb"{{attrs}} ><ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
-    'item' => '<li class="breadcrumb-item active"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    'wrapper' => '<nav class="c-breadcrumb l-container l-container__common" aria-label="breadcrumb"{{attrs}} ><ol class="c-breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">{{content}}</ol></nav>',
+    'item' => '<li class="c-breadcrumb__item"{{attrs}}  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                 <a itemprop="item" href="{{url}}"{{innerAttrs}} class="{{active}}"><span itemprop="name">{{title}}</span></a><meta itemprop="position" content="{{num}}" />
                </li>',
-    'itemWithoutLink' => '<li class="breadcrumb-item"{{attrs}}>{{title}}</li>',
+    'itemWithoutLink' => '<li class="c-breadcrumb__item active"{{attrs}}>{{title}}</li>',
 ]);
 
 $this->assign('title', 'devil-code(デビルコード) - ブログ - 記事一覧');
