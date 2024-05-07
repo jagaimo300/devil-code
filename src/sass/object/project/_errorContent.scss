@@ -1,0 +1,46 @@
+.p-errorContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 1.8rem 0 2rem;
+    text-align: center;
+
+    &__status {
+        font-size: 6rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: .08em;
+    }
+    &__message {
+        display: inline-block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.6;
+        color: var(--c-text-low-priority);
+        text-align: left;
+    }
+    &__image {
+        display: flex;
+        justify-content: center;
+        margin: 2rem auto;
+        text-align: center;
+        animation: ErrorContent_errorImageFadeIn 2s ease-in-out 1s 1 normal;
+        svg {
+border-radius: 25px;
+
+
+        }
+    }
+    @keyframes ErrorContent_errorImageFadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+}
+
